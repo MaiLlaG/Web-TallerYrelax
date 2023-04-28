@@ -10,5 +10,6 @@
 
 Hay varias partes:
 - En el raíz está la aplicación de Spring Boot (el backend).
+- Hay test hechos en insomnia [aquí](./src/test/insomnia/talleryrelax-insomnia.json)
 - En [/talleryrelax-cliente](./talleryrelax-cliente/) está el front para clientes (hecho con React).
 
