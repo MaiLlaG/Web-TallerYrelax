@@ -2,10 +2,14 @@ package com.maitlla.talleres.model;
 
 import java.sql.Blob;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +30,10 @@ public class Taller {
     private LocalDateTime fechainicio;
     private String dificultad;
     private Blob imagen;
+
+    @JsonIgnoreProperties("taller")
+    @OneToMany(mappedBy = "taller")
+    private List<Compra> compras;
 
     // getter, setters, contructors
     
@@ -93,5 +101,11 @@ public class Taller {
         this.imagen = imagen;
     }
 
+    public List<Compra> getCompras() {
+        return compras;
+    }
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
 
 }
