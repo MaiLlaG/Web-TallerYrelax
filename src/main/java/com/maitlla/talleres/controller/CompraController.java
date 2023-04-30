@@ -25,7 +25,6 @@ import com.maitlla.talleres.repository.CompraRepository;
 import com.maitlla.talleres.repository.MetodoDePagoRepository;
 import com.maitlla.talleres.repository.TallerRepository;
 
-// TODO: Esto tiene que devolver sólo las del cliente que llame
 @RestController
 @RequestMapping("/publico/compras") //en Request se define la ruta
 public class CompraController { // aqui se definen las peticiones http y las rutas
@@ -38,14 +37,22 @@ public class CompraController { // aqui se definen las peticiones http y las rut
     @Autowired
     MetodoDePagoRepository metodoDePagoRepository;
 
+    
+    // TODO: Esto tiene que devolver sólo las del cliente que llame. De momento considero que el cliente es siempre patri
+    private static final String email="patriglesias@gmail.com";
+
     @GetMapping
     public List<Compra> getCompras() {
-        return compraRepository.findAll();
+        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+
+        return compraRepository.findByClienteId(cliente.getId());
     }
 
     @GetMapping("/{id}")
     public Compra getCompra(@PathVariable Long id) {
-        return compraRepository.findById(id).orElseThrow(RuntimeException::new);
+        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+
+        return compraRepository.findByIdAndClienteId(id, cliente.getId()).orElseThrow(RuntimeException::new);
     }
 
     @PostMapping
@@ -60,8 +67,7 @@ public class CompraController { // aqui se definen las peticiones http y las rut
         MetodoDePago metodoDePago = metodoDePagoRepository.findById(idMetodoDePago).orElseThrow(RuntimeException::new);
         compra.setMetodoDePago(metodoDePago);
         
-        Long idCliente = compra.getCliente().getId();
-        Cliente cliente = clienteRepository.findById(idCliente).orElseThrow(RuntimeException::new);
+        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
         compra.setCliente(cliente);
 
         compra.setFechaCompra(Instant.now());
