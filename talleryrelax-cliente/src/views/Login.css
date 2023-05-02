@@ -1,0 +1,327 @@
+
+.textoPanel{
+    text-align: center;
+    color: #aeafb0;
+    font-size: 1.5em;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.anchoLinea {
+    width: 430px;
+  }
+  
+  
+  .divisiones {
+    width: 30%;
+    height: 100vh;
+  }
+  
+  .contentdiv {
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 40px);
+    position: absolute;
+    place-content: center;
+    width: calc(100% - 40px);
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  
+  @media (max-width: 767px) {
+    .contentdiv {
+      height: auto;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .contentPaneles{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .paneles {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  @media (max-width: 767px) {
+    .paneles {
+      flex-direction: column;
+      height: 630px;
+      max-height: 360px;
+    }
+  }
+  
+  .panelIzquierdo {
+    display: flex;
+    background: #a7afb282;
+    box-shadow: 5px 10px 40px 5px rgb(0 122 255 / 27%);
+    color: #ffffff;
+    border-radius: 30px;
+    position: relative;
+    margin-top: 70px;
+    min-height: 400px;
+    min-width: 550px;
+    width: 30vmax;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 767px) {
+    .panelIzquierdo {
+        top: 170px;
+        flex-shrink: 0;
+        height: 90%;
+        width: 90%;
+        max-height: 380px;
+       
+    }
+  }
+  
+  .login {
+    margin: 160px 20px 15px;
+    font: 800 3em 'Raleway', sans-serif;
+    letter-spacing: 6px;
+    text-shadow: #000000 0.1em 0.1em 0.2em;
+  }
+
+  @media (max-width: 767px) {
+    .login {
+        margin: 200px 100px 15px;
+        font: 800 3em 'Raleway', sans-serif;
+        letter-spacing: 2px;
+        text-shadow: #000000 0.1em 0.1em 0.2em;
+      }
+  }
+  
+  .panelDerecho {
+    padding-top: 3%;
+    display: flex;
+    background: #ffffff;
+    box-shadow: 5px 10px 40px 5px rgb(0 122 255 / 27%);
+    color: #f7b306;
+    border-radius: 30px;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 30vmax;
+    min-width: 550px;
+    min-height: 400px;
+    margin-left: 230px;
+    position: absolute;
+    z-index: 1;
+    justify-content: center;
+
+  }
+  
+  @media (max-width: 767px) {
+    .panelDerecho {
+        margin-left: 1px;
+        flex-shrink: 0;
+        height: 90%;
+        /*width: 90%;*/
+        max-height: 380px;
+      
+    }
+  }
+  
+  .form {
+    margin-left: 98px;
+    margin-top: 60px;
+    position: absolute;
+  }
+  
+  label {
+    background-color: #a7afb282;
+    text-shadow: #000000 0.1em 0.1em 0.2em;
+    color: #ffffff;
+    display: block;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 7px;
+  }
+  
+  input {
+    font: 400 1em 'Raleway', sans-serif;
+    border-width: 1px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-color: #f7b306;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+    color: #777c7e;
+    font-size: 1em;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    outline: none !important;
+  
+  }
+  
+  input::-moz-focus-inner {
+    border: 0;
+  }
+  
+  #submit {
+    color: #707075;
+    margin-top: 40px;
+    transition: color 300ms;
+  }
+  
+  #submit:focus {
+    color: #f2f2f2;
+  }
+  
+  #submit:active {
+    color: #d0d0d2;
+  }
+  
+  /*********************/
+  
+  * {
+    margin-left: 2px;
+    margin-right: 1px;
+    box-sizing: border-box;
+    /*margin: 0;*/
+    padding: 0;
+  }
+  
+  h1 {
+    padding: 50px 0;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(54, 56, 55);
+  }
+  
+  :active,
+  :hover,
+  :focus {
+    outline: 0 !important;
+    outline-offset: 0;
+  }
+  
+  ::before,
+  ::after {
+    position: absolute;
+    content: "";
+  }
+  
+  .btn-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 10px auto 35px;
+  }
+  
+  .btn {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 3% 27% 2%;
+    min-width: 150px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 15px;
+  }
+  
+  
+  .btn span {
+    font: 420 1.5em 'Raleway', sans-serif;
+    position: relative;
+    display: inline-block;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    /* text-transform: uppercase; */
+    text-shadow: #dddde1 0.1em 0.1em 0.2em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    transition: 0.1s;
+  }
+  
+  .btn-4 span {
+    color: #f7b306;
+  }
+  
+  .btn-4 span:hover {
+    color: #f7b306;
+  }
+  
+  .btn-4::before,
+  .btn-4::after {
+    width: 50%;
+    height: 1.5px;
+    background-color: #d5d7d8;
+    z-index: 2;
+  }
+  
+  .btn.hover-border-7::before,
+  .btn.hover-border-7::after {
+    bottom: 0;
+    transition: width 0.2s 0.35s ease-out;
+  }
+  
+  .btn.hover-border-7::before {
+    right: 50%;
+  }
+  
+  .btn.hover-border-7::after {
+    left: 50%;
+  }
+  
+  .btn.hover-border-7:hover::before,
+  .btn.hover-border-7:hover::after {
+    width: 50%;
+    transition: width 0.2s ease-in;
+  }
+  
+  .btn.hover-border-7 span::before,
+  .btn.hover-border-7 span::after {
+    width: 0%;
+    height: 0%;
+    background: transparent;
+    opacity: 0;
+    z-index: 2;
+    transition: width 0.2s ease-in, height 0.15s 0.2s linear, opacity 0s 0.35s;
+  }
+  
+  .btn.hover-border-7 span::before {
+    bottom: 0;
+    left: 0;
+    border-left: 1.2px solid #d5d7d8;
+    border-top: 1.2px solid #d5d7d8;
+  }
+  
+  .btn.hover-border-7 span::after {
+    bottom: 0;
+    right: 0;
+    border-right: 1.2px solid #d5d7d8;
+    border-top: 1.2px solid #d5d7d8;
+  }
+  
+  .btn.hover-border-7 span:hover::before,
+  .btn.hover-border-7 span:hover::after {
+    width: 50%;
+    height: 96%;
+    opacity: 1;
+    transition: height 0.2s 0.2s ease-in, width 0.2s 0.4s linear, opacity 0s 0.2s;
+  }
+  
