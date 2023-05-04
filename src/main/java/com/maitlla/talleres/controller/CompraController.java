@@ -83,6 +83,11 @@ public class CompraController { // aqui se definen las peticiones http y las rut
         Long idTaller = compra.getTaller().getId();
         Taller taller = tallerRepository.findById(idTaller).orElseThrow(RuntimeException::new);
         compra.setTaller(taller);
+        if (taller.getPlazasCompradas() < taller.getNplazas()){
+            taller.setPlazasCompradas(taller.getPlazasCompradas()+1);        
+        }else{
+            throw new RuntimeException("Las plazas del taller están agotadas.");
+        }
         
         Long idMetodoDePago = compra.getMetodoDePago().getId();
         MetodoDePago metodoDePago = metodoDePagoRepository.findById(idMetodoDePago).orElseThrow(RuntimeException::new);
@@ -95,6 +100,7 @@ public class CompraController { // aqui se definen las peticiones http y las rut
         compra.setImporteCompra(taller.getPrecio());
 
         Compra savedCompra = compraRepository.save(compra);
+        tallerRepository.save(taller);
         return ResponseEntity.created(new URI("/gestion/compras/" + savedCompra.getId())).body(savedCompra);
     }
     
