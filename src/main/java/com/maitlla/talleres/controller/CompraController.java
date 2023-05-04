@@ -7,11 +7,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,20 +38,40 @@ public class CompraController { // aqui se definen las peticiones http y las rut
     @Autowired
     MetodoDePagoRepository metodoDePagoRepository;
 
-    
-    // TODO: Esto tiene que devolver sólo las del cliente que llame. De momento considero que el cliente es siempre patri
-    private static final String email="patriglesias@gmail.com";
+    private Jwt getUser(){
+        Object authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof JwtAuthenticationToken){
+            JwtAuthenticationToken jwtAuthenticationToken =  (JwtAuthenticationToken)authentication;
+            return jwtAuthenticationToken.getToken();
+        }
+        throw new RuntimeException("No está autenticado el usuario o no se ha conseguido recuperar su email");
+    }
+
+    private Cliente recuperarOCrearCliente(){
+        Jwt user = getUser();
+        String email = user.getClaimAsString("email");
+        String nombre = user.getClaimAsString("email").split("@")[0];
+
+        Cliente cliente = clienteRepository.findByEmail(email).orElse(null);
+        if (cliente == null){
+            cliente = new Cliente();
+            cliente.setEmail(email);
+            cliente.setNombre(nombre);
+            cliente = clienteRepository.save(cliente);
+        }
+        return cliente;
+    }
 
     @GetMapping
     public List<Compra> getCompras() {
-        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+        Cliente cliente = recuperarOCrearCliente();
 
         return compraRepository.findByClienteId(cliente.getId());
     }
 
     @GetMapping("/{id}")
     public Compra getCompra(@PathVariable Long id) {
-        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+        Cliente cliente = recuperarOCrearCliente();
 
         return compraRepository.findByIdAndClienteId(id, cliente.getId()).orElseThrow(RuntimeException::new);
     }
@@ -67,7 +88,7 @@ public class CompraController { // aqui se definen las peticiones http y las rut
         MetodoDePago metodoDePago = metodoDePagoRepository.findById(idMetodoDePago).orElseThrow(RuntimeException::new);
         compra.setMetodoDePago(metodoDePago);
         
-        Cliente cliente = clienteRepository.findByEmail(email).orElseThrow(RuntimeException::new);
+        Cliente cliente = recuperarOCrearCliente();
         compra.setCliente(cliente);
 
         compra.setFechaCompra(Instant.now());
