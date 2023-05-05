@@ -1,4 +1,4 @@
-
+/*
 .textoPanel{
     text-align: center;
     color: #aeafb0;
@@ -125,7 +125,7 @@
         margin-left: 1px;
         flex-shrink: 0;
         height: 90%;
-        /*width: 90%;*/
+        width: ;
         max-height: 380px;
       
     }
@@ -187,14 +187,14 @@
   #submit:active {
     color: #d0d0d2;
   }
-  
+          */              
   /*********************/
-  
+  /*
   * {
     margin-left: 2px;
     margin-right: 1px;
     box-sizing: border-box;
-    /*margin: 0;*/
+    margin: ;
     padding: 0;
   }
   
@@ -248,7 +248,7 @@
     display: inline-block;
     font-size: 1.5em;
     letter-spacing: 2px;
-    /* text-transform: uppercase; */
+    text-transform: uppercase; 
     text-shadow: #dddde1 0.1em 0.1em 0.2em;
     top: 0;
     left: 0;
@@ -325,3 +325,4 @@
     transition: height 0.2s 0.2s ease-in, width 0.2s 0.4s linear, opacity 0s 0.2s;
   }
   
+  */

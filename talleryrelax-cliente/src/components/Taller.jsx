@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import TallerDataService from "../services/TallerService";
+import TallerDataService from "../services/TallerDataService";
 import '../App.css';
 import '../index.css';
 

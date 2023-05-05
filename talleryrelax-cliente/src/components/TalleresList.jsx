@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TallerDataService from "../services/TallerService";
+import TallerDataService from "../services/TallerDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
@@ -55,9 +55,9 @@ const TalleresList = () => {
     };
 
     return (
-        <div className="list row">
-            <div className="col-md-8">
-                <div className="input-group mb-3">
+        <div className="">
+            <div className="">
+                <div className="">
                     <input
                         type="text"
                         className="form-control"
@@ -65,7 +65,7 @@ const TalleresList = () => {
                         value={buscarxNombre}
                         onChange={onChangeBuscarxNombre}
                     />
-                    <div className="input-group-append">
+                    <div className="">
                         <button
                             className="btn"
                             type="button" onClick={findByName}>
@@ -76,68 +76,102 @@ const TalleresList = () => {
             </div>
 
 
-            <div className="col-md-6">
+            <div className="">
                 {actualTaller ? (
                     <div>
                         <h4>Taller</h4>
                         <div>
                             <label>
-                                <strong>Nombre:</strong>
-                            </label>{" "}
+                                <strong className="textoInfoColor textoInfo">Nombre:</strong>
+                            </label>
                             {actualTaller.nombre}
                         </div>
-                        <div>
+                        <div className="infoTallerColor">
                             <label>
-                                <strong>Descripcion:</strong>
-                            </label>{" "}
+                                <strong className="textoInfoColor textoInfo">Descripcion:</strong>
+                                <div>
+                                    <p className="textoInfoColor textoDerecha">
+                                        "Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing
+                                        elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                        ex ea
+                                        commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat
+                                        nulla
+                                        pariatur.
+                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui oficia deserunt
+                                        mollit
+                                        anim id est laborum.
+                                    </p>
+                                </div>
+                            </label>
                             {actualTaller.descripcion}
                         </div>
                         <div>
                             <label>
                                 <strong>Precio:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.precio}
                         </div>
                         <div>
                             <label>
                                 <strong>Semanas de duración:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.durasemanas}
                         </div>
                         <div>
                             <label>
                                 <strong>Días a la semana:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.diasxsemana}
                         </div>
                         <div>
                             <label>
                                 <strong>Número de plazas:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.nplazas}
                         </div>
                         <div>
                             <label>
                                 <strong>Plazas compradas:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.plazasCompradas}
                         </div>
                         <div>
                             <label>
                                 <strong>Fecha de inicio:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.fechainicio}
                         </div>
                         <div>
                             <label>
                                 <strong>Dificultad:</strong>
-                            </label>{" "}
+                            </label>
                             {actualTaller.dificultad}
                         </div>
+
+
                         <div>
                             <label>
                                 <strong>Imagen:</strong>
-                            </label>{" "}
+                            </label>
+
+                            <div class="imgsmall">
+
+                                <div class="imgresice imgSobrecapa">
+                                    <img src={require("../img/Origami6.jpg")} alt="Origami2" />
+                                </div>
+                                <div class="imgresice">
+                                    <img src="./img/Origamizorro2.jpg" alt="Origami2" />
+                                </div>
+                            </div>
+                            <div class="imgresice">
+                                <img src="./img/Origamizorro2.jpg" alt="Origami2" />
+                            </div>
+
                             {actualTaller.imagen}
                         </div>
 
@@ -151,9 +185,9 @@ const TalleresList = () => {
                         </Link>
                     </div>
                 ) : (
-                    <div className="col-md-6">
+                    <div className="">
                         <h4>Lista de talleres</h4>
-                        <ul className="list-group">
+                        <ul className="">
                             {talleres && talleres.map((taller, index) => (
                                 <li
                                     className={
