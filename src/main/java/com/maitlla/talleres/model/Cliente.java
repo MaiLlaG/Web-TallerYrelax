@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+// TODO: Quedarnos solo con id, nombre y email (aquí y en todos los sitios que aplique)
 @Entity 
 // anotación Entity: que cada campo que se añada dentro de public class Cliente{}
 // va a ser una columna en nuestra base de datos 
