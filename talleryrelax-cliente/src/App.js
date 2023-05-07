@@ -17,11 +17,18 @@ import PagoRealizado from "./components/PagoRealizado";
 
 import { auth } from './firebase';
 import { getRedirectResult, GoogleAuthProvider } from "firebase/auth";
-import UsuarioContext from "./components/Usuario.jsx"
+import UsuarioContext from "./components/Usuario";
+
 
 function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [buscarxNombre, setBuscarxNombre] = useState("");
+
+  const onChangeBuscarxNombre = e => {
+    const buscarxNombre = e.target.value;
+    setBuscarxNombre(buscarxNombre);
+  };
 
   useEffect(() => {
     //const auth = getAuth();
@@ -56,19 +63,36 @@ function App() {
   console.log(user);
   console.log(token);
 
+
+  const findByName = () => {
+    CompraDataService.findByName(buscarxNombre)
+      .then(response => {
+        setCompras(response.data);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   return (
     <UsuarioContext.Provider value={usuario}>
-
       <div>
-
-        <nav className="navbar navFondo">
-          <a href="/" className="navbar-brand">
-            TallerYrelax
-          </a>
-          <div className="navbar-nav navegador">
+        <nav className="navFondo">
+          <div className="navegador">
+            <li className="sizeP">
+              <Link to={"/"} className="sizeP">
+                TallerYrelax
+              </Link>
+            </li>
             <li className="sizeP">
               <Link to={"/talleres"} className="sizeP">
                 Talleres
+              </Link>
+            </li>
+            <li className="sizeP">
+              <Link to={"/contacto"} className="sizeP">
+                Contacto
               </Link>
             </li>
             <li className="sizeP">
@@ -76,18 +100,38 @@ function App() {
                 Compras
               </Link>
             </li>
-        
             <li className="sizeP">
-              <Link to={"/contacto"} className="sizeP">
-                Contacto
+              <Link to={"/login"}>
+                <Login />
               </Link>
             </li>
             <li className="sizeP">
-              <Login />
+              <Link to={"/compras/:id"}>
+                  <img className="icono" src={require("./img/iconoYellow-cesta.png")} alt="iconoCompra" />
+              </Link>
             </li>
-
           </div>
+
+
+          <div className="franjaNav">
+            <div className="buscadorAlineado">
+              <input
+                className="buscador"
+                type="text"
+                placeholder="Buscar por nombre"
+                value={buscarxNombre}
+                onChange={onChangeBuscarxNombre}
+              />
+              <button
+                className="buscador"
+                type="button" onClick={findByName}>
+                Search
+              </button>
+            </div>
+          </div>
+
         </nav>
+
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<TallerYrelax />} />
@@ -97,12 +141,34 @@ function App() {
             <Route path="/tallerAdd" element={<TallerAdd />} />
 
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/compras" element={<ComprasList />} />
             <Route path="/pagoRealizado" element={<PagoRealizado />} />
           </Routes>
         </div>
+
+        <footer>
+          <div className="footerFondo">
+            <p className="textoGris footerFuente">TALLERES</p>
+            <hr className="lineaF" />
+            <div>
+              <p className="textoGris">PAGO SEGURO</p>
+            </div>
+            <div>
+              <p className="textoGris">Política de protección de datos</p>
+            </div>
+            <div>
+              <p className="textoGris">Política de cookies</p>
+            </div>
+            <hr className="lineaF" />
+            <p className="staff footerFuente">STAFF</p>
+          </div>
+        </footer>
+
       </div>
     </UsuarioContext.Provider>
+
+
   );
 }
 

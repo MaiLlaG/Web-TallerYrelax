@@ -21,7 +21,7 @@ const Login = () => {
                         <button className="button signout" onClick={() => auth.signOut()}>Sign out</button>
                     </div>
                     :
-                    <button className="button" onClick={signInWithGoogle}><i className="fab fa-google"></i>Sign in with google</button>
+                    <button className="button botonGoogle" onClick={signInWithGoogle}><img className="iconoGoogle" src={require("../img/icono-login.png")} alt="iconoLogin" />   {/*<i className="fab fa-google"></i>Sign in with google*/} </button>
             }
         </div>
     );

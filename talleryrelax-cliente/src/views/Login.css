@@ -1,3 +1,16 @@
+.iconoGoogle{
+  width: 43px;
+  height: 43px;
+  margin-bottom: 10px;
+  /*padding-right: 10px;*/
+  
+}
+
+.botonGoogle{
+  background-color: #ffffff00;;
+  border: none;
+}
+
 /*
 .textoPanel{
     text-align: center;

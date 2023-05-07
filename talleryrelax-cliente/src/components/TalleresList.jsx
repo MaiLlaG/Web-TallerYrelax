@@ -56,6 +56,7 @@ const TalleresList = () => {
 
     return (
         <div className="">
+            {/* 
             <div className="">
                 <div className="">
                     <input
@@ -74,7 +75,7 @@ const TalleresList = () => {
                     </div>
                 </div>
             </div>
-
+            */}
 
             <div className="">
                 {actualTaller ? (
@@ -176,9 +177,9 @@ const TalleresList = () => {
                         </div>
 
 
-                        {/* <Link to={"/login"} className="nav-link btn btn-4 btn-holder hover-border-7">
-                            Comprar
-                        </Link> */}
+                        <Link to={"/compras/:id"} className="nav-link btn btn-4 btn-holder hover-border-7">
+                            Comprar (TODO: SOLO MOSTRAR SI ESTÁS AUTENTICADO)
+                        </Link>
                         <Link
                             onClick={() => setActiveTaller(null, -1)} className="btn btn-4 btn-holder hover-border-7">
                             Volver
