@@ -11,24 +11,24 @@ body{
   background-color: #ffffff;
   color: #ffffff;
   letter-spacing: 4px;
-  padding-top: 10px;
+  padding-top: 2px;
   padding-left: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 4%;
+  column-gap: 2%;
   align-items: center;
 }
 
 nav a:focus {
   color: #ab06f7;
- 
+
   cursor: pointer;
 }
 
 nav p:hover {
   color: #f7b306;
-  
+
 }
 
 .navFondo {
@@ -39,7 +39,7 @@ nav p:hover {
   font-size: 1.2em;
   margin-top: 15px;
   padding-right: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 a:-webkit-any-link {
@@ -55,11 +55,42 @@ a {
   text-decoration: none;
 }
 
-.icono{
+.icono {
   width: 40px;
   height: 40px;
-  padding-top: 12px;
+  padding-top: 8px;
   /*padding-right: 10px;*/
+}
+
+.iconoCliente {
+  width: 47px;
+  height: 45px;
+  margin-top: 5px;
+}
+
+.iconoLogo {
+  width: 43px;
+  height: 43px;
+  margin-bottom: 3px;
+}
+
+.iconoSearch {
+  width: 30px;
+  height: 40px;
+  margin-top: 7px;
+}
+
+.textoLogo {
+  font: 500 0.8em 'Raleway', sans-serif;
+  color: #f7b306;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
+.botonGoogle{
+  margin-bottom: 10px;
+  background-color: #ffffff00;;
+  border: none;
 }
 
 .franjaNav {
@@ -75,6 +106,36 @@ a {
   column-gap: 1%;
   opacity: 70%;
 }
+
+.buscador {
+  border: none;
+  background-color: #ffffff00;
+}
+
+.inputBuscador {
+  width: 170px;
+  height: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: 0.15em em;
+  font: 400 0.9em 'Raleway', sans-serif;
+  border-bottom-color: #f7b306;
+}
+
+.buscadorAlineado {
+  margin-bottom: 25px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+/*
+input::-moz-focus-inner {
+  border: none;
+}    */
 
 /*..............*/
 
@@ -105,7 +166,7 @@ a {
 
 
 /* Footer  */
-.footerFondo{
+.footerFondo {
   background-color: #000000;
   color: #ffffff;
   font: 400 0.9em 'Raleway', sans-serif;
@@ -141,5 +202,3 @@ a {
 }
 
 /*..............*/
-
-

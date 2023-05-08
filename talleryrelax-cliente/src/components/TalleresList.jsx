@@ -3,6 +3,8 @@ import TallerDataService from "../services/TallerDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
+import '../views/TalleresList.css';
+import CompraDataService from "../services/CompraDataService";
 
 const TalleresList = () => {
     const [talleres, setTalleres] = useState([]);
@@ -54,6 +56,29 @@ const TalleresList = () => {
             });
     };
 
+    /*
+    const permitirComprar = document.getElementById('usuario_logueado');
+    permitirComprar.disabled = true; */
+
+    const permitirComprar = () => {
+        let desabilitar = false;
+
+        if (usuario.user.valu === "") {
+            desabilitar = true;
+        }
+
+        if (usuario.password.valu === "") {
+            desabilitar = true;
+        }
+
+        if (desabilitar === true) {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    }
+
+
     return (
         <div className="">
             {/* 
@@ -81,124 +106,106 @@ const TalleresList = () => {
                 {actualTaller ? (
                     <div>
                         <h4>Taller</h4>
-                        <div>
-                            <label>
-                                <strong className="textoInfoColor textoInfo">Nombre:</strong>
-                            </label>
-                            {actualTaller.nombre}
-                        </div>
-                        <div className="infoTallerColor">
-                            <label>
-                                <strong className="textoInfoColor textoInfo">Descripcion:</strong>
+                        <div class="contenedorTallerBlanco">
+                            <div className="infoTallerColor">
                                 <div>
-                                    <p className="textoInfoColor textoDerecha">
-                                        "Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing
-                                        elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex ea
-                                        commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat
-                                        nulla
-                                        pariatur.
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui oficia deserunt
-                                        mollit
-                                        anim id est laborum.
-                                    </p>
+                                    <label>
+                                        <strong className="textoInfoColor textoInfo">Nombre:</strong>
+                                    </label>
+                                    {actualTaller.nombre}
                                 </div>
-                            </label>
-                            {actualTaller.descripcion}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Precio:</strong>
-                            </label>
-                            {actualTaller.precio}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Semanas de duración:</strong>
-                            </label>
-                            {actualTaller.durasemanas}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Días a la semana:</strong>
-                            </label>
-                            {actualTaller.diasxsemana}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Número de plazas:</strong>
-                            </label>
-                            {actualTaller.nplazas}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Plazas compradas:</strong>
-                            </label>
-                            {actualTaller.plazasCompradas}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Fecha de inicio:</strong>
-                            </label>
-                            {actualTaller.fechainicio}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Dificultad:</strong>
-                            </label>
-                            {actualTaller.dificultad}
-                        </div>
-
-
-                        <div>
-                            <label>
-                                <strong>Imagen:</strong>
-                            </label>
-
-                            <div class="imgsmall">
-
-                                <div class="imgresice imgSobrecapa">
-                                    <img src={require("../img/Origami6.jpg")} alt="Origami2" />
+                                <div>
+                                    <label>
+                                        <strong className="textoInfoColor textoInfo">Descripcion:</strong>
+                                        <p className="textoInfoColor textoDerecha">
+                                            {actualTaller.descripcion}
+                                        </p>
+                                    </label>
                                 </div>
-                                <div class="imgresice">
-                                    <img src="./img/Origamizorro2.jpg" alt="Origami2" />
+                                <div>
+                                    <label>
+                                        <strong>Precio:</strong>
+                                    </label>
+                                    {actualTaller.precio}
                                 </div>
+                                <div>
+                                    <label>
+                                        <strong>Semanas de duración:</strong>
+                                    </label>
+                                    {actualTaller.durasemanas}
+                                </div>
+                                <div>
+                                    <label>
+                                        <strong>Días a la semana:</strong>
+                                    </label>
+                                    {actualTaller.diasxsemana}
+                                </div>
+                                <div>
+                                    <label>
+                                        <strong>Número de plazas:</strong>
+                                    </label>
+                                    {actualTaller.nplazas}
+                                </div>
+                                <div>
+                                    <label>
+                                        <strong>Plazas compradas:</strong>
+                                    </label>
+                                    {actualTaller.plazasCompradas}
+                                </div>
+                                <div>
+                                    <label>
+                                        <strong>Fecha de inicio:</strong>
+                                    </label>
+                                    {actualTaller.fechainicio}
+                                </div>
+                                <div>
+                                    <label>
+                                        <strong>Dificultad:</strong>
+                                    </label>
+                                    {actualTaller.dificultad}
+                                </div>
+
                             </div>
-                            <div class="imgresice">
-                                <img src="./img/Origamizorro2.jpg" alt="Origami2" />
+                            <div>
+                                IMAGENES
                             </div>
-
-                            {actualTaller.imagen}
                         </div>
 
 
-                        <Link to={"/compras/:id"} className="nav-link btn btn-4 btn-holder hover-border-7">
-                            Comprar (TODO: SOLO MOSTRAR SI ESTÁS AUTENTICADO)
+
+                        <Link to={"/compras/"+actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
+                            Comprar
                         </Link>
+
+
                         <Link
                             onClick={() => setActiveTaller(null, -1)} className="btn btn-4 btn-holder hover-border-7">
                             Volver
                         </Link>
                     </div>
                 ) : (
+
                     <div className="">
-                        <h4>Lista de talleres</h4>
-                        <ul className="">
-                            {talleres && talleres.map((taller, index) => (
-                                <li
-                                    className={
-                                        "list-group-item " + (index === actualIndex ? "active" : "")
-                                    }
-                                    onClick={() => setActiveTaller(taller, index)} key={index}>
-                                    {taller.nombre}
-                                </li>
-                            ))}
-                        </ul>
+                        <div class="division3partes">
+                            <div className="seccionIzquierda"></div>
+                            <div className="talleres">
+                                {talleres && talleres.map((taller, index) => (
+
+                                    <div className="CirculosAbajo" onClick={() => setActiveTaller(taller, index)} key={index}>
+                                        <figure className="snip1566">
+                                            <img src={require("../img/tallerPanaderia74.jpg")} alt={taller.nombre} />
+                                            <figcaption>
+                                                <h1 className="circuloText">{taller.nombre}</h1>
+                                            </figcaption>
+                                            <a href="#"></a>
+                                        </figure>
+                                    </div>
+
+                                ))}
+
+                            </div>
+                            <div className="seccionDerecha"></div>
+                        </div>
                     </div>
                 )}
             </div>

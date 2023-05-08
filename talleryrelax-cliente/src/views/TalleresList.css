@@ -56,80 +56,9 @@ header {
     /*opacity: 70%;  */
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    column-gap: 60px;
-    padding: 0 30px;
-    margin-top: 130px;
-    justify-content: center;
-    align-items: center;
-}
-
-.container.thumbex {
-    margin: 10px 20px 30px;
-    width: 100%;
-    min-width: 250px;
-    max-width: 435px;
-    height: 67vh;
-
-    /*border-radius: 50px; */
-}
-
-.container .thumbex .thumbnail {
-    overflow: hidden;
-
-    display: flex;
-    height: 67vh;
-    position: relative;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    opacity: 0.76;
-    backface-visibility: hidden;
-    transition: all 0.4s ease-out;
-}
 
 
-.container .thumbex .thumbnail img {
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    height: 115%;
-    width: auto;
-    transform: translate(-50%, -50%);
-    backface-visibility: hidden;
-}
 
-.container .thumbex .thumbnail span {
-    position: absolute;
-    z-index: 2;
-    /*top: calc(300px - 20px); */
-    top: 45%;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 50px;
-    margin: 0 45px;
-    text-align: center;
-    font-size: 24px;
-    color: #ffffff;
-    font-weight: 300;
-    font: 400 1em 'Raleway', sans-serif;
-    letter-spacing: 0.2px;
-    transition: all 0.3s ease-out;
-}
-
-.container .thumbex .thumbnail:hover {
-    backface-visibility: hidden;
-    transform: scale(1.15, 1.15);
-    opacity: 1;
-}
-
-.container .thumbex .thumbnail:hover span {
-    opacity: 0;
-}
 
 
 .textoAbajo {
@@ -145,6 +74,33 @@ header {
 /* Círculos que se ve lo que hay dentro al pasar con el cursor */
 
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+.division3partes {
+    display: flex;
+}
+
+.talleres {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0%;
+    padding: 180px 1% 18% 1%;
+    
+    height: 60vh;
+    background-color: #e4ad26;
+    justify-content: center;
+}
+
+.seccionIzquierda {
+    background-color: #e4ad26;
+    width: 31%;
+    margin-left: -1px;
+}
+
+.seccionDerecha {
+    background-color: #e4ad26;
+    width: 31%;
+    margin-left: -1px;
+}
 
 .snip1566 {
     margin-left: 50%;
@@ -249,35 +205,11 @@ header {
     transform: rotate(-45deg);
 }
 
+/*.........................*/
 
 
-.division3partes {
-    display: flex;
-}
 
-.seccionIzquierda {
-    background-color: #e4ad26;
-    width: 31%;
-    margin-left: -1px;
-}
 
-.talleres {
-    background-color: #e4ad26;
-    display: flex;
-    flex-flow: wrap;
-    margin: 0%;
-    padding: 180px 1% 18% 1%;
-    width: 100%;
-    height: 100%;
-
-    justify-content: center;
-}
-
-.seccionDerecha {
-    background-color: #e4ad26;
-    width: 31%;
-    margin-left: -1px;
-}
 
 .fondoTalleres {
 
@@ -356,7 +288,7 @@ header {
 }
 
 
-img {
+.imgDetalle {
     border-radius: 150px;
     max-width: 100%;
     max-height: 100%;
@@ -407,7 +339,7 @@ img {
     font: 400 1em 'Raleway', sans-serif;
     letter-spacing: 2px;
     width: 30vmax;
-    height: 100vh;
+    /* height: 100vh; */
     display: grid;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -460,6 +392,20 @@ img {
     align-items: center;
 }
 
+.contenedorTallerBlanco {
+    background-color: rgb(255, 255, 255);
+    color: #e4ad26;
+    text-align: center;
+    font: 400 1em Raleway, sans-serif;
+    letter-spacing: 4px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: 40px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 
 
 

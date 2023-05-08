@@ -1,6 +1,4 @@
 import http from "../http-common";
-import axios from "axios";
-
 
 const getAllAutenticado = () => {
   return http.get("/publico/compras", 
@@ -11,7 +9,8 @@ const getAllAutenticado = () => {
 }  
 
 const createAutenticado = data => {
-  return axios.post("/publico/compras", data, 
+  console.log(data);
+  return http.post("/publico/compras", data, 
     { headers: {
       "Authorization" : `Bearer ${localStorage.getItem('token')}`
     } 
@@ -26,13 +25,16 @@ const get = id => {
   return http.get(`/gestion/compras/${id}`);
 };
 
-
+const findByName = nombre => {
+  return http.get(`/publico/talleres?nombre=${nombre}`);
+};
 
 const CompraDataService = { 
   getAllAutenticado,
   createAutenticado,
   getAll,
-  get
+  get,
+  findByName,
 };
 
 export default CompraDataService; 

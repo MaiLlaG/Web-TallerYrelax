@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import CompraDataService from "./services/CompraDataService";
 import './App.css';
 import './index.css';
 
@@ -12,7 +13,8 @@ import TallerAdd from "./components/TallerAdd";
 import Contacto from "./components/Contacto";
 import Login from "./components/Login";
 import ComprasList from "./components/ComprasList";
-
+import PagoCompra from "./components/PagoCompra";
+import PasarelaPago from "./components/PasarelaPago";
 import PagoRealizado from "./components/PagoRealizado";
 
 import { auth } from './firebase';
@@ -95,41 +97,34 @@ function App() {
                 Contacto
               </Link>
             </li>
-            <li className="sizeP">
-              <Link to={"/compras"} className="sizeP">
-                Compras
-              </Link>
-            </li>
-            <li className="sizeP">
-              <Link to={"/login"}>
-                <Login />
-              </Link>
-            </li>
-            <li className="sizeP">
-              <Link to={"/compras/:id"}>
-                  <img className="icono" src={require("./img/iconoYellow-cesta.png")} alt="iconoCompra" />
-              </Link>
-            </li>
-          </div>
-
-
-          <div className="franjaNav">
-            <div className="buscadorAlineado">
-              <input
-                className="buscador"
-                type="text"
-                placeholder="Buscar por nombre"
-                value={buscarxNombre}
-                onChange={onChangeBuscarxNombre}
-              />
-              <button
-                className="buscador"
-                type="button" onClick={findByName}>
-                Search
-              </button>
+            <div className="franjaNav">
+              <div className="buscadorAlineado">
+                <input
+                  className="inputBuscador"
+                  type="text"
+                  placeholder="Buscar por nombre"
+                  value={buscarxNombre}
+                  onChange={onChangeBuscarxNombre}
+                />
+                <button
+                  className="buscador"
+                  type="button" onClick={findByName}>
+                  <img className="iconoSearch" src={require("./img/iconoY-search.png")} alt="iconoSearch" />
+                </button>
+              </div>
             </div>
+            <li className="sizeP">
+              <Login />
+            </li>
+            <li className="">
+              <Link to={"/compras"}>
+                <img className="iconoCliente" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
+                <div>
+                  <span className="textoLogo">Mis compras</span>
+                </div>
+              </Link>
+            </li>
           </div>
-
         </nav>
 
         <div className="container mt-3">
@@ -141,8 +136,9 @@ function App() {
             <Route path="/tallerAdd" element={<TallerAdd />} />
 
             <Route path="/contacto" element={<Contacto />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/compras" element={<ComprasList />} />
+            <Route path="/compras/:id" element={<PagoCompra />} />
+            <Route path="/pasarelaPago" element={<PasarelaPago />} />
             <Route path="/pagoRealizado" element={<PagoRealizado />} />
           </Routes>
         </div>
