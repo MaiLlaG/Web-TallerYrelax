@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TallerDataService from "../services/TallerDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
 import '../views/TalleresList.css';
-import CompraDataService from "../services/CompraDataService";
+import UsuarioContext from "./Usuario";
 
 const TalleresList = () => {
     const [talleres, setTalleres] = useState([]);
@@ -56,27 +56,7 @@ const TalleresList = () => {
             });
     };
 
-    /*
-    const permitirComprar = document.getElementById('usuario_logueado');
-    permitirComprar.disabled = true; */
-
-    const permitirComprar = () => {
-        let desabilitar = false;
-
-        if (usuario.user.valu === "") {
-            desabilitar = true;
-        }
-
-        if (usuario.password.valu === "") {
-            desabilitar = true;
-        }
-
-        if (desabilitar === true) {
-            button.disabled = true;
-        } else {
-            button.disabled = false;
-        }
-    }
+    const usuario = useContext(UsuarioContext);
 
 
     return (
@@ -172,11 +152,16 @@ const TalleresList = () => {
                         </div>
 
 
-
-                        <Link to={"/compras/"+actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
-                            Comprar
-                        </Link>
-
+                        {usuario.user ?
+                            (actualTaller.nplazas - actualTaller.plazasCompradas > 0) ?
+                                <Link to={"/compras/" + actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
+                                    Comprar
+                                </Link>
+                                :
+                                <div>No quedan plazas</div>
+                            :
+                            <div>Autentícate para poder comprar</div>
+                        }
 
                         <Link
                             onClick={() => setActiveTaller(null, -1)} className="btn btn-4 btn-holder hover-border-7">

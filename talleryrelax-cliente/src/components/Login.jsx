@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
 import '../App.css';
 import '../index.css';
 import '../views/Login.css';
