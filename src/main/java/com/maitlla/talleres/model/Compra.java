@@ -21,6 +21,9 @@ public class Compra {
     private Long id;
     private Integer importeCompra = 0;
     private Instant fechaCompra;
+    private String nombre;
+    private String email;
+    private String telefono;
     
     @JsonIgnoreProperties("compras")
     @ManyToOne()
@@ -38,6 +41,31 @@ public class Compra {
     public Long getId() {
         return id;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public Integer getImporteCompra() {
         return importeCompra;
     }

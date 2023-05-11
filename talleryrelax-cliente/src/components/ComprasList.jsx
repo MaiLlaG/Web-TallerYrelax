@@ -83,7 +83,7 @@ const ComprasList = () => {
                         <h4>Compra</h4>
                         <div>
                             <label>
-                                <strong>Nombre:</strong>
+                                <strong>Taller:</strong>
                             </label>
                             {actualCompra.taller.nombre}
                         </div>
@@ -98,6 +98,24 @@ const ComprasList = () => {
                                 <strong>Fecha:</strong>
                             </label>
                             {actualCompra.fechaCompra}
+                        </div>
+                        <div>
+                            <label>
+                                <strong>Nombre:</strong>
+                            </label>
+                            {actualCompra.nombre}
+                        </div>
+                        <div>
+                            <label>
+                                <strong>Email:</strong>
+                            </label>
+                            {actualCompra.email}
+                        </div>
+                        <div>
+                            <label>
+                                <strong>Telefono:</strong>
+                            </label>
+                            {actualCompra.telefono}
                         </div>
 
 

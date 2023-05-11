@@ -52,28 +52,32 @@ const PagoCompra = () => {
             });
     };
     const pagar = () => {
-        let pagoFinal = {
-            nombre: compra.nombre,
-            email: compra.email,
-            telefono: compra.telefono,
-            taller: {
-                id: compra.idtaller
-            },
-            metodoDePago: {
-                id: compra.metodosDePago
-            }
-        };
-        CompraDataService.createAutenticado(pagoFinal)
-            .then(response => {
-                console.log(response.data);
-                irACompraRealizada();
-            })
-            .catch(e => {
-                // TODO: AQUÍ HAY QUE DECIRLE AL USUARIO QUE HA HABIDO ALGÚN ERROR AL COMPRAR (O QUE NO QUEDAN PLAZAS, LO QUE SEA)
-                console.log(e);
-            });
+        if (compra.condiciones != 1) {
+            alert("Debes aceptar las condiciones");
+        } else {
+            let pagoFinal = {
+                nombre: compra.nombre,
+                email: compra.email,
+                telefono: compra.telefono,
+                taller: {
+                    id: compra.idtaller
+                },
+                metodoDePago: {
+                    id: compra.metodosDePago
+                }
+            };
+            CompraDataService.createAutenticado(pagoFinal)
+                .then(response => {
+                    console.log(response.data);
+                    irACompraRealizada();
+                })
+                .catch(e => {
+                    // TODO: AQUÍ HAY QUE DECIRLE AL USUARIO QUE HA HABIDO ALGÚN ERROR AL COMPRAR (O QUE NO QUEDAN PLAZAS, LO QUE SEA)
+                    console.log(e);
+                });
+        }
     };
-    
+
     const navigate = useNavigate();
 
     const irACompraRealizada = () => {
@@ -84,7 +88,7 @@ const PagoCompra = () => {
 
     useEffect(() => {
         recuperarTaller(id);
-        recuperarMetodosDePago();        
+        recuperarMetodosDePago();
         setCompra({ ...compra, ["idtaller"]: id });
     }, []);
 
