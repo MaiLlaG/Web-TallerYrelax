@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import '../index.css';
 import '../views/Login.css';
@@ -7,18 +8,30 @@ import UsuarioContext from "./Usuario";
 import { signInWithGoogle, auth } from '../firebase';
 
 const Login = () => {
-    const usuario = useContext(UsuarioContext);
+    const usuario = useContext(UsuarioContext);    
+    const navigate = useNavigate();
 
+    const logout = () => {
+        auth.signOut().then(function() {
+            console.log("logout ok");
+            localStorage.setItem('token', null);
+            navigate("/");
+            window.location.reload();
+          }).catch(function(error) {
+            console.log("error de logout!");
+            console.log(error);
+          });
+    }
 
     return (
-        <div class="login-react">
+        <div className="login-react">
             <div>
                 {
                     usuario.user ?
                         <div>
                             <h1>Hola, <span></span>{usuario.user.displayName}</h1>
                             <img src={usuario.user.photoURL} alt="" />
-                            <button className="button signout" onClick={() => auth.signOut()}>Sign out</button>
+                            <button className="button signout" onClick={logout}>Sign out</button>
                         </div>
                         :
                         <button className="button botonGoogle" onClick={signInWithGoogle}><img className="iconoLogo" src={require("../img/icono-login.png")} alt="iconoLogin" />

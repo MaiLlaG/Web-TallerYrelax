@@ -153,8 +153,8 @@ const PagoCompra = () => {
 
                                     {metodosDePago && metodosDePago.map((metodoDePago, index) => (
 
-                                        <div class="col-md-2" key={metodoDePago.id}>
-                                            <label class="radio">
+                                        <div className="col-md-2" key={metodoDePago.id}>
+                                            <label className="radio">
                                                 <input type="radio" name="metodosDePago" id={metodoDePago.id} value={metodoDePago.id}
                                                     onChange={handleInputChange} /> {metodoDePago.nombre}
                                             </label>
