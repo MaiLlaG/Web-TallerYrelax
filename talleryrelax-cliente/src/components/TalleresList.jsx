@@ -178,7 +178,11 @@ const TalleresList = () => {
 
                                     <div className="CirculosAbajo" onClick={() => setActiveTaller(taller, index)} key={index}>
                                         <figure className="snip1566">
+                                            {taller.imagen?
+                                            <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
+                                            :
                                             <img src={require("../img/tallerPanaderia74.jpg")} alt={taller.nombre} />
+                                            }
                                             <figcaption>
                                                 <h1 className="circuloText">{taller.nombre}</h1>
                                             </figcaption>

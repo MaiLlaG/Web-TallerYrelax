@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -29,7 +30,8 @@ public class Taller {
     private Integer plazasCompradas = 0;
     private LocalDateTime fechainicio;
     private String dificultad;
-    private Blob imagen;
+    @Lob
+    private byte[] imagen;
 
     @JsonIgnoreProperties("taller")
     @OneToMany(mappedBy = "taller")
@@ -94,10 +96,10 @@ public class Taller {
     public void setDificultad(String dificultad) {
         this.dificultad = dificultad;
     }
-    public Blob getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
-    public void setImagen(Blob imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 
