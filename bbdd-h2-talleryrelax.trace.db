@@ -1,0 +1,12 @@
+2023-04-30 00:35:59 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (772)"
+Value too long for column "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (772)"; SQL statement:
+update talleres set descripcion=?, diasxsemana=?, dificultad=?, durasemanas=?, fechainicio=?, imagen=?, nombre=?, nplazas=?, plazas_compradas=?, precio=? where id=? [22001-214]
+2023-04-30 00:37:35 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (765)"
+Value too long for column "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (765)"; SQL statement:
+update talleres set descripcion=?, diasxsemana=?, dificultad=?, durasemanas=?, fechainicio=?, imagen=?, nombre=?, nplazas=?, plazas_compradas=?, precio=? where id=? [22001-214]
+2023-04-30 00:38:32 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (765)"
+Value too long for column "DESCRIPCION CHARACTER VARYING(255)": "U&'Taller de origami. Es el arte japon\\00e9s del plegado de papel para obtener f... (765)"; SQL statement:
+update talleres set descripcion=?, diasxsemana=?, dificultad=?, durasemanas=?, fechainicio=?, imagen=?, nombre=?, nplazas=?, plazas_compradas=?, precio=? where id=? [22001-214]

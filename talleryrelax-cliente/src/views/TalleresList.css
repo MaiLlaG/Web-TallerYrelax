@@ -22,12 +22,8 @@ body {
     width: 100%;
 }
 
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
+.colorArena {
+    background-color: #f6f4ef;
 }
 
 header {
@@ -55,10 +51,6 @@ header {
     align-items: flex-end;
     /*opacity: 70%;  */
 }
-
-
-
-
 
 
 .textoAbajo {
@@ -156,7 +148,7 @@ header {
     left: 5px;
     right: 5px;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.85);
     border-radius: 50%;
 }
 
@@ -209,8 +201,6 @@ header {
 
 
 
-
-
 .fondoTalleres {
 
     background-repeat: no-repeat;
@@ -218,23 +208,6 @@ header {
     background-position: center;
     width: 100%;
     margin-bottom: -3px;
-}
-
-.contenedorTallerColor {
-    background-color: #f2f0eb;
-    color: #e4ad26;
-    text-align: center;
-    font: 400 1em 'Raleway', sans-serif;
-    letter-spacing: 4px;
-    font-size: 1em;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin-top: 1%;
-    margin-bottom: 5%;
-    width: 90%;
 }
 
 .imgOrigami4 {
@@ -247,19 +220,20 @@ header {
     margin-left: 5%;
 }
 
-.contenedorTallerBlanco {
-    background-color: rgb(255, 255, 255);
-    color: rgb(228, 173, 38);
+.contenedorTallerColor {
+    background-color: #f6f4ef;
+    color: #e4ad26;
     text-align: center;
-    font: 400 1em Raleway, sans-serif;
+    font: 400 1em 'Raleway', sans-serif;
     letter-spacing: 4px;
+    font-size: 1em;
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: flex-start;
     margin-right: 40px;
-    justify-content: space-evenly;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .imgLettering1 {
@@ -287,12 +261,17 @@ header {
     align-items: center;
 }
 
+.imgDetalle{
+    max-width: 47vw;
+    width: 45vw;
+}
 
-.imgDetalle {
+/*
+.imgCircular {
     border-radius: 150px;
     max-width: 100%;
     max-height: 100%;
-}
+}  */
 
 .imgresice {
     height: 300px;
@@ -314,46 +293,66 @@ header {
     padding-right: 15px;
 }
 
-.textoDerecha {
+.align_text_Izq {
     text-align: left;
 }
 
 .linea {
-    border: 1px solid #777c7e;
+    border: 1px solid #a9a9aa;
     width: 100%;
     height: 0px;
     text-align: center;
+}
+
+.margin_left{
+    margin-left: 40px;
+}
+
+.coverColor {
+    height: 65vh;
+}
+
+.textoInfoColor {
+    color: #88898a;
+}
+
+.textoInfoRojo {
+    color: #e50325;
 }
 
 .textoInfo {
     font: 400 1.4em 'Raleway', sans-serif;
 }
 
-.textoInfoColor {
-    color: #777c7e;
+.textoEncuadrado {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 30vw;
+    margin-top: 30px;
 }
 
 .infoTallerColor {
-    background-color: #f2f0eb;
-    color: #000000;
+    background-color: #f6f4ef;
     font: 400 1em 'Raleway', sans-serif;
     letter-spacing: 2px;
-    width: 30vmax;
-    /* height: 100vh; */
+    width: 47vmax;
     display: grid;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    align-items: end;
     align-content: center;
     justify-items: start;
+    justify-content: space-evenly;
 }
 
 .infoTallerBlanco {
-    background-color: #ffffff;
+    background-color: #f6f4ef;
     color: #777c7e;
     font: 400 1em 'Raleway', sans-serif;
     letter-spacing: 2px;
-    width: 30vmax;
+    width: 47vmax;
     height: 100vh;
     display: grid;
     grid-column-gap: 0px;
@@ -371,9 +370,13 @@ header {
 }
 
 .colorFondoTallerColor {
-    background-color: #f2f0eb;
+    width: 47%;
+    background-color: #f6f4ef;
 }
 
+.margin_btn_volver{
+    margin: 40px 40px 90px 40px;
+}
 
 .debajoCarrusel {
     text-align: center;
@@ -390,21 +393,6 @@ header {
     justify-content: center;
     /* align-content: stretch; */
     align-items: center;
-}
-
-.contenedorTallerBlanco {
-    background-color: rgb(255, 255, 255);
-    color: #e4ad26;
-    text-align: center;
-    font: 400 1em Raleway, sans-serif;
-    letter-spacing: 4px;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-right: 40px;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    flex-direction: row;
 }
 
 

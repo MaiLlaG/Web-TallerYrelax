@@ -82,106 +82,111 @@ const TalleresList = () => {
             </div>
             */}
 
-            <div className="">
+            <main className="colorArena">
                 {actualTaller ? (
                     <div>
-                        <h4>Taller</h4>
-                        <div class="contenedorTallerBlanco">
-                            <div className="infoTallerColor">
-                                <div>
-                                    <label>
-                                        <strong className="textoInfoColor textoInfo">Nombre:</strong>
-                                    </label>
-                                    {actualTaller.nombre}
+                        <div className="contenedorTallerColor">
+                            <div className="infoTallerColor coverColor">
+                                <div className="textoEncuadrado">
+                                    <div>
+                                        <label>
+                                            <h2>{actualTaller.nombre}</h2>
+                                        </label>
+                                    </div>
+                                    <hr className="linea" />
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">
+                                                {actualTaller.descripcion}
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <hr className="linea" />
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">Precio: {actualTaller.precio}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor textoIzquierda">Semanas de duración: {actualTaller.durasemanas}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor textoIzquierda">Días a la semana: {actualTaller.diasxsemana}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">Número de plazas: {actualTaller.nplazas}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">Plazas compradas: {actualTaller.plazasCompradas}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">Fecha de inicio: {actualTaller.fechainicio}</p>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <p className="textoInfoColor align_text_Izq">Dificultad: {actualTaller.dificultad}</p>
+                                        </label>
+                                    </div>
+                                    <hr className="linea" />
                                 </div>
-                                <div>
-                                    <label>
-                                        <strong className="textoInfoColor textoInfo">Descripcion:</strong>
-                                        <p className="textoInfoColor textoDerecha">
-                                            {actualTaller.descripcion}
-                                        </p>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Precio:</strong>
-                                    </label>
-                                    {actualTaller.precio}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Semanas de duración:</strong>
-                                    </label>
-                                    {actualTaller.durasemanas}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Días a la semana:</strong>
-                                    </label>
-                                    {actualTaller.diasxsemana}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Número de plazas:</strong>
-                                    </label>
-                                    {actualTaller.nplazas}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Plazas compradas:</strong>
-                                    </label>
-                                    {actualTaller.plazasCompradas}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Fecha de inicio:</strong>
-                                    </label>
-                                    {actualTaller.fechainicio}
-                                </div>
-                                <div>
-                                    <label>
-                                        <strong>Dificultad:</strong>
-                                    </label>
-                                    {actualTaller.dificultad}
-                                </div>
-
                             </div>
-                            <div>
-                                IMAGENES
+                            <div className="colorFondoTallerColor">
+                                <img className="imgDetalle" src={require("../img/Origami4.png")} alt={actualTaller.nombre} />
                             </div>
                         </div>
+                        <div>
+                            <div className="infoTallerColor">
+                                {usuario.user ?
+                                    (actualTaller.nplazas - actualTaller.plazasCompradas > 0) ?
+                                        <Link to={"/compras/" + actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
+                                            Comprar
+                                        </Link>
+                                        :
+                                        <div>
+                                            <label>
+                                                <p className="textoInfoRojo textoEncuadrado margin_left">No quedan plazas</p>
+                                            </label>
+                                        </div>
+                                    :
+                                    <div>
+                                        <label>
+                                            <p className="textoEncuadrado align_text_Izq margin_left">Autentícate para poder comprar</p>
+                                        </label>
+                                    </div>
+                                }
 
 
-                        {usuario.user ?
-                            (actualTaller.nplazas - actualTaller.plazasCompradas > 0) ?
-                                <Link to={"/compras/" + actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
-                                    Comprar
+                                <Link
+                                    onClick={() => setActiveTaller(null, -1)} className="margin_btn_volver btn-4 btn-holder hover-border-7">
+                                    Volver
                                 </Link>
-                                :
-                                <div>No quedan plazas</div>
-                            :
-                            <div>Autentícate para poder comprar</div>
-                        }
-
-                        <Link
-                            onClick={() => setActiveTaller(null, -1)} className="btn btn-4 btn-holder hover-border-7">
-                            Volver
-                        </Link>
+                            </div>
+                        </div>
                     </div>
                 ) : (
 
                     <div className="">
-                        <div class="division3partes">
+                        <div className="division3partes">
                             <div className="seccionIzquierda"></div>
                             <div className="talleres">
                                 {talleres && talleres.map((taller, index) => (
 
                                     <div className="CirculosAbajo" onClick={() => setActiveTaller(taller, index)} key={index}>
                                         <figure className="snip1566">
-                                            {taller.imagen?
-                                            <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
-                                            :
-                                            <img src={require("../img/tallerPanaderia74.jpg")} alt={taller.nombre} />
+                                            {taller.imagen ?
+                                                <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
+                                                :
+                                                <img src={require("../img/tallerPanaderia74.jpg")} alt={taller.nombre} />
                                             }
                                             <figcaption>
                                                 <h1 className="circuloText">{taller.nombre}</h1>
@@ -197,7 +202,7 @@ const TalleresList = () => {
                         </div>
                     </div>
                 )}
-            </div>
+            </main>
         </div>
     );
 };
