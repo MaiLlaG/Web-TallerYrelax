@@ -1,27 +1,27 @@
 import http from "../http-common";
 
 const getAll = () => {
-  return http.get("/clientes");
+  return http.get("/gestion/clientes");
 };
 
 const get = id => {
-  return http.get(`/clientes/${id}`);
+  return http.get(`/gestion/clientes/${id}`);
 };
 
 const create = data => {
-  return http.post("/clientes", data);
+  return http.post("/gestion/clientes", data);
 };
 
 const update = (id, data) => {
-  return http.put(`/clientes/${id}`, data);
+  return http.put(`/gestion/clientes/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/clientes/${id}`);
+  return http.delete(`/gestion/clientes/${id}`);
 };
 
 const findByName = nombre => {
-  return http.get(`/clientes?nombre=${nombre}`);
+  return http.get(`/gestion/clientes?nombre=${nombre}`);
 };
 
 const ClienteDataService = { 
