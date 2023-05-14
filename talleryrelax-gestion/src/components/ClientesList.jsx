@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import TallerDataService from "../services/TallerDataService";
+import ClienteDataService from "../services/ClienteDataService";
 import '../App.css';
 import '../index.css';
-import '../views/TalleresList.css';
+import '../views/ClientesList.css';
 
-const TalleresList = () => {
-    const [talleres, setTalleres] = useState([]);
-    const [actualTaller, setActualTaller] = useState(null);
+const ClientesList = () => {
+    const [clientes, setClientes] = useState([]);
+    const [actualCliente, setActualCliente] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
     const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
-        recuperarTalleres();
+        recuperarClientes();
     }, []);
 
     const onChangeBuscarxNombre = e => {
@@ -20,10 +20,10 @@ const TalleresList = () => {
         setBuscarxNombre(buscarxNombre);
     };
 
-    const recuperarTalleres = () => {
-        TallerDataService.getAll()
+    const recuperarClientes = () => {
+        ClienteDataService.getAll()
             .then(response => {
-                setTalleres(response.data);
+                setClientes(response.data);
                 console.log(response.data);
             })
             .catch(e => {
@@ -31,23 +31,17 @@ const TalleresList = () => {
             });
     };
 
-    /*
-    const refrescarList = () => {
-        recuperarTalleres();
-        setActualTaller(null);
-        setActualIndex(-1);
-    };
-    */
 
-    const setActiveTaller = (taller, index) => {
-        setActualTaller(taller);
+
+    const setActiveCliente = (cliente, index) => {
+        setActualCliente(cliente);
         setActualIndex(index);
     };
 
     const findByName = () => {
-        TallerDataService.findByName(buscarxNombre)
+        ClienteDataService.findByName(buscarxNombre)
             .then(response => {
-                setTalleres(response.data);
+                setClientes(response.data);
                 console.log(response.data);
             })
             .catch(e => {
@@ -77,21 +71,21 @@ const TalleresList = () => {
             </div>
 
             <div className="col-md-6">
-                <h4>Lista de talleres</h4>
+                <h4>Lista de clientes</h4>
                 <ul className="list-group">
-                    {talleres && talleres.map((taller, index) => (
+                    {clientes && clientes.map((cliente, index) => (
                         <li
                             className={
                                 "list-group-item " + (index === actualIndex ? "active" : "")
                             }
-                            onClick={() => setActiveTaller(taller, index)} key={index}>
-                            {taller.nombre}
+                            onClick={() => setActiveCliente(cliente, index)} key={index}>
+                            {cliente.nombre}
                         </li>
                     ))}
                 </ul>
 
-                <Link to={"/nuevoTaller"} className="nav-link btn btn-success">
-                    Añadir-Taller
+                <Link to={"/nuevoCliente"} className="nav-link btn btn-success">
+                    Añadir-Cliente
                 </Link>
                 <Link
                     to={"/gestion"} className="btn btn-success">
@@ -100,77 +94,56 @@ const TalleresList = () => {
             </div>
 
             <div className="col-md-6">
-                {actualTaller ? (
+                {actualCliente ? (
                     <div>
-                        <h4>Taller</h4>
+                        <h4>Cliente</h4>
                         <div>
                             <label>
                                 <strong>Nombre:</strong>
                             </label>{" "}
-                            {actualTaller.nombre}
+                            {actualCliente.nombre}
                         </div>
                         <div>
                             <label>
-                                <strong>Descripcion:</strong>
+                                <strong>Apellido:</strong>
                             </label>{" "}
-                            {actualTaller.descripcion}
+                            {actualCliente.apellido}
                         </div>
                         <div>
                             <label>
-                                <strong>Precio:</strong>
+                                <strong>Email:</strong>
                             </label>{" "}
-                            {actualTaller.precio}
+                            {actualCliente.email}
                         </div>
                         <div>
                             <label>
-                                <strong>Semanas de duración:</strong>
+                                <strong>Teléfono:</strong>
                             </label>{" "}
-                            {actualTaller.durasemanas}
+                            {actualCliente.telefono}
                         </div>
                         <div>
                             <label>
-                                <strong>Días a la semana:</strong>
+                                <strong>Password:</strong>
                             </label>{" "}
-                            {actualTaller.diasxsemana}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Número de plazas:</strong>
-                            </label>{" "}
-                            {actualTaller.nplazas}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Fecha de inicio:</strong>
-                            </label>{" "}
-                            {actualTaller.fechainicio}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Dificultad:</strong>
-                            </label>{" "}
-                            {actualTaller.dificultad}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Imagen:</strong>
-                            </label>{" "}
-                            {actualTaller.imagen}
+                            {actualCliente.password}
                         </div>
 
                         <Link
-                            to={"/talleres/" + actualTaller.id} className="btn btn-success">
+                            to={"/clientes/" + actualCliente.id} className="btn btn-success">
                             Editar
                         </Link>
                     </div>
                 ) : (
                     <div>
                         <br />
-                        <p>Haz click en un taller...</p>
+                        <p>Haz click en un cliente...</p>
                     </div>
                 )}
             </div>
+
         </div>
     );
-}
-export default TalleresList;
+
+};
+
+export default ClientesList;

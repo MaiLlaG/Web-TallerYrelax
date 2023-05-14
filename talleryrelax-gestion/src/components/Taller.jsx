@@ -22,7 +22,6 @@ const Taller = () => {
         fechainicio: null,
         dificultad: "",
         imagen: null
-
     };
 
     const [actualTaller, setActualTaller] = useState(tallerState);
@@ -48,8 +47,6 @@ const Taller = () => {
         const { name, value } = event.target;
         setActualTaller({ ...actualTaller, [name]: value });
     };
-
-    //const updatePublished = status => { };
 
     const actualizarTaller = () => {
         TallerDataService.update(actualTaller.id, actualTaller)
@@ -193,13 +190,15 @@ const Taller = () => {
 
                     <button
                         type="submit"
-                        className="btn btn-success" onClick={eliminarTaller}>
+                        className="btn btn-success" 
+                        onClick={eliminarTaller}>
                         <span>Eliminar</span>
                     </button>
 
                     <button
                         type="submit"
-                        className="btn btn-success" onClick={actualizarTaller}>
+                        className="btn btn-success" 
+                        onClick={actualizarTaller}>
                         <span>Actualizar</span>
                     </button>
 

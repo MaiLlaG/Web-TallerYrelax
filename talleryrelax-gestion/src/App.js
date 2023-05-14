@@ -8,6 +8,10 @@ import Panel from "./components/Panel";
 import TalleresList from "./components/TalleresList";
 import TallerAdd from "./components/TallerAdd";
 import Taller from "./components/Taller";
+import ClientesList from "./components/ClientesList";
+import ClienteAdd from "./components/ClienteAdd";
+import Cliente from "./components/Cliente";
+
 
 function App() {
   return (
@@ -24,6 +28,11 @@ function App() {
               TALLERES
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/clientes"} className="navbar-brand">
+              CLIENTES
+            </Link>
+          </li>
         </div>
       </nav>
 
@@ -33,6 +42,9 @@ function App() {
           <Route path="/talleres" element={<TalleresList />} />
           <Route path="/nuevoTaller" element={<TallerAdd />} />
           <Route path="/talleres/:id" element={<Taller />} />
+          <Route path="/clientes" element={<ClientesList />} />
+          <Route path="/nuevoCliente" element={<ClienteAdd />} />
+          <Route path="/clientes/:id" element={<Cliente />} />
         </Routes>
       </div>
     </div>

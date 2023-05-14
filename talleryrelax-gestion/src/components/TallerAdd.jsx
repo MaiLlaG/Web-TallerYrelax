@@ -75,10 +75,14 @@ const TallerAdd = () => {
         <div className="submit-form">
             {submitted ? (
                 <div>
-                    <h4>Creado correctamente</h4>
+                    <h4>Añadido correctamente</h4>
                     <button className="btn btn-success" onClick={nuevoTaller}>
-                        Añadir-Taller
+                    <span>Añadir-Taller</span>
                     </button>
+                    <Link
+                        to={"/talleres/"} className="btn btn-success">
+                        Volver
+                    </Link>
                 </div>
             ) : (
                 <div>
@@ -206,7 +210,8 @@ const TallerAdd = () => {
 
                     <button
                         type="submit"
-                        className="btn btn-success" onClick={salvarTaller}>
+                        className="btn btn-success" 
+                        onClick={salvarTaller}>
                         <span>Guardar Taller</span>
                     </button>
 
