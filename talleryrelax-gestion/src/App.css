@@ -1,1 +1,24 @@
+.navbar {
+  height: 7vh !important;
+}
 
+.navbar-nav {
+  column-gap: 30vh !important;
+  justify-content: center !important;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}

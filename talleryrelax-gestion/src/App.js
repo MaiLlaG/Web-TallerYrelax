@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import './index.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Panel from "./components/Panel";
 import TalleresList from "./components/TalleresList";
@@ -12,19 +12,16 @@ import Taller from "./components/Taller";
 function App() {
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
-          Panel
-        </Link>
-        <div className="navbar-nav mr-auto">
+      <nav className="navbar navbar-expand-xl navbar-dark bg-dark justify-content-center">
+        <div className="navbar-nav">
           <li className="nav-item">
-            <Link to={"/"} className="nav-link">
-              Panel
+            <Link to={"/"} className="navbar-brand">
+              PANEL
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/talleres"} className="nav-link">
-              Talleres
+            <Link to={"/talleres"} className="navbar-brand">
+              TALLERES
             </Link>
           </li>
         </div>
