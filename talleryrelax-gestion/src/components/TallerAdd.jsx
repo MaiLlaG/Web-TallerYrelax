@@ -28,6 +28,10 @@ const TallerAdd = () => {
         const { name, value } = event.target;
         setTaller({ ...taller, [name]: value });
     };
+    const selectFile = event => {
+        console.log(event.target.files[0]);
+        setTaller({ ...taller, ["imagen"]: event.target.files[0] });
+    }
 
     const salvarTaller = () => {
         var data = {
@@ -77,7 +81,7 @@ const TallerAdd = () => {
                 <div>
                     <h4>Añadido correctamente</h4>
                     <button className="btn btn-success" onClick={nuevoTaller}>
-                    <span>Añadir-Taller</span>
+                        <span>Añadir-Taller</span>
                     </button>
                     <Link
                         to={"/talleres/"} className="btn btn-success">
@@ -195,22 +199,29 @@ const TallerAdd = () => {
                             name="dificultad"
                         />
                     </div>
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label htmlFor="imagen">Imagen</label>
                         <input
-                            type="text"
+                            type="file"
                             className="form-control"
                             id="imagen"
-                            required
-                            value={taller.imagen}
-                            onChange={handleInputChange}
                             name="imagen"
+                            value=""
+                            onChange={selectFile}
                         />
-                    </div> */}
+                        {taller.imagen ?
+                            typeof taller.imagen.name == 'string' ?
+                                <p>Seleccionada: {taller.imagen.name}</p>
+                                :
+                                <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
+                            :
+                            <img src={require("../img/taller-sin-imagen.png")} alt={taller.nombre} />
+                        }
+                    </div>
 
                     <button
                         type="submit"
-                        className="btn btn-success" 
+                        className="btn btn-success"
                         onClick={salvarTaller}>
                         <span>Guardar Taller</span>
                     </button>

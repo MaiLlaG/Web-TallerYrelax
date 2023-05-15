@@ -47,12 +47,17 @@ const Taller = () => {
         const { name, value } = event.target;
         setActualTaller({ ...actualTaller, [name]: value });
     };
+    const selectFile = event => {
+        console.log(event.target.files[0]);
+        setActualTaller({ ...actualTaller, ["imagen"]: event.target.files[0] });
+    }
 
     const actualizarTaller = () => {
         TallerDataService.update(actualTaller.id, actualTaller)
             .then(response => {
                 console.log(response.data);
                 setMessage("El taller fue actualizado correctamente");
+                getTaller(id);
             })
             .catch(e => {
                 console.log(e);
@@ -175,29 +180,37 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        {/* <div className="form-group">
+                        <div className="form-group">
                             <label htmlFor="imagen">Imagen</label>
                             <input
-                                type="text"
+                                type="file"
                                 className="form-control"
                                 id="imagen"
                                 name="imagen"
-                                value={actualTaller.imagen}
-                                onChange={handleInputChange}
+                                value=""
+                                onChange={selectFile}
                             />
-                        </div> */}
+                            {actualTaller.imagen ?
+                                typeof actualTaller.imagen.name == 'string' ?
+                                    <p>Seleccionada: {actualTaller.imagen.name}</p>
+                                    :
+                                    <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                :
+                                <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                            }
+                        </div>
                     </form>
 
                     <button
                         type="submit"
-                        className="btn btn-success" 
+                        className="btn btn-success"
                         onClick={eliminarTaller}>
                         <span>Eliminar</span>
                     </button>
 
                     <button
                         type="submit"
-                        className="btn btn-success" 
+                        className="btn btn-success"
                         onClick={actualizarTaller}>
                         <span>Actualizar</span>
                     </button>

@@ -154,8 +154,12 @@ const TalleresList = () => {
                         <div>
                             <label>
                                 <strong>Imagen:</strong>
-                            </label>{" "}
-                            {actualTaller.imagen}
+                            </label>
+                            {actualTaller.imagen ?
+                                <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                :
+                                <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                            }
                         </div>
 
                         <Link
