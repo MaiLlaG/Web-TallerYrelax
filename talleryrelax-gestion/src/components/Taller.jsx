@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import TallerDataService from "../services/TallerDataService";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import '../App.css';
 import '../index.css';
 import '../views/Taller.css';
@@ -30,6 +32,7 @@ const Taller = () => {
     const getTaller = id => {
         TallerDataService.get(id)
             .then(response => {
+                response.data.fechainicio = response.data.fechainicio != null ? new Date(response.data.fechainicio+".000Z") : null;
                 setActualTaller(response.data);
                 console.log(response.data);
             })
@@ -51,6 +54,10 @@ const Taller = () => {
         console.log(event.target.files[0]);
         setActualTaller({ ...actualTaller, ["imagen"]: event.target.files[0] });
     }
+    const fechaInicioChanged = fecha => {
+        console.log(fecha.toISOString());
+        setActualTaller({ ...actualTaller, ["fechainicio"]: fecha });
+    };
 
     const actualizarTaller = () => {
         TallerDataService.update(actualTaller.id, actualTaller)
@@ -160,14 +167,7 @@ const Taller = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="fechainicio">Fecha de inicio</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="fechainicio"
-                                name="fechainicio"
-                                value={actualTaller.fechainicio}
-                                onChange={handleInputChange}
-                            />
+                            <DatePicker selected={actualTaller.fechainicio} onChange={(date) => fechaInicioChanged(date)} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="dificultad">Dificultad</label>

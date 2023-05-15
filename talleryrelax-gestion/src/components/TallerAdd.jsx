@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TallerDataService from "../services/TallerDataService";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import '../views/TallerAdd.css';
 import '../App.css';
 import '../index.css';
-import '../views/TallerAdd.css';
 
 const TallerAdd = () => {
     const tallerState = {
@@ -32,6 +34,10 @@ const TallerAdd = () => {
         console.log(event.target.files[0]);
         setTaller({ ...taller, ["imagen"]: event.target.files[0] });
     }
+    const fechaInicioChanged = fecha => {
+        console.log(fecha.toISOString());
+        setTaller({ ...taller, ["fechainicio"]: fecha });
+    };
 
     const salvarTaller = () => {
         var data = {
@@ -177,15 +183,7 @@ const TallerAdd = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="fechainicio">Fecha de inicio</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="fechainicio"
-                            required
-                            value={taller.fechainicio}
-                            onChange={handleInputChange}
-                            name="fechainicio"
-                        />
+                        <DatePicker selected={taller.fechainicio} onChange={(date) => fechaInicioChanged(date)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="dificultad">Dificultad</label>

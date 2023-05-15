@@ -11,12 +11,20 @@ const get = id => {
 const createOld = data => {
   return http.post("/gestion/talleres", data);
 };
-const create = (data, onUploadProgress) => {
+const crearFormData = (data) => {
   let formData = new FormData();
 
-  formData.append("imagen", data.imagen);
+  if (typeof data.imagen.name == 'string') {
+    formData.append("imagen", data.imagen);
+  }
   formData.append("nombre", data.nombre);
+  formData.append("fechainicio", data.fechainicio.toISOString().slice(0, -5));
   // TODO: PONER EL RESTO DE VALORES
+
+  return formData;
+}
+const create = (data, onUploadProgress) => {
+  let formData = crearFormData(data);
 
   return http.post("/gestion/talleres", formData, {
     headers: {
@@ -27,11 +35,7 @@ const create = (data, onUploadProgress) => {
 }
 
 const update = (id, data, onUploadProgress) => {
-  let formData = new FormData();
-
-  formData.append("imagen", data.imagen);
-  formData.append("nombre", data.nombre);
-  // TODO: PONER EL RESTO DE VALORES
+  let formData = crearFormData(data);
 
   return http.put(`/gestion/talleres/${id}`, formData, {
     headers: {
