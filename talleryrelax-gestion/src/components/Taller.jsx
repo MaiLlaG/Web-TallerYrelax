@@ -77,6 +77,7 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
+                setMessage("Se ha producido un error: "+e);
             });
     };
 
@@ -89,6 +90,7 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
+                setMessage("Se ha producido un error: "+e);
             });
     };
 
@@ -100,6 +102,7 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
+                setMessage("Se ha producido un error: "+e);
             });
     };
 

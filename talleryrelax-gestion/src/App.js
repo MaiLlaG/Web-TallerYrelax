@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Panel from "./components/Panel";
 import TalleresList from "./components/TalleresList";
-import TallerAdd from "./components/TallerAdd";
 import Taller from "./components/Taller";
 import ClientesList from "./components/ClientesList";
 import ClienteAdd from "./components/ClienteAdd";
