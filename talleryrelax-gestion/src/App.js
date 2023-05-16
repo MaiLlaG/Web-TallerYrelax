@@ -40,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Panel />} />
           <Route path="/talleres" element={<TalleresList />} />
-          <Route path="/nuevoTaller" element={<TallerAdd />} />
+          <Route path="/nuevoTaller" element={<Taller />} />
           <Route path="/talleres/:id" element={<Taller />} />
           <Route path="/clientes" element={<ClientesList />} />
           <Route path="/nuevoCliente" element={<ClienteAdd />} />

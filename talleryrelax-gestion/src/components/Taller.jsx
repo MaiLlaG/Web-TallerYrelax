@@ -32,7 +32,7 @@ const Taller = () => {
     const getTaller = id => {
         TallerDataService.get(id)
             .then(response => {
-                response.data.fechainicio = response.data.fechainicio != null ? new Date(response.data.fechainicio+".000Z") : null;
+                response.data.fechainicio = response.data.fechainicio != null ? new Date(response.data.fechainicio + ".000Z") : null;
                 setActualTaller(response.data);
                 console.log(response.data);
             })
@@ -59,10 +59,31 @@ const Taller = () => {
         setActualTaller({ ...actualTaller, ["fechainicio"]: fecha });
     };
 
+    const enviarTaller = () => {
+        console.log(actualTaller);
+        if (actualTaller.id > 0) {
+            actualizarTaller();
+        } else {
+            crearTaller();
+        }
+    }
+
+    const crearTaller = () => {
+        TallerDataService.create(actualTaller)
+            .then(response => {
+                console.log(response.data);
+                setMessage("El taller fue creado correctamente");
+                getTaller(response.data.id);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
     const actualizarTaller = () => {
         TallerDataService.update(actualTaller.id, actualTaller)
             .then(response => {
-                console.log(response.data);
+                console.log(response.data.id);
                 setMessage("El taller fue actualizado correctamente");
                 getTaller(id);
             })
@@ -201,18 +222,26 @@ const Taller = () => {
                         </div>
                     </form>
 
-                    <button
-                        type="submit"
-                        className="btn btn-success"
-                        onClick={eliminarTaller}>
-                        <span>Eliminar</span>
-                    </button>
+                    {actualTaller.id > 0 ?
+                        <button
+                            type="submit"
+                            className="btn btn-success"
+                            onClick={eliminarTaller}>
+                            <span>Eliminar</span>
+                        </button>
+                        :
+                        <span></span>
+                    }
 
                     <button
                         type="submit"
                         className="btn btn-success"
-                        onClick={actualizarTaller}>
-                        <span>Actualizar</span>
+                        onClick={enviarTaller}>
+                        {actualTaller.id > 0 ?
+                            <span>Actualizar</span>
+                            :
+                            <span>Añadir</span>
+                        }
                     </button>
 
                     <Link

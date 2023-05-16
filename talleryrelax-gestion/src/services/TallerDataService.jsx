@@ -12,9 +12,10 @@ const createOld = data => {
   return http.post("/gestion/talleres", data);
 };
 const crearFormData = (data) => {
+  console.log(data);
   let formData = new FormData();
 
-  if (typeof data.imagen.name == 'string') {
+  if (data.imagen != null && typeof data.imagen.name == 'string') {
     formData.append("imagen", data.imagen);
   }
   formData.append("nombre", data.nombre);

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import TallerDataService from "../services/TallerDataService";
 import '../App.css';
 import '../index.css';
+import '../views/Taller.css';
 
 const Taller = () => {
     const { id } = useParams();

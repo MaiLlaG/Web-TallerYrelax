@@ -186,7 +186,7 @@ const TalleresList = () => {
                                             {taller.imagen ?
                                                 <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
                                                 :
-                                                <img src={require("../img/tallerPanaderia74.jpg")} alt={taller.nombre} />
+                                                <img src={require("../img/taller-sin-imagen.jpg")} alt={taller.nombre} />
                                             }
                                             <figcaption>
                                                 <h1 className="circuloText">{taller.nombre}</h1>

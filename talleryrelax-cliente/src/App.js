@@ -133,7 +133,7 @@ function App() {
             <Route path="/talleres" element={<TalleresList />} />
             <Route path="/talleres/:id" element={<Taller />} />
 
-            <Route path="/tallerAdd" element={<TallerAdd />} />
+            <Route path="/nuevoTaller" element={<TallerAdd />} />
 
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/compras" element={<ComprasList />} />
