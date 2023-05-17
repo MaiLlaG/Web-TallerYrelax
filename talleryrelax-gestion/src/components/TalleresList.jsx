@@ -65,12 +65,14 @@ const TalleresList = () => {
                     ))}
                 </ul>
 
-                <Link to={"/nuevoTaller"} className="nav-link btn btn-success">
-                    Añadir-Taller
+                
+                <Link to={"/nuevoTaller"} className="btn btn-primary">
+                    <span>Añadir-Taller</span>
                 </Link>
+
                 <Link
-                    to={"/gestion"} className="btn btn-success">
-                    Volver
+                    to={"/gestion"} className="btn btn-primary">
+                    <span>Volver</span>
                 </Link>
             </div>
 
@@ -78,21 +80,21 @@ const TalleresList = () => {
                 {actualTaller ? (
                     <div>
                         <h4>Taller</h4>
-                        <div>
+                        <div className="">
                             <label>
-                                <strong>Nombre:</strong>
-                            </label>{" "}
+                                Nombre
+                                </label>{" "}
                             {actualTaller.nombre}
                         </div>
                         <div>
                             <label>
-                                <strong>Descripcion:</strong>
+                                Descripcion
                             </label>{" "}
                             {actualTaller.descripcion}
                         </div>
                         <div>
                             <label>
-                                <strong>Precio:</strong>
+                                Precio
                             </label>{" "}
                             {actualTaller.precio}
                         </div>
@@ -104,31 +106,31 @@ const TalleresList = () => {
                         </div>
                         <div>
                             <label>
-                                <strong>Días a la semana:</strong>
+                                Días a la semana
                             </label>{" "}
                             {actualTaller.diasxsemana}
                         </div>
                         <div>
                             <label>
-                                <strong>Número de plazas:</strong>
+                                Número de plazas
                             </label>{" "}
                             {actualTaller.nplazas}
                         </div>
                         <div>
                             <label>
-                                <strong>Fecha de inicio:</strong>
+                                Fecha de inicio
                             </label>{" "}
                             {actualTaller.fechainicio}
                         </div>
                         <div>
                             <label>
-                                <strong>Dificultad:</strong>
+                                Dificultad
                             </label>{" "}
                             {actualTaller.dificultad}
                         </div>
                         <div>
                             <label>
-                                <strong>Imagen:</strong>
+                                Imagen
                             </label>
                             {actualTaller.imagen ?
                                 <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
@@ -138,8 +140,8 @@ const TalleresList = () => {
                         </div>
 
                         <Link
-                            to={"/talleres/" + actualTaller.id} className="btn btn-success">
-                            Editar
+                            to={"/talleres/" + actualTaller.id} className="btn btn-primary">
+                            <span>Editar</span>
                         </Link>
                     </div>
                 ) : (

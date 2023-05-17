@@ -50,10 +50,12 @@ const Taller = () => {
         const { name, value } = event.target;
         setActualTaller({ ...actualTaller, [name]: value });
     };
+
     const selectFile = event => {
         console.log(event.target.files[0]);
         setActualTaller({ ...actualTaller, ["imagen"]: event.target.files[0] });
     }
+
     const fechaInicioChanged = fecha => {
         console.log(fecha.toISOString());
         setActualTaller({ ...actualTaller, ["fechainicio"]: fecha });
@@ -72,7 +74,7 @@ const Taller = () => {
         TallerDataService.create(actualTaller)
             .then(response => {
                 console.log(response.data);
-                setMessage("El taller fue creado correctamente");
+                setMessage("El taller fue añadido correctamente");
                 getTaller(response.data.id);
             })
             .catch(e => {
@@ -115,8 +117,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="nombre"
                                 name="nombre"
                                 value={actualTaller.nombre}
@@ -126,8 +128,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="descripcion">Descripción</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="descripcion"
                                 name="descripcion"
                                 value={actualTaller.descripcion}
@@ -137,8 +139,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="precio">Precio</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="precio"
                                 name="precio"
                                 value={actualTaller.precio}
@@ -148,8 +150,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="durasemanas">Semanas de duración</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="durasemanas"
                                 name="durasemanas"
                                 value={actualTaller.durasemanas}
@@ -159,8 +161,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="diasxsemana">Días a la semana</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="diasxsemana"
                                 name="diasxsemana"
                                 value={actualTaller.diasxsemana}
@@ -170,8 +172,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="nplazas">Número de plazas</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="nplazas"
                                 name="nplazas"
                                 value={actualTaller.nplazas}
@@ -181,8 +183,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="plazasCompradas">Plazas compradas</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="plazasCompradas"
                                 name="plazasCompradas"
                                 value={actualTaller.plazasCompradas}
@@ -201,8 +203,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="dificultad">Dificultad</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="dificultad"
                                 name="dificultad"
                                 value={actualTaller.dificultad}
@@ -212,8 +214,8 @@ const Taller = () => {
                         <div className="form-group">
                             <label htmlFor="imagen">Imagen</label>
                             <input
-                                type="file"
                                 className="form-control"
+                                type="file"
                                 id="imagen"
                                 name="imagen"
                                 value=""
@@ -229,7 +231,7 @@ const Taller = () => {
                                 :
                                 <div>
                                     <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
-                                </div> 
+                                </div>
                             }
                         </div>
 
@@ -251,8 +253,8 @@ const Taller = () => {
 
                     {actualTaller.id > 0 ?
                         <button
+                            className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                             type="submit"
-                            className="btn bg-violet bg-violet:hover font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                             onClick={eliminarTaller}>
                             <span>Eliminar</span>
                         </button>
@@ -261,8 +263,8 @@ const Taller = () => {
                     }
 
                     <button
+                        className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                         type="submit"
-                        className="btn bg-violet bg-violet:hover font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                         onClick={enviarTaller}>
                         {actualTaller.id > 0 ?
                             <span>Actualizar</span>
