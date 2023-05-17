@@ -50,25 +50,7 @@ const ClientesList = () => {
     };
 
     return (
-        <div className="list row">
-            <div className="col-md-8">
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar por nombre"
-                        value={buscarxNombre}
-                        onChange={onChangeBuscarxNombre}
-                    />
-                    <div className="input-group-append">
-                        <button
-                            className="btn btn-outline-secondary"
-                            type="button" onClick={findByName}>
-                            <span>Buscar</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div className="list row min-height-85">
 
             <div className="col-md-6">
                 <h4>Lista de clientes</h4>

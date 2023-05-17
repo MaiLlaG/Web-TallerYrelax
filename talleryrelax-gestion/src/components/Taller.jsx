@@ -77,7 +77,7 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
-                setMessage("Se ha producido un error: "+e);
+                setMessage("Se ha producido un error: " + e);
             });
     };
 
@@ -90,7 +90,7 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
-                setMessage("Se ha producido un error: "+e);
+                setMessage("Se ha producido un error: " + e);
             });
     };
 
@@ -102,12 +102,12 @@ const Taller = () => {
             })
             .catch(e => {
                 console.log(e);
-                setMessage("Se ha producido un error: "+e);
+                setMessage("Se ha producido un error: " + e);
             });
     };
 
     return (
-        <div>
+        <div className="min-height-85">
             {actualTaller ? (
                 <div className="edit-form">
                     <h4>Taller</h4>
@@ -191,7 +191,12 @@ const Taller = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="fechainicio">Fecha de inicio</label>
-                            <DatePicker selected={actualTaller.fechainicio} onChange={(date) => fechaInicioChanged(date)} />
+                            <DatePicker
+                                className="form-control"
+                                type="date"
+                                id="fechainicio"
+                                selected={actualTaller.fechainicio} onChange={(date) => fechaInicioChanged(date)}
+                            />
                         </div>
                         <div className="form-group">
                             <label htmlFor="dificultad">Dificultad</label>
@@ -218,17 +223,36 @@ const Taller = () => {
                                 typeof actualTaller.imagen.name == 'string' ?
                                     <p>Seleccionada: {actualTaller.imagen.name}</p>
                                     :
-                                    <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                    <div>
+                                        <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                    </div>
                                 :
-                                <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                                <div>
+                                    <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                                </div> 
                             }
                         </div>
+
+                        <button
+                            className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47"
+                            type="reset"
+                            id="boton"
+                            onClick={eliminarTaller}>
+                            <span>Limpiar formulario</span>
+                        </button>
+
+                        <Link
+                            to={"/talleres"}
+                            className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
+                            <span className="text-decoration-underline">Volver</span>
+                        </Link>
+
                     </form>
 
                     {actualTaller.id > 0 ?
                         <button
                             type="submit"
-                            className="btn btn-success"
+                            className="btn bg-violet bg-violet:hover font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                             onClick={eliminarTaller}>
                             <span>Eliminar</span>
                         </button>
@@ -238,7 +262,7 @@ const Taller = () => {
 
                     <button
                         type="submit"
-                        className="btn btn-success"
+                        className="btn bg-violet bg-violet:hover font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                         onClick={enviarTaller}>
                         {actualTaller.id > 0 ?
                             <span>Actualizar</span>
@@ -246,11 +270,6 @@ const Taller = () => {
                             <span>Añadir</span>
                         }
                     </button>
-
-                    <Link
-                        to={"/talleres"} className="btn btn-success">
-                        Volver
-                    </Link>
 
                     <p>{message}</p>
                 </div>

@@ -57,7 +57,7 @@ const ClienteAdd = () => {
     };
 
     return (
-        <div className="submit-form">
+        <div className="submit-form min-height-85">
             {submitted ? (
                 <div>
                     <h4>Añadido correctamente</h4>

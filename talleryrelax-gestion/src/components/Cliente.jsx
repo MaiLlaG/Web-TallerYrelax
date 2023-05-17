@@ -67,7 +67,7 @@ const Cliente = () => {
     };
 
     return (
-        <div>
+        <div className="min-height-85">
             {actualCliente ? (
                 <div className="edit-form">
                     <h4>Cliente</h4>

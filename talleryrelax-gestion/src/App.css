@@ -1,9 +1,9 @@
-.navbar {
-  height: 7vh !important;
-}
+
 
 .navbar-nav {
-  column-gap: 30vh !important;
+  display: flex;
+  column-gap: 12vh !important;
+  align-items: flex-end;
   justify-content: center !important;
 }
 
@@ -22,3 +22,49 @@
   max-width: 300px;
   margin: auto;
 }
+
+.iconoLogin {
+  width: 40px;
+  height: 40px;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.font-400 {
+  font: 400 0.9em 'Raleway', sans-serif;
+}
+
+/* Buscador */
+
+.buscador {
+  border: none;
+  background-color: #ffffff00;
+}
+
+.iconoSearch {
+  width: 15px;
+  height: 25px;
+  margin-top: 7px;
+}
+
+.inputBuscador {
+  width: 270px !important;
+  font: 400 0.9em 'Raleway', sans-serif;
+}
+
+.buscadorAlineado {
+  margin-bottom: 55px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+#search::placeholder {
+  font: 400 1em 'Raleway', sans-serif;
+  color: #adaeaf;
+}
+
