@@ -44,6 +44,28 @@ const Cliente = () => {
         setActualCliente({ ...actualCliente, [name]: value });
     };
 
+    const enviarCliente = () => {
+        console.log(actualCliente);
+        if (actualCliente.id > 0) {
+            actualizarCliente();
+        } else {
+            crearCliente();
+        }
+    }
+
+    const crearCliente = () => {
+        ClienteDataService.create(actualCliente)
+            .then(response => {
+                console.log(response.data);
+                setMessage("El cliente fue añadido correctamente");
+                getCliente(response.data.id);
+            })
+            .catch(e => {
+                console.log(e);
+                setMessage("Se ha producido un error: " + e);
+            });
+    };
+
     const actualizarCliente = () => {
         ClienteDataService.update(actualCliente.id, actualCliente)
             .then(response => {
@@ -52,6 +74,7 @@ const Cliente = () => {
             })
             .catch(e => {
                 console.log(e);
+                setMessage("Se ha producido un error: " + e);
             });
     };
 
@@ -63,6 +86,7 @@ const Cliente = () => {
             })
             .catch(e => {
                 console.log(e);
+                setMessage("Se ha producido un error: " + e);
             });
     };
 
@@ -75,8 +99,8 @@ const Cliente = () => {
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="nombre"
                                 name="nombre"
                                 value={actualCliente.nombre}
@@ -86,8 +110,8 @@ const Cliente = () => {
                         <div className="form-group">
                             <label htmlFor="apellido">Apellido</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="apellido"
                                 name="apellido"
                                 value={actualCliente.apellido}
@@ -97,8 +121,8 @@ const Cliente = () => {
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="email"
                                 name="email"
                                 value={actualCliente.email}
@@ -108,8 +132,8 @@ const Cliente = () => {
                         <div className="form-group">
                             <label htmlFor="telefono">Teléfono</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="telefono"
                                 name="telefono"
                                 value={actualCliente.telefono}
@@ -119,34 +143,44 @@ const Cliente = () => {
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
                             <input
-                                type="text"
                                 className="form-control"
+                                type="text"
                                 id="password"
                                 name="password"
                                 value={actualCliente.password}
                                 onChange={handleInputChange}
                             />
                         </div>
+
+            
+
+                        <Link
+                            to={"/clientes"} className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
+                            <span className="text-decoration-underline">Volver</span>
+                        </Link>
                     </form>
 
-                    <button
-                        type="submit"
-                        className="btn btn-success" 
-                        onClick={eliminarCliente}>
-                        <span>Eliminar</span>
-                    </button>
+                    {actualCliente.id > 0 ?
+                        <button
+                            className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
+                            type="submit"
+                            onClick={eliminarCliente}>
+                            <span>Eliminar</span>
+                        </button>
+                        :
+                        <span></span>
+                    }
 
                     <button
+                        className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                         type="submit"
-                        className="btn btn-success" 
-                        onClick={actualizarCliente}>
-                        <span>Actualizar</span>
+                        onClick={enviarCliente}>
+                        {actualCliente.id > 0 ?
+                            <span>Actualizar</span>
+                            :
+                            <span>Añadir</span>
+                        }
                     </button>
-
-                    <Link
-                        to={"/clientes"} className="btn btn-success">
-                        Volver
-                    </Link>
 
                     <p>{message}</p>
                 </div>

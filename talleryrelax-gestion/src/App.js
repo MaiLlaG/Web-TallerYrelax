@@ -9,8 +9,10 @@ import Gestion from "./components/Gestion";
 import TalleresList from "./components/TalleresList";
 import Taller from "./components/Taller";
 import ClientesList from "./components/ClientesList";
-import ClienteAdd from "./components/ClienteAdd";
 import Cliente from "./components/Cliente";
+import TrabajadoresList from "./components/TrabajadoresList";
+import Trabajador from "./components/Trabajador";
+
 
 
 function App() {
@@ -58,8 +60,11 @@ function App() {
           <Route path="/nuevoTaller" element={<Taller />} />
           <Route path="/talleres/:id" element={<Taller />} />
           <Route path="/clientes" element={<ClientesList />} />
-          <Route path="/nuevoCliente" element={<ClienteAdd />} />
+          <Route path="/nuevoCliente" element={<Cliente />} />
           <Route path="/clientes/:id" element={<Cliente />} />
+          <Route path="/trabajadores" element={<TrabajadoresList />} />
+          <Route path="/nuevoTrabajador" element={<Trabajador />} />
+          <Route path="/trabajadores/:id" element={<Trabajador />} />
         </Routes>
       </div>
 

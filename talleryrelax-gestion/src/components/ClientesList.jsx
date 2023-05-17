@@ -31,8 +31,6 @@ const ClientesList = () => {
             });
     };
 
-
-
     const setActiveCliente = (cliente, index) => {
         setActualCliente(cliente);
         setActualIndex(index);
@@ -52,6 +50,25 @@ const ClientesList = () => {
     return (
         <div className="list row min-height-85">
 
+            <div className="col-md-8">
+                <div className="input-group mb-3">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Buscar por nombre"
+                        value={buscarxNombre}
+                        onChange={onChangeBuscarxNombre}
+                    />
+                    <div className="input-group-append">
+                        <button
+                            className="btn"
+                            type="button" onClick={findByName}>
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div className="col-md-6">
                 <h4>Lista de clientes</h4>
                 <ul className="list-group">
@@ -66,12 +83,13 @@ const ClientesList = () => {
                     ))}
                 </ul>
 
-                <Link to={"/nuevoCliente"} className="nav-link btn btn-success">
-                    Añadir-Cliente
+                <Link to={"/nuevoCliente"} className="btn btn-primary">
+                    <span>Añadir Cliente</span>
                 </Link>
+
                 <Link
-                    to={"/gestion"} className="btn btn-success">
-                    Volver
+                    to={"/gestion"} className="btn btn-primary">
+                    <span>Volver</span>
                 </Link>
             </div>
 
@@ -81,38 +99,38 @@ const ClientesList = () => {
                         <h4>Cliente</h4>
                         <div>
                             <label>
-                                <strong>Nombre:</strong>
+                                Nombre
                             </label>{" "}
                             {actualCliente.nombre}
                         </div>
                         <div>
                             <label>
-                                <strong>Apellido:</strong>
+                                Apellido
                             </label>{" "}
                             {actualCliente.apellido}
                         </div>
                         <div>
                             <label>
-                                <strong>Email:</strong>
+                                Email
                             </label>{" "}
                             {actualCliente.email}
                         </div>
                         <div>
                             <label>
-                                <strong>Teléfono:</strong>
+                                Teléfono
                             </label>{" "}
                             {actualCliente.telefono}
                         </div>
                         <div>
                             <label>
-                                <strong>Password:</strong>
+                                Password
                             </label>{" "}
                             {actualCliente.password}
                         </div>
 
                         <Link
-                            to={"/clientes/" + actualCliente.id} className="btn btn-success">
-                            Editar
+                            to={"/clientes/" + actualCliente.id} className="btn btn-primary">
+                            <span>Editar</span>
                         </Link>
                     </div>
                 ) : (
