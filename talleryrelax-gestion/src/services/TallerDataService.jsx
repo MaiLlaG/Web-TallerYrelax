@@ -11,6 +11,7 @@ const get = id => {
 const createOld = data => {
   return http.post("/gestion/talleres", data);
 };
+
 const crearFormData = (data) => {
   console.log(data);
   let formData = new FormData();
@@ -19,11 +20,19 @@ const crearFormData = (data) => {
     formData.append("imagen", data.imagen);
   }
   formData.append("nombre", data.nombre);
+  formData.append("descripcion", data.descripcion);
+  formData.append("precio", data.precio);
+  formData.append("durasemanas", data.durasemanas);
+  formData.append("diasxsemana", data.diasxsemana);
+  formData.append("nplazas", data.nplazas);
+  formData.append("plazasCompradas", data.plazasCompradas);
   formData.append("fechainicio", data.fechainicio.toISOString().slice(0, -5));
-  // TODO: PONER EL RESTO DE VALORES
+  formData.append("dificultad", data.dificultad);
+  //formData.append("imagen", data.imagen);
 
   return formData;
 }
+
 const create = (data, onUploadProgress) => {
   let formData = crearFormData(data);
 
