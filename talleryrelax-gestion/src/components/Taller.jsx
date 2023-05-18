@@ -111,9 +111,9 @@ const Taller = () => {
     return (
         <div className="min-height-85">
             {actualTaller ? (
-                <div className="edit-form">
-                    <h4>Taller</h4>
+                <div className="form">
                     <form>
+                        <h4>Taller</h4>
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre</label>
                             <input
@@ -235,45 +235,36 @@ const Taller = () => {
                             }
                         </div>
 
+                        <p>{message}</p>
+
                         <button
-                            className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47"
-                            type="reset"
-                            id="boton"
-                            onClick={eliminarTaller}>
-                            <span>Limpiar formulario</span>
+                            className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
+                            type="button"
+                            onClick={enviarTaller}>
+                            {actualTaller.id > 0 ?
+                                <span>Actualizar</span>
+                                :
+                                <span>Añadir</span>
+                            }
                         </button>
 
+                        {actualTaller.id > 0 ?
+                            <button
+                                className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
+                                type="button"
+                                onClick={eliminarTaller}>
+                                <span>Eliminar</span>
+                            </button>
+                            :
+                            <span></span>
+                        }
+                        
                         <Link
                             to={"/talleres"}
                             className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
                             <span className="text-decoration-underline">Volver</span>
                         </Link>
-
                     </form>
-
-                    {actualTaller.id > 0 ?
-                        <button
-                            className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
-                            type="submit"
-                            onClick={eliminarTaller}>
-                            <span>Eliminar</span>
-                        </button>
-                        :
-                        <span></span>
-                    }
-
-                    <button
-                        className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
-                        type="submit"
-                        onClick={enviarTaller}>
-                        {actualTaller.id > 0 ?
-                            <span>Actualizar</span>
-                            :
-                            <span>Añadir</span>
-                        }
-                    </button>
-
-                    <p>{message}</p>
                 </div>
             ) : (
                 <div>

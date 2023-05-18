@@ -49,7 +49,7 @@ const TalleresList = () => {
     };
 
     return (
-        <div className="list row min-height-85">
+        <div className="row min-height-85">
 
             <div className="col-md-6">
                 <h4>Lista de talleres</h4>
@@ -82,55 +82,13 @@ const TalleresList = () => {
                         <h4>Taller</h4>
                         <div className="">
                             <label>
-                                Nombre
+                            <p className="text-black">Nombre </p>
                                 </label>{" "}
-                            {actualTaller.nombre}
+                            <p className="text-secondary">{actualTaller.nombre}</p>
                         </div>
                         <div>
                             <label>
-                                Descripcion
-                            </label>{" "}
-                            {actualTaller.descripcion}
-                        </div>
-                        <div>
-                            <label>
-                                Precio
-                            </label>{" "}
-                            {actualTaller.precio}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Semanas de duración:</strong>
-                            </label>{" "}
-                            {actualTaller.durasemanas}
-                        </div>
-                        <div>
-                            <label>
-                                Días a la semana
-                            </label>{" "}
-                            {actualTaller.diasxsemana}
-                        </div>
-                        <div>
-                            <label>
-                                Número de plazas
-                            </label>{" "}
-                            {actualTaller.nplazas}
-                        </div>
-                        <div>
-                            <label>
-                                Fecha de inicio
-                            </label>{" "}
-                            {actualTaller.fechainicio}
-                        </div>
-                        <div>
-                            <label>
-                                Dificultad
-                            </label>{" "}
-                            {actualTaller.dificultad}
-                        </div>
-                        <div>
-                            <label>
-                                Imagen
+                                <p></p>
                             </label>
                             {actualTaller.imagen ?
                                 <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
@@ -138,6 +96,56 @@ const TalleresList = () => {
                                 <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
                             }
                         </div>
+                        
+                        <div>
+                            <label>
+                            <p className="text-black">Descripcion </p>
+                            </label>{" "}
+                            { <div dangerouslySetInnerHTML={{ __html: actualTaller.descripcion }} /> }
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Precio </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.precio}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Semanas de duración </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.durasemanas}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Días a la semana </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.diasxsemana}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Número de plazas </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.nplazas}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Plazas compradas </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.plazasCompradas}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Fecha de inicio </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.fechainicio == null ? null : actualTaller.fechainicio.substring(0,10)}</p>
+                        </div>
+                        <div>
+                            <label>
+                            <p className="text-black">Dificultad </p>
+                            </label>{" "}
+                            <p className="text-secondary">{actualTaller.dificultad}</p>
+                        </div>
+                        
 
                         <Link
                             to={"/talleres/" + actualTaller.id} className="btn btn-primary">

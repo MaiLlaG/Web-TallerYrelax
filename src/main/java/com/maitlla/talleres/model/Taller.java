@@ -1,6 +1,6 @@
 package com.maitlla.talleres.model;
 
-import java.sql.Blob;
+//import java.sql.Blob;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,6 +22,7 @@ public class Taller {
     @GeneratedValue
     private Long id;
     private String nombre;
+    @Lob
     private String descripcion;
     private Integer precio = 0;
     private Integer durasemanas = 0;
