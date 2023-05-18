@@ -13,10 +13,7 @@ const Cliente = () => {
     const clienteState = {
         id: null,
         nombre: "",
-        apellido: "",
         email: "",
-        telefono: "",
-        password: "",
         //submitted: false
     };
 
@@ -108,17 +105,6 @@ const Cliente = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="apellido">Apellido</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="apellido"
-                                name="apellido"
-                                value={actualCliente.apellido}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input
                                 className="form-control"
@@ -126,28 +112,6 @@ const Cliente = () => {
                                 id="email"
                                 name="email"
                                 value={actualCliente.email}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="telefono">Teléfono</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="telefono"
-                                name="telefono"
-                                value={actualCliente.telefono}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="password"
-                                name="password"
-                                value={actualCliente.password}
                                 onChange={handleInputChange}
                             />
                         </div>

@@ -47,12 +47,8 @@ public class ClienteController { // aqui se definen las peticiones http y las ru
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
         Cliente currentCliente = clienteRepository.findById(id).orElseThrow(RuntimeException::new);
         currentCliente.setNombre(cliente.getNombre());
-        currentCliente.setApellido(cliente.getApellido());
         currentCliente.setEmail(cliente.getEmail());
-        currentCliente.setTelefono(cliente.getTelefono());
-
-        currentCliente.setPassword(cliente.getPassword());
-
+       
         currentCliente = clienteRepository.save(currentCliente);
         return ResponseEntity.ok(currentCliente);
     }

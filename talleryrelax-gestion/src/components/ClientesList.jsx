@@ -48,26 +48,7 @@ const ClientesList = () => {
     };
 
     return (
-        <div className="list row min-height-85">
-
-            <div className="col-md-8">
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar por nombre"
-                        value={buscarxNombre}
-                        onChange={onChangeBuscarxNombre}
-                    />
-                    <div className="input-group-append">
-                        <button
-                            className="btn"
-                            type="button" onClick={findByName}>
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div className="row min-height-85">
 
             <div className="col-md-6">
                 <h4>Lista de clientes</h4>
@@ -99,33 +80,15 @@ const ClientesList = () => {
                         <h4>Cliente</h4>
                         <div>
                             <label>
-                                Nombre
+                                <p className="text-black">Nombre </p>
                             </label>{" "}
-                            {actualCliente.nombre}
+                            <p className="text-secondary">{actualCliente.nombre}</p>
                         </div>
                         <div>
                             <label>
-                                Apellido
+                            <p className="text-black">Email </p>
                             </label>{" "}
-                            {actualCliente.apellido}
-                        </div>
-                        <div>
-                            <label>
-                                Email
-                            </label>{" "}
-                            {actualCliente.email}
-                        </div>
-                        <div>
-                            <label>
-                                Teléfono
-                            </label>{" "}
-                            {actualCliente.telefono}
-                        </div>
-                        <div>
-                            <label>
-                                Password
-                            </label>{" "}
-                            {actualCliente.password}
+                            <p className="text-secondary">{actualCliente.email}</p>
                         </div>
 
                         <Link
