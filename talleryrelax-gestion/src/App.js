@@ -12,7 +12,7 @@ import ClientesList from "./components/ClientesList";
 import Cliente from "./components/Cliente";
 import TrabajadoresList from "./components/TrabajadoresList";
 import Trabajador from "./components/Trabajador";
-
+import BuscarxNombre from "./components/BuscarxNombre";
 
 
 function App() {
@@ -20,10 +20,9 @@ function App() {
     <div className="bg-secondary bg-opacity-10">
       <nav className="navbar navbar-expand-xl  navbar-dark gap-1 justify-content-end bg-white shadow d-flex mb-5">
 
-        <div className="input-group d-flex inputBuscador">
-          <input className="form-control rounded" type="search" placeholder="Buscar por nombre" aria-label="Search" aria-describedby="search-addon" />
-          <button className="btn btn-outline-primary" type="button">Search</button>
-        </div>
+        <li className="list-style-none">
+          <BuscarxNombre />
+        </li>
 
         <ul className="nav">
           <li className="nav-item mx-5">
@@ -52,7 +51,7 @@ function App() {
         </ul>
       </nav>
 
-      <div className="">
+      <div className="container-fluid">
         <Routes>
           <Route path="/" element={<Panel />} />
           <Route path="/gestion" element={<Gestion />} />
