@@ -97,7 +97,7 @@ const ComprasList = () => {
                             <label>
                                 <strong>Fecha:</strong>
                             </label>
-                            {actualCompra.fechaCompra}
+                            {actualCompra.fechaCompra == null ? null : actualCompra.fechaCompra.substring(0, 10)}
                         </div>
                         <div>
                             <label>
@@ -117,6 +117,13 @@ const ComprasList = () => {
                             </label>
                             {actualCompra.telefono}
                         </div>
+                        <div>
+                            <label>
+                                <strong>Método de pago:</strong>
+                            </label>
+                            {actualCompra.metodoDePago.nombre}
+                        </div>
+
 
 
                         <Link
@@ -134,9 +141,9 @@ const ComprasList = () => {
                                         "list-group-item " + (index === actualIndex ? "active" : "")
                                     }
                                     onClick={() => setActiveCompra(compra, index)} key={index}>
-                                    {compra.taller.nombre} comprado el {compra.fechaCompra}
+                                    {compra.taller.nombre} comprado el {compra.fechaCompra == null ? null : compra.fechaCompra.substring(0, 10)}
                                 </li>
-                            ))}
+                            )).reverse()}
                         </ul>
                     </div>
                 )}

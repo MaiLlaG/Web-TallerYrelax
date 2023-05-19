@@ -49,9 +49,9 @@ const TrabajadoresList = () => {
     };
 
     return (
-        <div className="list row min-height-85">
+        <div className="row min-height-85 pt-5 d-flex justify-content-center gap-3">
 
-            <div className="col-md-6">
+            <div className="col-md-5">
                 <h4>Lista de trabajadores</h4>
                 <ul className="list-group">
                     {trabajadores && trabajadores.map((trabajador, index) => (
@@ -62,7 +62,7 @@ const TrabajadoresList = () => {
                             onClick={() => setActiveTrabajador(trabajador, index)} key={index}>
                             {trabajador.nombre}
                         </li>
-                    ))}
+                    )).reverse()}
                 </ul>
 
                 <Link to={"/nuevoTrabajador"} className="btn btn-primary">
@@ -75,27 +75,27 @@ const TrabajadoresList = () => {
                 </Link>
 
             </div>
-            <div className="col-md-6">
+            <div className="col-md-5 d-flex justify-content-center">
                 {actualTrabajador ? (
                     <div>
                         <h4>Trabajador</h4>
                         <div>
                             <label className="">
                                 <p className="text-black">Nombre </p>
-                            </label>{" "}
+                            </label>
                             <p className="text-secondary">{actualTrabajador.nombre}</p>
                             
                         </div>
                         <div>
                             <label>
                                 <p className="text-black">Email </p>
-                            </label>{" "}
+                            </label>
                             <p className="text-secondary">{actualTrabajador.email}</p>
                         </div>
                         <div>
                             <label>
                             <p className="text-black">Puesto </p>
-                            </label>{" "}
+                            </label>
                             <p className="text-secondary">{actualTrabajador.puesto}</p>
                         </div>
 

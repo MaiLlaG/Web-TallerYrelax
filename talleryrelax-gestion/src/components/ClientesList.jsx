@@ -48,9 +48,9 @@ const ClientesList = () => {
     };
 
     return (
-        <div className="row min-height-85">
+        <div className="row min-height-85 pt-5 d-flex justify-content-center gap-3">
 
-            <div className="col-md-6">
+            <div className="col-md-5">
                 <h4>Lista de clientes</h4>
                 <ul className="list-group">
                     {clientes && clientes.map((cliente, index) => (
@@ -61,7 +61,7 @@ const ClientesList = () => {
                             onClick={() => setActiveCliente(cliente, index)} key={index}>
                             {cliente.nombre}
                         </li>
-                    ))}
+                    )).reverse()}
                 </ul>
 
                 <Link to={"/nuevoCliente"} className="btn btn-primary">
@@ -74,20 +74,20 @@ const ClientesList = () => {
                 </Link>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-5 d-flex justify-content-center">
                 {actualCliente ? (
                     <div>
                         <h4>Cliente</h4>
                         <div>
                             <label>
                                 <p className="text-black">Nombre </p>
-                            </label>{" "}
+                            </label>
                             <p className="text-secondary">{actualCliente.nombre}</p>
                         </div>
                         <div>
                             <label>
                             <p className="text-black">Email </p>
-                            </label>{" "}
+                            </label>
                             <p className="text-secondary">{actualCliente.email}</p>
                         </div>
 

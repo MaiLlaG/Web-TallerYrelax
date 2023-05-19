@@ -61,27 +61,7 @@ const TalleresList = () => {
 
     return (
         <div className="">
-            {/* 
-            <div className="">
-                <div className="">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar por nombre"
-                        value={buscarxNombre}
-                        onChange={onChangeBuscarxNombre}
-                    />
-                    <div className="">
-                        <button
-                            className="btn"
-                            type="button" onClick={findByName}>
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
-            */}
-
+            
             <main className="colorArena">
                 {actualTaller ? (
                     <div>
@@ -124,12 +104,12 @@ const TalleresList = () => {
                                     </div>
                                     <div>
                                         <label>
-                                            <p className="textoInfoColor align_text_Izq">Plazas compradas: {actualTaller.plazasCompradas}</p>
+                                            <p className="textoInfoColor align_text_Izq">Plazas compradas: <span className="ms-2">{actualTaller.plazasCompradas !== actualTaller.nplazas ? actualTaller.plazasCompradas : actualTaller.plazasCompradas + " Agotado"}</span></p>
                                         </label>
                                     </div>
                                     <div>
                                         <label>
-                                            <p className="textoInfoColor align_text_Izq">Fecha de inicio: {actualTaller.fechainicio}</p>
+                                            <p className="textoInfoColor align_text_Izq">Fecha de inicio: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.fechainicio == null ? null : actualTaller.fechainicio.substring(0, 10)}</span></p>
                                         </label>
                                     </div>
                                     <div>
@@ -186,7 +166,7 @@ const TalleresList = () => {
                                             {taller.imagen ?
                                                 <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
                                                 :
-                                                <img src={require("../img/taller-sin-imagen.jpg")} alt={taller.nombre} />
+                                                <img src={require("../img/taller-sin-imagen.png")} alt={taller.nombre} />
                                             }
                                             <figcaption>
                                                 <h1 className="circuloText">{taller.nombre}</h1>
@@ -195,7 +175,7 @@ const TalleresList = () => {
                                         </figure>
                                     </div>
 
-                                ))}
+                                )).reverse()}
 
                             </div>
                             <div className="seccionDerecha"></div>
