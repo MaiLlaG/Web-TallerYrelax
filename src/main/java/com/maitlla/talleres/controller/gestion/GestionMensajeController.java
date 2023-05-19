@@ -48,7 +48,6 @@ public class GestionMensajeController { // aqui se definen las peticiones http y
         Mensaje currentMensaje = mensajeRepository.findById(id).orElseThrow(RuntimeException::new);
         currentMensaje.setNombre(mensaje.getNombre());
         currentMensaje.setEmail(mensaje.getEmail());
-        currentMensaje.setTelefono(mensaje.getTelefono());
         currentMensaje.setTexto(mensaje.getTexto());
 
         currentMensaje = mensajeRepository.save(currentMensaje);
