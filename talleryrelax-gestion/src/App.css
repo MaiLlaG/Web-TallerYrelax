@@ -1,5 +1,18 @@
-.list-style-none {
-  list-style: none;
+
+.font-Roboto {
+  font: 400 1em 'Roboto', sans-serif !important;
+}
+
+.font-Raleway {
+  font: 400 1em 'Raleway', sans-serif !important;
+}
+
+.font-Raleway-bold {
+  font: 500 1em 'Raleway', sans-serif !important;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2px;
 }
 
 .navbar-nav {
@@ -13,6 +26,14 @@
   text-align: left;
   max-width: 750px;
   margin: auto;
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.hr-with {
+  min-width: 230px;
 }
 
 .submit-form {
@@ -70,3 +91,6 @@
   color: #adaeaf;
 }
 
+.min-w-bt-27 {
+  min-width: 27vh;
+}

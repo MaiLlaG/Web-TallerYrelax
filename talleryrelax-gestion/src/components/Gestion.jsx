@@ -13,11 +13,11 @@ const Gestion = () => {
 
     return (
 
-        <main className="bg-white">
+        <main className="bg-white p-0">
             <div className="container min-height-85 bg-white">
                 <div className="thumbex">
                     <div className="thumbnail divFondo1">
-                        <img src={require("../img/Esculturasdepapel28.jpg")} />
+                        <img className="img-clientes" src={require("../img/Esculturasdepapel28.jpg")} />
                         <span>
                             <Link
                                 to={"/clientes"}>
@@ -30,7 +30,7 @@ const Gestion = () => {
                 </div>
                 <div className="thumbex">
                     <div className="thumbnail divFondo2">
-                        <img src={require("../img/tallerPanaderia47.jpg")} />
+                        <img className="img-talleres" src={require("../img/tallerPanaderia68.jpg")} />
                         <span>
                             <Link
                                 to={"/talleres"}>
@@ -43,7 +43,7 @@ const Gestion = () => {
                 </div>
                 <div className="thumbex">
                     <div className="thumbnail divFondo3">
-                        <img src={require("../img/tallerPanaderia68.jpg")} />
+                        <img src={require("../img/kintsugi24.jpg")} />
                         <span>
                             <Link
                                 to={"/trabajadores"}>
@@ -55,11 +55,27 @@ const Gestion = () => {
                     </div>
                 </div>
 
-                <Link
-                    to={"/"}
-                    className="btn btn-muted btn-link font-500 border border-black rounded-0 p-2 mt-4 mb-3 w-bt-47">
-                    <span className=""><u>Volver</u></span>
-                </Link>
+
+
+                <div className="w-100 mt-4 d-flex flex-wrap align-items-center justify-content-evenly">
+                    <div className="d-flex flex-wrap flex-row align-items-end">
+                        <Link
+                            to={"/mensajes"}>
+                            <img className="mt-3 iconoEmail" src={require("../img/email.png")} alt="iconoEmail" />
+                        </Link>
+                        <Link
+                            to={"/mensajes"}>
+                            <p className="text-black texto-mensajes">Mensajes de <span className="font-weight-600">Contacto</span></p>
+                        </Link>
+                    </div>
+
+                    <Link
+                        to={"/"}
+                        className="btn btn-outline-light border-dark text-black font-500 border rounded-0 p-2 mt-4 mb-3 mx-3 min-w-bt-27">
+                        <span className="font-Raleway-bold letter-spacing-2">Volver</span>
+                    </Link>
+                </div>
+
             </div>
         </main>
     );

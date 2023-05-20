@@ -3,6 +3,10 @@ body {
     background: #f9f9f9;
 }
 
+.w-bt-47 {
+    width: 47%;
+}
+
 .fw-500 {
     font-weight: 500;
 }
@@ -20,8 +24,8 @@ body {
 }
 
 .iconoLogin {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
 }
 
 .min-height-85 {
@@ -222,11 +226,6 @@ select>option:checked {
 
 .col-gap-2 {
     column-gap: 1.8em;
-}
-
-.w-bt-47 {
-    width: 47%;
-    min-width: 27vh;
 }
 
 .p-panel {

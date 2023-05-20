@@ -65,25 +65,25 @@ const Panel = () => {
                             </div>
                             <div className="d-flex flex-wrap justify-content-center col-gap-2">
                                 <input
-                                    className="btn btn-dark font-500 rounded-0 p-2 mt-4 mb-3 w-bt-47"
+                                    className="btn btn-dark font-500 rounded-0 p-2 mt-4 mb-3 w-bt-47 min-w-bt-27"
                                     type="submit"
                                     id="boton"
                                     value="Enviar formulario"
                                 />
 
                                 <input
-                                    className="btn btn-outline-light border-dark text-black font-500 rounded-0 p-2 mt-4 mb-3 w-bt-47"
+                                    className="btn btn-outline-light border-dark text-black font-500 rounded-0 p-2 mt-4 mb-3 w-bt-47 min-w-bt-27"
                                     type="reset"
                                     id="boton"
                                     value="Limpiar formulario"
                                 />
 
                                 <Link
-                                    to={"/gestion"} className="btn btn-primary border-dark font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47">
+                                    to={"/gestion"} className="btn btn-primary border-dark font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47 min-w-bt-27">
                                     <span>Ir a Gestion</span>
                                 </Link>
                                 <Link
-                                    to={"/"} className="btn btn-primary border-dark font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47">
+                                    to={"/"} className="btn btn-primary border-dark font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47 min-w-bt-27">
                                     <span>Ir a Login</span>
                                 </Link>
                             </div>

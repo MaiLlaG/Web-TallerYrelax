@@ -226,11 +226,11 @@ const Taller = () => {
                                     <p>Seleccionada: {actualTaller.imagen.name}</p>
                                     :
                                     <div>
-                                        <img src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                        <img className="w-75" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
                                     </div>
                                 :
                                 <div>
-                                    <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                                    <img className="w-75" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
                                 </div>
                             }
                         </div>

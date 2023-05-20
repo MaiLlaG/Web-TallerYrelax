@@ -49,15 +49,14 @@ const TrabajadoresList = () => {
     };
 
     return (
-        <div className="row min-height-85 pt-5 d-flex justify-content-center gap-3">
-
-            <div className="col-md-5">
-                <h4>Lista de trabajadores</h4>
-                <ul className="list-group">
+        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
+            <div className="col-md-4 px-3">
+                <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de trabajadores</h4>
+                <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {trabajadores && trabajadores.map((trabajador, index) => (
                         <li
                             className={
-                                "list-group-item " + (index === actualIndex ? "active" : "")
+                                "py-3 px-4 list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
                             }
                             onClick={() => setActiveTrabajador(trabajador, index)} key={index}>
                             {trabajador.nombre}
@@ -65,49 +64,54 @@ const TrabajadoresList = () => {
                     )).reverse()}
                 </ul>
 
-                <Link to={"/nuevoTrabajador"} className="btn btn-primary">
-                    <span>Añadir Trabajador</span>
-                </Link>
+                <div className="d-flex flex-wrap justify-content-center col-gap-2 mb-4">
+                    <Link to={"/nuevoTrabajador"} className="btn btn-primary border-dark mt-3 mb-3 rounded-0 min-w-bt-27">
+                        <span className="font-Raleway letter-spacing-2">Añadir</span>
+                    </Link>
 
-                <Link
-                    to={"/gestion"} className="btn btn-primary">
-                    <span>Volver</span>
-                </Link>
+                    <Link
+                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                        <span className="font-Raleway-bold letter-spacing-2">Volver</span>
+                    </Link>
+                </div>
 
             </div>
-            <div className="col-md-5 d-flex justify-content-center">
+            <div className="col-md-5 d-flex justify-content-center ms-2 px-3 pb-1">
                 {actualTrabajador ? (
-                    <div>
-                        <h4>Trabajador</h4>
+                    <div className="w-75">
+                        <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Trabajador</h4>
                         <div>
-                            <label className="">
-                                <p className="text-black">Nombre </p>
+                            <label>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Nombre: </p>
                             </label>
-                            <p className="text-secondary">{actualTrabajador.nombre}</p>
-                            
+                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualTrabajador.nombre}</p>
+
                         </div>
                         <div>
                             <label>
-                                <p className="text-black">Email </p>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Email: </p>
                             </label>
-                            <p className="text-secondary">{actualTrabajador.email}</p>
+                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualTrabajador.email}</p>
                         </div>
                         <div>
                             <label>
-                            <p className="text-black">Puesto </p>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Puesto: </p>
                             </label>
-                            <p className="text-secondary">{actualTrabajador.puesto}</p>
+                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualTrabajador.puesto}</p>
                         </div>
 
-                        <Link
-                            to={"/trabajadores/" + actualTrabajador.id} className="btn btn-primary">
-                            <span>Editar</span>
-                        </Link>
+                        <div className="d-flex justify-content-center gap-2">
+                            <Link
+                                to={"/trabajadores/" + actualTrabajador.id} className="btn btn-primary border-dark mt-3 mb-5 w-75 min-w-bt-27 rounded-0">
+                                <span className="font-Raleway letter-spacing-2">Editar</span>
+                            </Link>
+                        </div>
+
                     </div>
                 ) : (
                     <div>
                         <br />
-                        <p>Haz click en un trabajador...</p>
+                        <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un trabajador...</p>
                     </div>
                 )}
             </div>

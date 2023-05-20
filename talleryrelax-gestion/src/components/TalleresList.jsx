@@ -50,8 +50,8 @@ const TalleresList = () => {
 
     return (
 
-        <div className="row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
-            <div className="col-md-3 px-3">
+        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
+            <div className="col-md-4 px-3">
                 <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de talleres</h4>
                 <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {talleres && talleres.map((taller, index) => (
@@ -85,11 +85,11 @@ const TalleresList = () => {
                             <div className="">
                                 <p className="mt-3 text-primary font-Raleway-bold letter-spacing-2 fs-5">{actualTaller.nombre}</p>
                             </div>
-                            <div className="">
+                            <div className="d-flex justify-content-center">
                                 {actualTaller.imagen ?
-                                    <img className="rounded-circle mt-2 mb-5" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                    <img className="rounded-circle mt-2 mb-5 w-75" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
                                     :
-                                    <img src={require("../img/taller-sin-imagen.png")} alt={actualTaller.nombre} />
+                                    <img className="rounded-circle mt-2 mb-5 w-75" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
                                 }
                             </div>
                         </div>
