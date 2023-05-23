@@ -9,16 +9,10 @@ const TalleresList = () => {
     const [talleres, setTalleres] = useState([]);
     const [actualTaller, setActualTaller] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
         recuperarTalleres();
     }, []);
-
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
 
     const recuperarTalleres = () => {
         TallerDataService.getAll()
@@ -35,17 +29,6 @@ const TalleresList = () => {
     const setActiveTaller = (taller, index) => {
         setActualTaller(taller);
         setActualIndex(index);
-    };
-
-    const findByName = () => {
-        TallerDataService.findByName(buscarxNombre)
-            .then(response => {
-                setTalleres(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
     };
 
     return (
@@ -147,8 +130,8 @@ const TalleresList = () => {
                                     <div className="">
                                         <ul className="list-group list-group-numbered list-group-flush shadow rounded-5 mb-3"> {/* list-unstyled lo mismo list-style: none; */}
                                             {actualTaller.compras && actualTaller.compras.map((compra, index) => (
-                                                <li className="pt-3 pb-2 px-4 list-group-item list-group-item-primary list-group-item-action text-dark font-Roboto letter-spacing-2">
-                                                    {compra.nombre} / {compra.email} / {compra.telefono} / {compra.importeCompra}€ / {compra.fechaCompra == null ? null : compra.fechaCompra.substring(0, 10,)} / {compra.metodoDePago.nombre}
+                                                <li  key={index} className="pt-3 pb-2 px-4 list-group-item list-group-item-primary list-group-item-action text-dark font-Roboto letter-spacing-2">
+                                                    {compra.nombre} / {compra.email} / {compra.telefono} / {compra.importeCompra}€ / {compra.fechaCompra == null ? null : compra.fechaCompra} / {compra.metodoDePago.nombre}
                                                     
                                                     <div className="d-flex justify-content-center">
                                                         <Link

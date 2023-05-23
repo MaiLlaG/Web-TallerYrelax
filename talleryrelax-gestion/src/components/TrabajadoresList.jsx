@@ -9,16 +9,10 @@ const TrabajadoresList = () => {
     const [trabajadores, setTrabajadores] = useState([]);
     const [actualTrabajador, setActualTrabajador] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
         recuperarTrabajadores();
     }, []);
-
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
 
     const recuperarTrabajadores = () => {
         TrabajadorDataService.getAll()
@@ -35,17 +29,6 @@ const TrabajadoresList = () => {
     const setActiveTrabajador = (trabajador, index) => {
         setActualTrabajador(trabajador);
         setActualIndex(index);
-    };
-
-    const findByName = () => {
-        TrabajadorDataService.findByName(buscarxNombre)
-            .then(response => {
-                setTrabajadores(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
     };
 
     return (

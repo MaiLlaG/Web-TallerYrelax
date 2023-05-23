@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import MensajeDataService from '../services/MensajeDataService'
 
 import '../App.css';
 import '../index.css';
@@ -30,6 +31,18 @@ const Contacto = () => {
             telefono: contacto.telefono,
             texto: contacto.texto,
         };
+    };
+
+    const enviar = () => {
+        MensajeDataService.create(contacto)
+            .then(response => {
+                console.log(response.data);
+                alert("Mensaje enviado ok!"); // TODO: Aquí poner MENSAJE DE QUE TODO OK
+            })
+            .catch(e => {
+                // TODO: AQUÍ HAY QUE DECIRLE AL USUARIO QUE HA HABIDO ALGÚN ERROR
+                console.log(e);
+            });
     };
 
     return (
@@ -91,7 +104,11 @@ const Contacto = () => {
                                     onChange={handleInputChange}
                                     name="texto"
                                 ></textarea>
-                                <p>TODO: FALTA AÑADIR AQUÍ EL ENVÍO</p>
+                                <button
+                                    type="submit"
+                                    className="btn btn-4 btn-holder hover-border-7" onClick={enviar}>
+                                    <span>Enviar</span>
+                                </button>
                                 <Link
                                     to={"/"} className="btn btn-4 btn-holder hover-border-7">
                                     Volver

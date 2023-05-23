@@ -1,6 +1,9 @@
 package com.maitlla.talleres.model;
 
 import jakarta.persistence.Table;
+
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,6 +19,7 @@ public class Mensaje {
     private String nombre;
     private String email;
     private String texto;
+    private LocalDateTime fecha = LocalDateTime.now();
   
     // getter, setters, contructors
 
@@ -39,6 +43,12 @@ public class Mensaje {
     }
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
     
 }

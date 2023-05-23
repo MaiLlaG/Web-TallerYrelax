@@ -21,14 +21,41 @@ const PagoCompra = () => {
     };
 
 
-    const [compra, setCompra] = useState(compraState);
+    const [compra, setCompra] = useState(compraState); // Validaciones: No llamo directamente, si no a través de setCompraConValidacion
     const [submitted, setSubmitted] = useState(false);
     const [taller, setTaller] = useState([]);
     const [metodosDePago, setMetodosDePago] = useState([]);
+    const [errores, setErrores] = useState({});// Validaciones: Errores
+
+    // Validaciones: Comprobar errores al cambiar el estado
+    const setCompraConValidacion = laCompra => {
+        setCompra(laCompra);
+
+        const errores = {};
+
+        console.log("Validando...");
+        console.log(laCompra);
+        if (laCompra.condiciones !== true) {
+            errores.condiciones = 'Es obligatorio aceptar las condiciones';
+        }
+        if (laCompra.metodosDePago === null){
+            errores.metodosDePago = 'Debes seleccionar un método de pago'
+        }
+
+        // Resto de validaciones
+
+        setErrores(errores);
+    };
 
     const handleInputChange = event => {
         const { name, value } = event.target;
-        setCompra({ ...compra, [name]: value });
+        setCompraConValidacion({ ...compra, [name]: value });
+    };
+    
+    const handleCheckChange = event => {
+        const value = event.target.checked;
+        console.log("Condiciones:"+value)
+        setCompraConValidacion({ ...compra, "condiciones": value });
     };
 
     const recuperarTaller = (idTaller) => {
@@ -52,30 +79,34 @@ const PagoCompra = () => {
             });
     };
     const pagar = () => {
-        if (compra.condiciones != 1) {
-            alert("Debes aceptar las condiciones");
-        } else {
-            let pagoFinal = {
-                nombre: compra.nombre,
-                email: compra.email,
-                telefono: compra.telefono,
-                taller: {
-                    id: compra.idtaller
-                },
-                metodoDePago: {
-                    id: compra.metodosDePago
-                }
-            };
-            CompraDataService.createAutenticado(pagoFinal)
-                .then(response => {
-                    console.log(response.data);
-                    irACompraRealizada();
-                })
-                .catch(e => {
-                    // TODO: AQUÍ HAY QUE DECIRLE AL USUARIO QUE HA HABIDO ALGÚN ERROR AL COMPRAR (O QUE NO QUEDAN PLAZAS, LO QUE SEA)
-                    console.log(e);
-                });
+        // Validaciones: Si hay errores no dejo enviar
+        if (Object.keys(errores).length > 0) {
+            console.log('Formulario no válido');
+            alert('Corrige los errores antes de enviar');
+            return;
         }
+
+        let pagoFinal = {
+            nombre: compra.nombre,
+            email: compra.email,
+            telefono: compra.telefono,
+            taller: {
+                id: compra.idtaller
+            },
+            metodoDePago: {
+                id: compra.metodosDePago
+            }
+        };
+        CompraDataService.createAutenticado(pagoFinal)
+            .then(response => {
+                console.log(response.data);
+                irACompraRealizada();
+            })
+            .catch(e => {
+                // TODO: AQUÍ HAY QUE DECIRLE AL USUARIO QUE HA HABIDO ALGÚN ERROR AL COMPRAR (O QUE NO QUEDAN PLAZAS, LO QUE SEA)
+                console.log(e);
+            });
+
     };
 
     const navigate = useNavigate();
@@ -89,7 +120,7 @@ const PagoCompra = () => {
     useEffect(() => {
         recuperarTaller(id);
         recuperarMetodosDePago();
-        setCompra({ ...compra, ["idtaller"]: id });
+        setCompraConValidacion({ ...compra, ["idtaller"]: id });
     }, []);
 
 
@@ -161,6 +192,7 @@ const PagoCompra = () => {
                                         </div>
 
                                     ))}
+                                    {errores.metodosDePago && <span>{errores.metodosDePago}</span>}
 
                                 </div>
 
@@ -181,15 +213,11 @@ const PagoCompra = () => {
                                     <h2>Paypal</h2>
                                     <p>Se te redirigirá a la web de PayPal para realizar el pago y confirmar el pedido.</p>
                                 </div>
-                                <div>
-                                    <h2>Bizum</h2>
-                                    <p>Se te redirigirá </p>
-                                </div>
                                 <br /> */}
                                 <strong>Aceptar condiciones</strong>
-                                <input type="radio" name="condiciones" id="condiciones" value="1" onChange={handleInputChange} />Sí
-                                <input type="radio" name="condiciones" id="condiciones" value="0" onChange={handleInputChange} />No
+                                <input type="checkbox" name="condiciones" id="condiciones" onChange={handleCheckChange} />
                                 <p>He leído y acepto las Condiciones de Compra y la información básica sobre la Política de Privacidad.</p>
+                                {errores.condiciones && <span>{errores.condiciones}</span>}
 
 
 

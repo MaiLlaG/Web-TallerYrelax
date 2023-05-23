@@ -88,73 +88,75 @@ const Cliente = () => {
     };
 
     return (
-        <div className="min-height-85">
-            {actualCliente ? (
-                <div className="edit-form">
-                    <h4>Cliente</h4>
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="nombre">Nombre</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                value={actualCliente.nombre}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="email"
-                                name="email"
-                                value={actualCliente.email}
-                                onChange={handleInputChange}
-                            />
-                        </div>
+        <main className="bg-white p-0">
+            <div className="min-height-85">
+                {actualCliente ? (
+                    <div className="edit-form">
+                        <h4>Cliente</h4>
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="nombre">Nombre</label>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    id="nombre"
+                                    name="nombre"
+                                    value={actualCliente.nombre}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    value={actualCliente.email}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
 
-            
 
-                        <Link
-                            to={"/clientes"} className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
-                            <span className="text-decoration-underline">Volver</span>
-                        </Link>
-                    </form>
 
-                    {actualCliente.id > 0 ?
+                            <Link
+                                to={"/clientes"} className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
+                                <span className="text-decoration-underline">Volver</span>
+                            </Link>
+                        </form>
+
+                        {actualCliente.id > 0 ?
+                            <button
+                                className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
+                                type="submit"
+                                onClick={eliminarCliente}>
+                                <span>Eliminar</span>
+                            </button>
+                            :
+                            <span></span>
+                        }
+
                         <button
                             className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
                             type="submit"
-                            onClick={eliminarCliente}>
-                            <span>Eliminar</span>
+                            onClick={enviarCliente}>
+                            {actualCliente.id > 0 ?
+                                <span>Actualizar</span>
+                                :
+                                <span>Añadir</span>
+                            }
                         </button>
-                        :
-                        <span></span>
-                    }
 
-                    <button
-                        className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
-                        type="submit"
-                        onClick={enviarCliente}>
-                        {actualCliente.id > 0 ?
-                            <span>Actualizar</span>
-                            :
-                            <span>Añadir</span>
-                        }
-                    </button>
-
-                    <p>{message}</p>
-                </div>
-            ) : (
-                <div>
-                    <br />
-                    <p>Haz click en un cliente...</p>
-                </div>
-            )}
-        </div>
+                        <p>{message}</p>
+                    </div>
+                ) : (
+                    <div>
+                        <br />
+                        <p>Haz click en un cliente...</p>
+                    </div>
+                )}
+            </div>
+        </main>
     );
 
 

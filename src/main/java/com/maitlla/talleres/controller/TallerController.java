@@ -20,7 +20,7 @@ public class TallerController {
 
     @GetMapping
     public List<Taller> getTalleres() {
-        return tallerRepository.findAll();
+        return tallerRepository.findAll().stream().filter(t->t.getNplazas()>t.getPlazasCompradas()).toList();
     }
 
     @GetMapping("/{id}")

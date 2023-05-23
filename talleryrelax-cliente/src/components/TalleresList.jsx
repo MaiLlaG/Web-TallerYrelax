@@ -10,16 +10,10 @@ const TalleresList = () => {
     const [talleres, setTalleres] = useState([]);
     const [actualTaller, setActualTaller] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
         recuperarTalleres();
     }, []);
-
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
 
     const recuperarTalleres = () => {
         TallerDataService.getAll()
@@ -43,17 +37,6 @@ const TalleresList = () => {
     const setActiveTaller = (taller, index) => {
         setActualTaller(taller);
         setActualIndex(index);
-    };
-
-    const findByName = () => {
-        TallerDataService.findByName(buscarxNombre)
-            .then(response => {
-                setTalleres(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
     };
 
     const usuario = useContext(UsuarioContext);
@@ -121,7 +104,12 @@ const TalleresList = () => {
                                 </div>
                             </div>
                             <div className="colorFondoTallerColor">
-                                <img className="imgDetalle" src={require("../img/Origami4.png")} alt={actualTaller.nombre} />
+                            {actualTaller.imagen ?
+                                                <img className="imgDetalle" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                                :
+                                                <img className="imgDetalle" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
+                                            }
+                               {/* <img className="imgDetalle" src={require("../img/Origami4.png")} alt={actualTaller.nombre} /> */} 
                             </div>
                         </div>
                         <div>
@@ -166,7 +154,7 @@ const TalleresList = () => {
                                             {taller.imagen ?
                                                 <img src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
                                                 :
-                                                <img src={require("../img/taller-sin-imagen.png")} alt={taller.nombre} />
+                                                <img src={require("../img/sin-imagen.png")} alt={taller.nombre} />
                                             }
                                             <figcaption>
                                                 <h1 className="circuloText">{taller.nombre}</h1>

@@ -13,7 +13,6 @@ import Cliente from "./components/Cliente";
 import TrabajadoresList from "./components/TrabajadoresList";
 import Trabajador from "./components/Trabajador";
 import MensajesList from "./components/MensajesList";
-import BuscarxNombre from "./components/BuscarxNombre";
 
 
 function App() {
@@ -21,14 +20,8 @@ function App() {
     <div className="bg-secondary bg-opacity-10">
       <nav className="navbar navbar-expand-xl  navbar-dark gap-1 justify-content-center bg-white shadow d-flex mb-5 pt-0 ps-5">
         <div>
-          <h3 className="mt-1 ps-5 font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYelax</h3>
+          <h3 className="mt-1 ps-5 font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYrelax</h3>
         </div>
-
-        {/*  
-        <li className="list-style-none">
-          <BuscarxNombre />
-        </li>
-        */}
 
         <ul className="nav">
           <li className="nav-item mx-5">

@@ -9,16 +9,10 @@ const ClientesList = () => {
     const [clientes, setClientes] = useState([]);
     const [actualCliente, setActualCliente] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
         recuperarClientes();
     }, []);
-
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
 
     const recuperarClientes = () => {
         ClienteDataService.getAll()
@@ -34,17 +28,6 @@ const ClientesList = () => {
     const setActiveCliente = (cliente, index) => {
         setActualCliente(cliente);
         setActualIndex(index);
-    };
-
-    const findByName = () => {
-        ClienteDataService.findByName(buscarxNombre)
-            .then(response => {
-                setClientes(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
     };
 
     return (

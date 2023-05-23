@@ -1,27 +1,23 @@
 import http from "../http-common";
 
 const getAll = () => {
-  return http.get("/gestion/trabajadores");
+  return http.get("/gestion/mensajes");
 };
 
 const get = id => {
-  return http.get(`/gestion/trabajadores/${id}`);
+  return http.get(`/gestion/mensajes/${id}`);
 };
 
 const create = data => {
-  return http.post("/gestion/trabajadores", data);
+  return http.post("/gestion/mensajes", data);
 };
 
 const update = (id, data) => {
-  return http.put(`/gestion/trabajadores/${id}`, data);
+  return http.put(`/gestion/mensajes/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/gestion/trabajadores/${id}`);
-};
-
-const findByName = nombre => {
-  return http.get(`/gestion/trabajadores?nombre=${nombre}`);
+  return http.delete(`/gestion/mensajes/${id}`);
 };
 
 const MensajeDataService = { 
@@ -29,8 +25,7 @@ const MensajeDataService = {
   get,
   create,
   update,
-  remove,
-  findByName,
+  remove
 };
 
 export default MensajeDataService; 

@@ -3,21 +3,16 @@ import CompraDataService from "../services/CompraDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
+import '../views/ComprasList.css';
 
 const ComprasList = () => {
     const [compras, setCompras] = useState([]);
     const [actualCompra, setActualCompra] = useState(null);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     useEffect(() => {
         recuperarCompras();
     }, []);
-
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
 
     const recuperarCompras = () => {
         CompraDataService.getAllAutenticado()
@@ -43,39 +38,8 @@ const ComprasList = () => {
         setActualIndex(index);
     };
 
-    const findByName = () => {
-        CompraDataService.findByName(buscarxNombre)
-            .then(response => {
-                setCompras(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };
-
     return (
         <div className="list row">
-            {/* 
-            <div className="col-md-8">
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar por nombre"
-                        value={buscarxNombre}
-                        onChange={onChangeBuscarxNombre}
-                    />
-                    <div className="input-group-append">
-                        <button
-                            className="btn"
-                            type="button" onClick={findByName}>
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
-            */}
 
             <div className="col-md-6">
                 {actualCompra ? (
@@ -83,48 +47,46 @@ const ComprasList = () => {
                         <h4>Compra</h4>
                         <div>
                             <label>
-                                <strong>Taller:</strong>
+                                <p>Taller: </p>
                             </label>
-                            {actualCompra.taller.nombre}
+                            <p>{actualCompra.taller.nombre}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Importe:</strong>
+                                <p>Importe: </p>
                             </label>
-                            {actualCompra.importeCompra}
+                            <p>{actualCompra.importeCompra}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Fecha:</strong>
+                                <p>Fecha: </p>
                             </label>
-                            {actualCompra.fechaCompra == null ? null : actualCompra.fechaCompra.substring(0, 10)}
+                            <p>{actualCompra.fechaCompra == null ? null : actualCompra.fechaCompra.substring(0, 10)}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Nombre:</strong>
+                                <p>Nombre: </p>
                             </label>
-                            {actualCompra.nombre}
+                            <p>{actualCompra.nombre}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Email:</strong>
+                                <p>Email: </p>
                             </label>
-                            {actualCompra.email}
+                            <p>{actualCompra.email}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Telefono:</strong>
+                                <p>Telefono: </p>
                             </label>
-                            {actualCompra.telefono}
+                            <p>{actualCompra.telefono}</p>
                         </div>
                         <div>
                             <label>
-                                <strong>Método de pago:</strong>
+                                <p>Método de pago: </p>
                             </label>
-                            {actualCompra.metodoDePago.nombre}
+                            <p>{actualCompra.metodoDePago.nombre}</p>
                         </div>
-
-
 
                         <Link
                             onClick={() => setActiveCompra(null, -1)} className="btn btn-4 btn-holder hover-border-7">

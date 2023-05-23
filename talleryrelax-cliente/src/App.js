@@ -25,12 +25,6 @@ import UsuarioContext from "./components/Usuario";
 function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [buscarxNombre, setBuscarxNombre] = useState("");
-
-  const onChangeBuscarxNombre = e => {
-    const buscarxNombre = e.target.value;
-    setBuscarxNombre(buscarxNombre);
-  };
 
   useEffect(() => {
     //const auth = getAuth();
@@ -66,17 +60,6 @@ function App() {
   console.log(token);
 
 
-  const findByName = () => {
-    CompraDataService.findByName(buscarxNombre)
-      .then(response => {
-        setCompras(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
   return (
     <UsuarioContext.Provider value={usuario}>
       <div>
@@ -98,32 +81,23 @@ function App() {
               </Link>
             </li>
             <div className="franjaNav">
-              <div className="buscadorAlineado">
-                <input
-                  className="inputBuscador"
-                  type="text"
-                  placeholder="Buscar por nombre"
-                  value={buscarxNombre}
-                  onChange={onChangeBuscarxNombre}
-                />
-                <button
-                  className="buscador"
-                  type="button" onClick={findByName}>
-                  <img className="iconoSearch" src={require("./img/iconoY-search.png")} alt="iconoSearch" />
-                </button>
-              </div>
+              
             </div>
             <li className="sizeP">
               <Login />
             </li>
-            <li className="">
-              <Link to={"/compras"}>
-                <img className="iconoCliente" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
-                <div>
-                  <span className="textoLogo">Mis compras</span>
-                </div>
-              </Link>
-            </li>
+            {usuario.user ?
+              <li className="" >
+                <Link to={"/compras"}>
+                  <img className="iconoCliente" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
+                  <div>
+                    <span className="textoLogo">Mis compras</span>
+                  </div>
+                </Link>
+              </li>
+              :
+              <li></li>
+            }
           </div>
         </nav>
 
@@ -157,7 +131,9 @@ function App() {
               <p className="textoGris">Política de cookies</p>
             </div>
             <hr className="lineaF" />
-            <p className="staff footerFuente">STAFF</p>
+            <div>
+              <a href="http://localhost:3001/gestion" target="_blank"><p className="textoGris text-opacity">Gestión</p></a>
+            </div>
           </div>
         </footer>
 

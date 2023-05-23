@@ -20,17 +20,12 @@ const remove = id => {
   return http.delete(`/gestion/clientes/${id}`);
 };
 
-const findByName = nombre => {
-  return http.get(`/gestion/clientes?nombre=${nombre}`);
-};
-
 const ClienteDataService = { 
   getAll,
   get,
   create,
   update,
-  remove,
-  findByName,
+  remove
 };
 
 export default ClienteDataService; 

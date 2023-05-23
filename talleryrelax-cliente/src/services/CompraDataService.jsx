@@ -25,16 +25,11 @@ const get = id => {
   return http.get(`/gestion/compras/${id}`);
 };
 
-const findByName = nombre => {
-  return http.get(`/publico/talleres?nombre=${nombre}`);
-};
-
 const CompraDataService = { 
   getAllAutenticado,
   createAutenticado,
   getAll,
-  get,
-  findByName,
+  get
 };
 
 export default CompraDataService; 

@@ -14,13 +14,13 @@ const MensajesList = () => {
         nombre: "",
         email: "",
         texto: "",
+        fecha: null
         //submitted: false
     };
 
     const [mensajes, setMensajes] = useState([]);
     const [actualMensaje, setActualMensaje] = useState(mensajeState);
     const [actualIndex, setActualIndex] = useState(-1);
-    const [buscarxNombre, setBuscarxNombre] = useState("");
 
     const getMensaje = id => {
         MensajeDataService.get(id)
@@ -43,11 +43,6 @@ const MensajesList = () => {
         recuperarMensajes();
     }, []);
 
-    const onChangeBuscarxNombre = e => {
-        const buscarxNombre = e.target.value;
-        setBuscarxNombre(buscarxNombre);
-    };
-
     const recuperarMensajes = () => {
         MensajeDataService.getAll()
             .then(response => {
@@ -64,19 +59,8 @@ const MensajesList = () => {
         setActualIndex(index);
     };
 
-    const findByName = () => {
-        MensajeDataService.findByName(buscarxNombre)
-            .then(response => {
-                setMensajes(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };
-
     return (
-        <div class="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
+        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
             <div className="col-md-4 px-3">
                 <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de mensajes de <span className="text-primary fw-normal">Contacto</span></h4>
                 <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
@@ -101,6 +85,13 @@ const MensajesList = () => {
                                 <p className="text-secondary font-Raleway letter-spacing-2">Nombre: </p>
                             </label>
                             <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualMensaje.nombre}</p>
+                        </div>
+
+                        <div>
+                            <label>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Fecha: </p>
+                            </label>
+                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualMensaje.fecha}</p>
                         </div>
 
                         <div>

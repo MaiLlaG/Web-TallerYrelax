@@ -20,17 +20,12 @@ const remove = id => {
   return http.delete(`/gestion/trabajadores/${id}`);
 };
 
-const findByName = nombre => {
-  return http.get(`/gestion/trabajadores?nombre=${nombre}`);
-};
-
 const TrabajadorDataService = { 
   getAll,
   get,
   create,
   update,
-  remove,
-  findByName,
+  remove
 };
 
 export default TrabajadorDataService; 

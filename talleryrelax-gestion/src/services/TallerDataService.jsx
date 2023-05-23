@@ -26,7 +26,7 @@ const crearFormData = (data) => {
   formData.append("diasxsemana", data.diasxsemana);
   formData.append("nplazas", data.nplazas);
   formData.append("plazasCompradas", data.plazasCompradas);
-  formData.append("fechainicio", data.fechainicio.toISOString().slice(0, -5));
+  formData.append("fechainicio", data.fechainicio == null ? null : data.fechainicio.toLocaleDateString('es-ES'));
   formData.append("dificultad", data.dificultad);
   //formData.append("imagen", data.imagen);
 
@@ -59,17 +59,12 @@ const remove = id => {
   return http.delete(`/gestion/talleres/${id}`);
 };
 
-const findByName = nombre => {
-  return http.get(`/gestion/talleres?nombre=${nombre}`);
-};
-
 const TallerDataService = {
   getAll,
   get,
   create,
   update,
-  remove,
-  findByName,
+  remove
 };
 
 export default TallerDataService; 

@@ -20,17 +20,12 @@ const remove = id => {
   return http.delete(`/publico/talleres/${id}`);
 };
 
-const findByName = nombre => {
-  return http.get(`/publico/talleres?nombre=${nombre}`);
-};
-
 const TallerDataService = { //cambie TallerService por TallerDataService
   getAll,
   get,
   create,
   update,
-  remove,
-  findByName,
+  remove
 };
 
 export default TallerDataService; //cambie TallerService por TallerDataService
