@@ -21,36 +21,48 @@ const Trabajador = () => {
     const [errores, setErrores] = useState({});// Validaciones: Errores
 
     // Validaciones: Comprobar errores al cambiar el estado
-    const setActualTrabajadorConValidacion = elTaller => {
-        setActualTrabajador(elTaller);
+    const setActualTrabajadorConValidacion = elTrabajador => {
+        setActualTrabajador(elTrabajador);
 
+        validarFormulario(elTrabajador);
+    };
+
+    const validarFormulario = elTrabajador => {
         const errores = {};
+        let hayErrores = false;
 
         console.log("Validando...");
-        console.log(elTaller);
+        console.log(elTrabajador);
 
-
-        if (elTaller.nombre.trim() === '') {
+        if (estaVacio(elTrabajador.nombre)) {
             errores.nombre = 'Es obligatorio especificar un nombre';
+            hayErrores = true;
         }
 
-        if (elTaller.email.trim() === '') {
-            errores.email = 'Es obligatorio especificar un email';
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            errores.email = 'El email ingresado no es válido';
+        if (noEsEmail(elTrabajador.email)) {
+            errores.email = 'Es obligatorio especificar un email válido';
+            hayErrores = true;
         }
 
-        if (elTaller.puesto.trim() === '') {
+        if (estaVacio(elTrabajador.puesto)) {
             errores.puesto = 'Es obligatorio especificar un puesto';
+            hayErrores = true;
         }
 
         setErrores(errores);
-    };
+        return hayErrores;
+    }
+    const noEsEmail = valor => {
+        return (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(valor));
+    } 
+    const estaVacio = valor => {
+        return (valor == null || valor.trim() === '');
+    }
 
     const getTrabajador = id => {
         TrabajadorDataService.get(id)
             .then(response => {
-                setActualTrabajadorConValidacion(response.data);
+                setActualTrabajador(response.data);
                 console.log(response.data);
             })
             .catch(e => {
@@ -70,7 +82,7 @@ const Trabajador = () => {
 
     const enviarTrabajador = () => {
         // Validaciones: Si hay errores no dejo enviar
-        if (Object.keys(errores).length > 0) {
+        if (validarFormulario(actualTrabajador)) {
             console.log('Formulario no válido');
             alert('Corrige los errores antes de enviar');
             return;
@@ -171,7 +183,7 @@ const Trabajador = () => {
 
                                 <button
                                     className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27"
-                                    type="submit"
+                                    type="button"
                                     onClick={enviarTrabajador}>
                                     {actualTrabajador.id > 0 ?
                                         <span className="font-Raleway letter-spacing-2">Actualizar</span>
@@ -183,7 +195,7 @@ const Trabajador = () => {
                                 {actualTrabajador.id > 0 ?
                                     <button
                                         className="btn btn-dark border-white mt-2 mb-3 rounded-0 min-w-bt-27"
-                                        type="submit"
+                                        type="button"
                                         onClick={eliminarTrabajador}>
                                         <span className="font-Raleway letter-spacing-2">Eliminar</span>
                                     </button>

@@ -26,7 +26,7 @@ const crearFormData = (data) => {
   formData.append("diasxsemana", data.diasxsemana);
   formData.append("nplazas", data.nplazas);
   formData.append("plazasCompradas", data.plazasCompradas);
-  formData.append("fechainicio", data.fechainicio == null ? null : data.fechainicio.toLocaleDateString('es-ES'));
+  formData.append("fechainicio", data.fechainicio == null ? null : data.fechainicio.toISOString().slice(0, -5));
   formData.append("dificultad", data.dificultad);
   //formData.append("imagen", data.imagen);
 

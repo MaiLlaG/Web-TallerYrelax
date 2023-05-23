@@ -23,28 +23,43 @@ const Cliente = () => {
     const setActualClienteConValidacion = elCliente => {
         setActualCliente(elCliente);
 
+        validarFormulario(elCliente);
+    };
+
+    const validarFormulario = elCliente => {
         const errores = {};
+        let hayErrores = false;
 
         console.log("Validando...");
         console.log(elCliente);
 
-        if (elCliente.nombre.trim() === '') {
+        if (estaVacio(elCliente.nombre)) {
             errores.nombre = 'Es obligatorio especificar un nombre';
+            hayErrores = true;
         }
 
-        if (elCliente.email.trim() === '') {
-            errores.email = 'Es obligatorio especificar un email';
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            errores.email = 'El email ingresado no es válido';
+        if (noEsEmail(elCliente.email)) {
+            errores.email = 'Es obligatorio especificar un email válido';
+            hayErrores = true;
         }
 
         setErrores(errores);
+        return hayErrores;
     };
+    const noEsEmail = valor => {
+        return (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(valor));
+    }
+    const noEsTelefono = valor => {
+        return (!/^[0-9]{9}$/.test(valor));
+    }    
+    const estaVacio = valor => {
+        return (valor == null || valor.trim() === '');
+    }
 
     const getCliente = id => {
         ClienteDataService.get(id)
             .then(response => {
-                setActualClienteConValidacion(response.data);
+                setActualCliente(response.data);
                 console.log(response.data);
             })
             .catch(e => {
@@ -64,7 +79,7 @@ const Cliente = () => {
 
     const enviarCliente = () => {
         // Validaciones: Si hay errores no dejo enviar
-        if (Object.keys(errores).length > 0) {
+        if (validarFormulario(actualCliente)) {
             console.log('Formulario no válido');
             alert('Corrige los errores antes de enviar');
             return;
@@ -153,7 +168,7 @@ const Cliente = () => {
 
                                 <button
                                     className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27"
-                                    type="submit"
+                                    type="button"
                                     onClick={enviarCliente}>
                                     {actualCliente.id > 0 ?
                                         <span className="font-Raleway letter-spacing-2">Actualizar</span>
@@ -165,7 +180,7 @@ const Cliente = () => {
                                 {actualCliente.id > 0 ?
                                     <button
                                         className="btn btn-dark border-white mt-2 mb-3 rounded-0 min-w-bt-27"
-                                        type="submit"
+                                        type="button"
                                         onClick={eliminarCliente}>
                                         <span className="font-Raleway letter-spacing-2">Eliminar</span>
                                     </button>

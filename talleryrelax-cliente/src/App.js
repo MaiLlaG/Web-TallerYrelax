@@ -7,15 +7,11 @@ import './index.css';
 
 import TallerYrelax from "./components/TallerYrelax";
 import TalleresList from "./components/TalleresList";
-import Taller from "./components/Taller";
-
-import TallerAdd from "./components/TallerAdd";
 
 import Contacto from "./components/Contacto";
 import Login from "./components/Login";
 import ComprasList from "./components/ComprasList";
 import PagoCompra from "./components/PagoCompra";
-import PasarelaPago from "./components/PasarelaPago";
 import PagoRealizado from "./components/PagoRealizado";
 
 import { auth } from './firebase';
@@ -68,17 +64,17 @@ function App() {
           <div className="collapse navbar-collapse d-flex flex-wrap justify-content-center">
             <li className="nav-item nav-item my-2 mx-5">
               <Link to={"/"} className="">
-                <span className="fs-5"> TallerYrelax </span>
+                <span className="text-shadow fs-5"> TallerYrelax </span>
               </Link>
             </li>
             <li className="nav-item nav-item my-2 mx-5">
               <Link to={"/talleres"} className="">
-                <span className="fs-5"> Talleres </span>
+                <span className="text-shadow fs-5"> Talleres </span>
               </Link>
             </li>
             <li className="nav-item nav-item my-2 mx-5">
               <Link to={"/contacto"} className="">
-                <span className="fs-5"> Contacto </span>
+                <span className="text-shadow fs-5"> Contacto </span>
               </Link>
             </li>
             <li className="nav-item mt-2 mb-1 ms-4 me-2">
@@ -89,55 +85,58 @@ function App() {
                 <Link to={"/compras"}>
                   <img className="iconoCliente ms-4" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
                   <div>
-                    <span>Mis compras</span>
+                    <span className="text-shadow">Mis compras</span>
                   </div>
                 </Link>
               </li>
               :
-              <li></li>
+              <li>
+                <li className="nav-item ms-5" >
+                  <Link to={"/compras"}>
+                    <img className="iconoCliente mt-1 mb-1 ms-4" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
+                    <div>
+                      <span className="text-shadow">Mis compras</span>
+                    </div>
+                  </Link>
+                </li>
+              </li>
             }
           </div>
         </nav>
 
-        <div className="">
+        <div className="bg-arena">
           <Routes>
             <Route path="/" element={<TallerYrelax />} />
             <Route path="/talleres" element={<TalleresList />} />
-            <Route path="/talleres/:id" element={<Taller />} />
-
-            <Route path="/nuevoTaller" element={<TallerAdd />} />
-
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/compras" element={<ComprasList />} />
             <Route path="/compras/:id" element={<PagoCompra />} />
-            <Route path="/pasarelaPago" element={<PasarelaPago />} />
             <Route path="/pagoRealizado" element={<PagoRealizado />} />
           </Routes>
         </div>
 
-        <footer>
-          <div>
+        <div className="bg-black pt-1">
+          <div className="container">
+            <footer className="py-3 my-3">
+              <ul className="nav justify-content-center border-bottom pb-3 mb-3">
+                <li className="nav-item"><a href="#" className="nav-link px-2 text-light mb-2">PAGO SEGURO</a></li>
+              </ul>
+              <p className="text-center text-light mt-4 mb-4">Política de protección de datos</p>
+              <p className="text-center text-light mt-3 mb-0">Política de cookies</p>
+              <p className="text-center text-muted mt-2 mb-0">
+                <a href="http://localhost:3001/gestion" target="_blank">
+                  <span className="m-1 text-dark fw-bold">*</span>
+                </a>
+              </p>
+            </footer>
+          </div>
+          <div className="bg-arena py-2">
             <p className="text-secondary text-center fs-6 mt-2">© Maite Llamas García - TallerYrelax</p>
           </div>
-          <div className="footerFondo">
-            <div>
-              <p className="text-secondary">PAGO SEGURO</p>
-            </div>
-            <div>
-              <p className="text-secondary">Política de protección de datos</p>
-            </div>
-            <div>
-              <p className="text-secondary">Política de cookies</p>
-            </div>
-            <div>
-              <a href="http://localhost:3001/gestion" target="_blank"><p className="m-1 text-dark text-opacity">*</p></a>
-            </div>
-          </div>
-        </footer>
-
+        </div>
       </div>
-    </UsuarioContext.Provider>
 
+    </UsuarioContext.Provider>
 
   );
 }

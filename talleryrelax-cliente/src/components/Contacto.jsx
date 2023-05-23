@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MensajeDataService from '../services/MensajeDataService'
 import '../App.css';
@@ -15,56 +14,69 @@ const Contacto = () => {
     };
 
     const [contacto, setContacto] = useState(contactoState);
-    const [submitted, setSubmitted] = useState(false);
     const [errores, setErrores] = useState({});// Validaciones: Errores
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setContactoConValidacion = elContacto => {
         setContacto(elContacto);
+        validarFormulario(elContacto);
+    };
 
+    const validarFormulario = elContacto => {
+        
         const errores = {};
+        let hayErrores = false;
 
         console.log("Validando...");
         console.log(elContacto);
 
-        if (elContacto.nombre.trim() === '') {
+        if (estaVacio(elContacto.nombre)) {
             errores.nombre = 'Es obligatorio especificar un nombre';
+            hayErrores = true;
         }
 
-        if (elContacto.email.trim() === '') {
-            errores.email = 'Es obligatorio especificar un email';
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            errores.email = 'El email ingresado no es válido';
+        if (noEsEmail(elContacto.email)) {
+            errores.email = 'Es obligatorio especificar un email válido';
+            hayErrores = true;
         }
 
-        if (elContacto.telefono.trim() === '') {
-            errores.telefono = 'Es obligatorio especificar un teléfono';
-        } else if (!/^\+(?:[0-9] ?){6,14}[0-9]$/.test(telefono)) {
-            errores.telefono = 'El teléfono ingresado no es válido';
-        }
+        if (noEsTelefono(elContacto.telefono)) {
+            errores.telefono = 'Es obligatorio especificar un teléfono y debe ser un número de teléfono válido (9 dígitos)';
+            hayErrores = true;
+        } 
 
-        if (elContacto.texto.trim() === '') {
+        if (estaVacio(elContacto.texto)) {
             errores.texto = 'Es obligatorio ingresar un mensaje';
+            hayErrores = true;
         }
 
         setErrores(errores);
+        return hayErrores;
     };
+
+    const noEsEmail = valor => {
+        return (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(valor));
+    }
+    const noEsTelefono = valor => {
+        return (!/^[0-9]{9}$/.test(valor));
+    }    
+    const estaVacio = valor => {
+        return (valor == null || valor.trim() === '');
+    }
 
     const handleInputChange = event => {
         const { name, value } = event.target;
         setContactoConValidacion({ ...contacto, [name]: value });
     };
 
-    const entrarContacto = () => {
-        var data = {
-            nombre: contacto.nombre,
-            email: contacto.email,
-            telefono: contacto.telefono,
-            texto: contacto.texto,
-        };
-    };
-
     const enviar = () => {
+        // Validaciones: Si hay errores no dejo enviar
+        if (validarFormulario(contacto)) {
+            console.log('Formulario no válido');
+            alert('Corrige los errores antes de enviar');
+            return;
+        }
+
         MensajeDataService.create(contacto)
             .then(response => {
                 console.log(response.data);
@@ -161,7 +173,7 @@ const Contacto = () => {
 
                                 <button
                                     className="btn btn-primary border-white mt-2 mb-3 rounded-0 min-w-bt-27"
-                                    type="submit"
+                                    type="button"
                                     onClick={enviar}>
                                     <span className="font-Raleway letter-spacing-2">Enviar</span>
                                 </button>
