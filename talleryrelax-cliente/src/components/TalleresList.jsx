@@ -44,7 +44,7 @@ const TalleresList = () => {
 
     return (
         <div className="">
-            
+
             <main className="colorArena">
                 {actualTaller ? (
                     <div>
@@ -104,20 +104,22 @@ const TalleresList = () => {
                                 </div>
                             </div>
                             <div className="colorFondoTallerColor">
-                            {actualTaller.imagen ?
-                                                <img className="imgDetalle" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
-                                                :
-                                                <img className="imgDetalle" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
-                                            }
-                               {/* <img className="imgDetalle" src={require("../img/Origami4.png")} alt={actualTaller.nombre} /> */} 
+                                {actualTaller.imagen ?
+                                    <img className="imgDetalle" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                    :
+                                    <img className="imgDetalle" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
+                                }
+                                {/* <img className="imgDetalle" src={require("../img/Origami4.png")} alt={actualTaller.nombre} /> */}
                             </div>
                         </div>
                         <div>
                             <div className="infoTallerColor">
                                 {usuario.user ?
                                     (actualTaller.nplazas - actualTaller.plazasCompradas > 0) ?
-                                        <Link to={"/compras/" + actualTaller.id} className="nav-link btn btn-4 btn-holder hover-border-7">
-                                            Comprar
+                                        <Link
+                                            to={"/compras/" + actualTaller.id}
+                                            className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27">
+                                            <span className="font-Raleway letter-spacing-2">Comprar</span>
                                         </Link>
                                         :
                                         <div>
@@ -133,11 +135,12 @@ const TalleresList = () => {
                                     </div>
                                 }
 
-
                                 <Link
-                                    onClick={() => setActiveTaller(null, -1)} className="margin_btn_volver btn-4 btn-holder hover-border-7">
-                                    Volver
+                                    onClick={() => setActiveTaller(null, -1)}
+                                    className="btn btn-outline-light border-dark text-black mt-2 mb-3 rounded-0 min-w-bt-27">
+                                    <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                                 </Link>
+
                             </div>
                         </div>
                     </div>

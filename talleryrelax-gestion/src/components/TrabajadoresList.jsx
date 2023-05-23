@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import TrabajadorDataService from "../services/TrabajadorDataService";
 import '../App.css';
 import '../index.css';
-import '../views/TrabajadoresList.css';
 
 const TrabajadoresList = () => {
     const [trabajadores, setTrabajadores] = useState([]);
@@ -93,7 +92,6 @@ const TrabajadoresList = () => {
                     </div>
                 ) : (
                     <div>
-                        <br />
                         <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un trabajador...</p>
                     </div>
                 )}

@@ -7,7 +7,6 @@ import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import '../App.css';
 import '../index.css';
-import '../views/Taller.css';
 
 registerLocale("es", es); // Para poner idioma español en el DatePicker
 
@@ -35,20 +34,50 @@ const Taller = () => {
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setActualTallerConValidacion = elTaller => {
-        setActualTaller(elTaller);        
-        
+        setActualTaller(elTaller);
+
         const errores = {};
 
         console.log("Validando...");
         console.log(elTaller);
+
         if (elTaller.nombre.trim() === '') {
-            errores.nombre = 'El nombre es requerido';
-        }
-        if (elTaller.fechainicio === null) {
-            errores.fechainicio = 'La fecha de inicio es requerida';
+            errores.nombre = 'Es obligatorio especificar un nombre.';
         }
 
-        // Resto de validaciones
+        if (elTaller.descripcion.trim() === '') {
+            errores.descripcion = 'Es obligatorio especificar una descripción';
+        }
+
+        if (elTaller.precio.trim() === '') {
+            errores.precio = 'Es obligatorio especificar un precio';
+        }
+
+        if (elTaller.durasemanas.trim() === '') {
+            errores.durasemanas = 'Es obligatorio especificar las semanas de duración';
+        }
+
+        if (elTaller.diasxsemana.trim() === '') {
+            errores.diasxsemana = 'Es obligatorio especificar cuantos días a la semana se imparte';
+        }
+
+        if (elTaller.nplazas.trim() === '') {
+            errores.nplazas = 'Es obligatorio especificar el número de plazas';
+        }
+
+        if (elTaller.plazasCompradas.trim() === '') {
+            errores.plazasCompradas = 'Es obligatorio especificar las plazas ya compradas';
+        }
+
+        if (elTaller.fechainicio === null) {
+            errores.fechainicio = 'Es obligatorio especificar la fecha de inicio';
+        }
+
+        if (elTaller.dificultad.trim() === '') {
+            errores.dificultad = 'Es obligatorio especificar el nivel de dificultad';
+        }
+
+        // imagen elegir necesario
 
         setErrores(errores);
     };
@@ -91,7 +120,7 @@ const Taller = () => {
             console.log('Formulario no válido');
             alert('Corrige los errores antes de enviar');
             return;
-        } 
+        }
 
         console.log(actualTaller);
         if (actualTaller.id > 0) {
@@ -100,7 +129,6 @@ const Taller = () => {
             crearTaller();
         }
     }
-
 
     const crearTaller = () => {
         TallerDataService.create(actualTaller)
@@ -146,8 +174,9 @@ const Taller = () => {
                 {actualTaller ? (
                     <div className="form p-3">
                         <form>
-                            <div className="form-group form-group-width d-flex flex-wrap flex-column align-content-center mt-1 p-3">
-                                <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Taller</h4>
+                            <div className="form-group d-flex flex-wrap flex-column align-content-center mt-1 p-3">
+                                <h4 className="max-w-35 w-40 font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Taller</h4>
+                               
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="nombre">Nombre</label>
                                     <input
@@ -158,8 +187,9 @@ const Taller = () => {
                                         value={actualTaller.nombre}
                                         onChange={handleInputChange}
                                     />
-                                    {errores.nombre && <span>{errores.nombre}</span>}
+                                    {errores.nombre && <span className="text-danger text-valida fw-light">{errores.nombre}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2 mb-3" htmlFor="descripcion">Descripción</label>
                                     <textarea
@@ -170,7 +200,9 @@ const Taller = () => {
                                         value={actualTaller.descripcion == null ? "" : actualTaller.descripcion}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.descripcion && <span className="text-danger text-valida fw-light">{errores.descripcion}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="precio">Precio</label>
                                     <input
@@ -181,7 +213,9 @@ const Taller = () => {
                                         value={actualTaller.precio}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.precio && <span className="text-danger text-valida fw-light">{errores.precio}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="durasemanas">Semanas de duración</label>
                                     <input
@@ -192,7 +226,9 @@ const Taller = () => {
                                         value={actualTaller.durasemanas}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.durasemanas && <span className="text-danger text-valida fw-light">{errores.durasemanas}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="diasxsemana">Días a la semana</label>
                                     <input
@@ -203,7 +239,9 @@ const Taller = () => {
                                         value={actualTaller.diasxsemana}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.diasxsemana && <span className="text-danger text-valida fw-light">{errores.diasxsemana}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="nplazas">Número de plazas</label>
                                     <input
@@ -214,7 +252,9 @@ const Taller = () => {
                                         value={actualTaller.nplazas}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.nplazas && <span className="text-danger text-valida fw-light">{errores.nplazas}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="plazasCompradas">Plazas compradas</label>
                                     <input
@@ -225,7 +265,9 @@ const Taller = () => {
                                         value={actualTaller.plazasCompradas}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.plazasCompradas && <span className="text-danger text-valida fw-light">{errores.plazasCompradas}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="fechainicio">Fecha de inicio</label>
                                     <DatePicker
@@ -234,9 +276,10 @@ const Taller = () => {
                                         id="fechainicio"
                                         locale={es}
                                         selected={actualTaller.fechainicio} onChange={(date) => fechaInicioChanged(date)}
-                                    />                                    
-                                    { errores.fechainicio && <span>{ errores.fechainicio}</span>}
+                                    />
+                                    {errores.fechainicio && <span className="text-danger text-valida fw-light">{errores.fechainicio}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2" htmlFor="dificultad">Dificultad</label>
                                     <input
@@ -247,7 +290,9 @@ const Taller = () => {
                                         value={actualTaller.dificultad}
                                         onChange={handleInputChange}
                                     />
+                                    {errores.dificultad && <span className="text-danger text-valida fw-light">{errores.dificultad}</span>}
                                 </div>
+
                                 <div className="form-group my-3">
                                     <label className="font-Raleway-bold letter-spacing-2 mb-3" htmlFor="imagen">Imagen</label>
                                     <input
@@ -262,12 +307,12 @@ const Taller = () => {
                                         typeof actualTaller.imagen.name == 'string' ?
                                             <p>Seleccionada: {actualTaller.imagen.name}</p>
                                             :
-                                            <div className="d-flex flex-column align-content-center">
-                                                <img className="w-75 mt-4 ms-5 rounded rounded-circle" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                            <div className="d-flex flex-wrap flex-column align-content-center">
+                                                <img className="w-circle-img mt-4 rounded rounded-circle" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
                                             </div>
                                         :
-                                        <div className="d-flex flex-column align-content-center">
-                                            <img className="w-50 mt-4 ms-5 rounded rounded-circle" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
+                                        <div className="d-flex flex-wrap flex-column align-content-center">
+                                            <img className="w-circle-img mt-4 rounded rounded-circle" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
                                         </div>
                                     }
                                 </div>
@@ -287,7 +332,7 @@ const Taller = () => {
 
                                 {actualTaller.id > 0 ?
                                     <button
-                                        className="btn btn-dark border-dark mt-2 mb-3 rounded-0 min-w-bt-27"
+                                        className="btn btn-dark border-white mt-2 mb-3 rounded-0 min-w-bt-27"
                                         type="button"
                                         onClick={eliminarTaller}>
                                         <span className="font-Raleway letter-spacing-2">Eliminar</span>
@@ -301,13 +346,13 @@ const Taller = () => {
                                     className="btn btn-outline-light border-dark text-black mt-2 mb-3 rounded-0 min-w-bt-27">
                                     <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                                 </Link>
+
                             </div>
                         </form>
                     </div>
                 ) : (
                     <div>
-                        <br />
-                        <p>Haz click en un taller...</p>
+                        <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un taller...</p>
                     </div>
                 )}
             </div>

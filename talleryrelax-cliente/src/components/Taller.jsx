@@ -78,6 +78,7 @@ const Taller = () => {
                 <div className="edit-form">
                     <h4>Taller</h4>
                     <form>
+
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre</label>
                             <input
@@ -89,6 +90,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="descripcion">Descripcion</label>
                             <input
@@ -100,6 +102,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="precio">Precio</label>
                             <input
@@ -111,6 +114,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="durasemanas">Semanas de duración</label>
                             <input
@@ -122,6 +126,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="diasxsemana">Días a la semana</label>
                             <input
@@ -144,6 +149,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="plazasCompradas">Plazas compradas</label>
                             <input
@@ -155,6 +161,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="fechainicio">Fecha de inicio</label>
                             <input
@@ -166,17 +173,7 @@ const Taller = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        {/* <div className="form-group">
-                            <label htmlFor="fechainicio">Fecha de inicio</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="fechainicio"
-                                name="fechainicio"
-                                value={actualTaller.fechainicio}
-                                onChange={handleInputChange}
-                            />
-                        </div> */}
+                        
                         <div className="form-group">
                             <label htmlFor="dificultad">Dificultad</label>
                             <input
@@ -202,27 +199,29 @@ const Taller = () => {
                     </form>
 
                     <button
+                        className="btn btn-dark border-white mt-2 mb-3 rounded-0 min-w-bt-27" 
                         type="submit"
-                        className="btn btn-4 btn-holder hover-border-7" onClick={eliminarTaller}>
-                        <span>Eliminar</span>
+                        onClick={eliminarTaller}>
+                        <span className="font-Raleway letter-spacing-2">Eliminar</span>
                     </button>
 
                     <button
+                        className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27" 
                         type="submit"
-                        className="btn btn-4 btn-holder hover-border-7" onClick={actualizarTaller}>
-                        <span>Actualizar</span>
+                        onClick={actualizarTaller}>
+                        <span className="font-Raleway letter-spacing-2">Actualizar</span>
                     </button>
 
                     <Link
-                        to={"/talleres"} className="btn btn-4 btn-holder hover-border-7">
-                        Volver
+                        to={"/talleres/"}
+                        className="btn btn-outline-light border-dark text-black mt-2 mb-3 rounded-0 min-w-bt-27">
+                        <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                     </Link>
 
                     <p>{message}</p>
                 </div>
             ) : (
                 <div>
-                    <br />
                     <p>Haz click en un taller...</p>
                 </div>
             )}

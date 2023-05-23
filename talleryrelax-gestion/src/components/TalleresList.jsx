@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import TallerDataService from "../services/TallerDataService";
 import '../App.css';
 import '../index.css';
-import '../views/TalleresList.css';
 
 const TalleresList = () => {
     const [talleres, setTalleres] = useState([]);
@@ -155,7 +154,6 @@ const TalleresList = () => {
                     </div>
                 ) : (
                     <div>
-                        <br />
                         <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un taller...</p>
                     </div>
                 )}

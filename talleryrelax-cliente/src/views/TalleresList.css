@@ -75,9 +75,7 @@ header {
     display: flex;
     flex-flow: wrap;
     margin: 0%;
-    padding: 180px 1% 18% 1%;
-    
-    height: 60vh;
+    padding: 35px 1% 18% 1%;
     background-color: #e4ad26;
     justify-content: center;
 }
@@ -229,11 +227,11 @@ header {
     font-size: 1em;
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-start;
     margin-right: 40px;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 
 .imgLettering1 {
@@ -262,8 +260,10 @@ header {
 }
 
 .imgDetalle{
-    max-width: 47vw;
-    width: 45vw;
+    margin-top: 20%;
+    border-radius: 600px;
+    width: 20vw;
+    min-width: 230px;
 }
 
 /*

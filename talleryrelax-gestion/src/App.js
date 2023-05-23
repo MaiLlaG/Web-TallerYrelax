@@ -18,35 +18,13 @@ import MensajesList from "./components/MensajesList";
 function App() {
   return (
     <div className="bg-secondary bg-opacity-10">
-      <nav className="navbar navbar-expand-xl  navbar-dark gap-1 justify-content-center bg-white shadow d-flex mb-5 pt-0 ps-5">
-        <div>
-          <h3 className="mt-1 ps-5 font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYrelax</h3>
-        </div>
-
+      <nav className="navbar navbar-expand-xl navbar-dark gap-1 justify-content-center bg-white shadow d-flex mb-5 pt-0">
         <ul className="nav">
           <li className="nav-item mx-5">
             <Link to={"/"}>
-              <img className="mt-3 iconoLogin" src={require("./img/iconoBlue-login.png")} alt="iconoLogin" />
-              <div className="mb-2">
-                <span className="text-secondary font-Raleway fs-6">Sing in</span>
-              </div>
+              <h3 className="mt-4 mb-4 text-dark font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYrelax</h3>
             </Link>
           </li>
-          {/*
-          <li className="nav-item">
-            <Link to={"/gestion"} className="navbar-brand">
-              <div className="">
-              <span className="text-white">GESTION</span>
-              </div>
-            </Link>
-          </li>
-           
-          <li className="nav-item">
-            <Link to={"/"} className="navbar-brand">
-              PANEL
-            </Link>
-          </li>
-          */}
         </ul>
       </nav>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import CompraDataService from "./services/CompraDataService";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import './index.css';
 
@@ -63,35 +64,32 @@ function App() {
   return (
     <UsuarioContext.Provider value={usuario}>
       <div>
-        <nav className="navFondo">
-          <div className="navegador">
-            <li className="sizeP">
-              <Link to={"/"} className="sizeP">
-                TallerYrelax
+        <nav className="navbar navbar-expand-xl navbar-dark gap-1 list-unstyled d-flex justify-content-center bg-white shadow mb-5 pt-0">
+          <div className="collapse navbar-collapse d-flex flex-wrap justify-content-center">
+            <li className="nav-item nav-item my-2 mx-5">
+              <Link to={"/"} className="">
+                <span className="fs-5"> TallerYrelax </span>
               </Link>
             </li>
-            <li className="sizeP">
-              <Link to={"/talleres"} className="sizeP">
-                Talleres
+            <li className="nav-item nav-item my-2 mx-5">
+              <Link to={"/talleres"} className="">
+                <span className="fs-5"> Talleres </span>
               </Link>
             </li>
-            <li className="sizeP">
-              <Link to={"/contacto"} className="sizeP">
-                Contacto
+            <li className="nav-item nav-item my-2 mx-5">
+              <Link to={"/contacto"} className="">
+                <span className="fs-5"> Contacto </span>
               </Link>
             </li>
-            <div className="franjaNav">
-              
-            </div>
-            <li className="sizeP">
+            <li className="nav-item mt-2 mb-1 ms-4 me-2">
               <Login />
             </li>
             {usuario.user ?
-              <li className="" >
+              <li className="nav-item mx-3" >
                 <Link to={"/compras"}>
-                  <img className="iconoCliente" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
+                  <img className="iconoCliente ms-4" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
                   <div>
-                    <span className="textoLogo">Mis compras</span>
+                    <span>Mis compras</span>
                   </div>
                 </Link>
               </li>
@@ -101,7 +99,7 @@ function App() {
           </div>
         </nav>
 
-        <div className="container mt-3">
+        <div className="">
           <Routes>
             <Route path="/" element={<TallerYrelax />} />
             <Route path="/talleres" element={<TalleresList />} />
@@ -118,21 +116,21 @@ function App() {
         </div>
 
         <footer>
+          <div>
+            <p className="text-secondary text-center fs-6 mt-2">© Maite Llamas García - TallerYrelax</p>
+          </div>
           <div className="footerFondo">
-            <p className="textoGris footerFuente">TALLERES</p>
-            <hr className="lineaF" />
             <div>
-              <p className="textoGris">PAGO SEGURO</p>
+              <p className="text-secondary">PAGO SEGURO</p>
             </div>
             <div>
-              <p className="textoGris">Política de protección de datos</p>
+              <p className="text-secondary">Política de protección de datos</p>
             </div>
             <div>
-              <p className="textoGris">Política de cookies</p>
+              <p className="text-secondary">Política de cookies</p>
             </div>
-            <hr className="lineaF" />
             <div>
-              <a href="http://localhost:3001/gestion" target="_blank"><p className="textoGris text-opacity">Gestión</p></a>
+              <a href="http://localhost:3001/gestion" target="_blank"><p className="m-1 text-dark text-opacity">*</p></a>
             </div>
           </div>
         </footer>

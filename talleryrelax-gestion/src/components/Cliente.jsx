@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ClienteDataService from "../services/ClienteDataService";
 import '../App.css';
 import '../index.css';
-import '../views/Cliente.css';
 
 const Cliente = () => {
     const { id } = useParams();
@@ -14,16 +13,38 @@ const Cliente = () => {
         id: null,
         nombre: "",
         email: "",
-        //submitted: false
     };
 
     const [actualCliente, setActualCliente] = useState(clienteState);
     const [message, setMessage] = useState("");
+    const [errores, setErrores] = useState({});// Validaciones: Errores
+
+    // Validaciones: Comprobar errores al cambiar el estado
+    const setActualClienteConValidacion = elCliente => {
+        setActualCliente(elCliente);
+
+        const errores = {};
+
+        console.log("Validando...");
+        console.log(elCliente);
+
+        if (elCliente.nombre.trim() === '') {
+            errores.nombre = 'Es obligatorio especificar un nombre';
+        }
+
+        if (elCliente.email.trim() === '') {
+            errores.email = 'Es obligatorio especificar un email';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            errores.email = 'El email ingresado no es válido';
+        }
+
+        setErrores(errores);
+    };
 
     const getCliente = id => {
         ClienteDataService.get(id)
             .then(response => {
-                setActualCliente(response.data);
+                setActualClienteConValidacion(response.data);
                 console.log(response.data);
             })
             .catch(e => {
@@ -38,10 +59,17 @@ const Cliente = () => {
 
     const handleInputChange = event => {
         const { name, value } = event.target;
-        setActualCliente({ ...actualCliente, [name]: value });
+        setActualClienteConValidacion({ ...actualCliente, [name]: value });
     };
 
     const enviarCliente = () => {
+        // Validaciones: Si hay errores no dejo enviar
+        if (Object.keys(errores).length > 0) {
+            console.log('Formulario no válido');
+            alert('Corrige los errores antes de enviar');
+            return;
+        }
+
         console.log(actualCliente);
         if (actualCliente.id > 0) {
             actualizarCliente();
@@ -68,6 +96,7 @@ const Cliente = () => {
             .then(response => {
                 console.log(response.data);
                 setMessage("La información del cliente fue actualizada correctamente");
+                getCliente(id);
             })
             .catch(e => {
                 console.log(e);
@@ -88,71 +117,74 @@ const Cliente = () => {
     };
 
     return (
-        <main className="bg-white p-0">
+        <main className="bg-white winter-neva-gradient color-block p-0">
             <div className="min-height-85">
                 {actualCliente ? (
-                    <div className="edit-form">
-                        <h4>Cliente</h4>
+                    <div className="form p-3">
                         <form>
-                            <div className="form-group">
-                                <label htmlFor="nombre">Nombre</label>
-                                <input
-                                    className="form-control"
-                                    type="text"
-                                    id="nombre"
-                                    name="nombre"
-                                    value={actualCliente.nombre}
-                                    onChange={handleInputChange}
-                                />
+                            <div className="form-group d-flex flex-wrap flex-column align-content-center mt-1 p-3">
+                                <h4 className="max-w-35 w-40 font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Cliente</h4>
+                                <div className="form-group my-3">
+                                    <label className="font-Raleway-bold letter-spacing-2" htmlFor="nombre">Nombre</label>
+                                    <input
+                                        className="form-control input-padding font-Raleway"
+                                        type="text"
+                                        id="nombre"
+                                        name="nombre"
+                                        value={actualCliente.nombre}
+                                        onChange={handleInputChange}
+                                    />
+                                    {errores.nombre && <span className="text-danger text-valida fw-light">{errores.nombre}</span>}
+                                </div>
+                                <div className="form-group my-3">
+                                    <label className="font-Raleway-bold letter-spacing-2" htmlFor="email">Email</label>
+                                    <input
+                                        className="form-control input-padding font-Raleway"
+                                        type="text"
+                                        id="email"
+                                        name="email"
+                                        value={actualCliente.email}
+                                        onChange={handleInputChange}
+                                    />
+                                    {errores.email && <span className="text-danger text-valida fw-light">{errores.email}</span>}
+                                </div>
+
+                                <p>{message}</p>
+
+                                <button
+                                    className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27"
+                                    type="submit"
+                                    onClick={enviarCliente}>
+                                    {actualCliente.id > 0 ?
+                                        <span className="font-Raleway letter-spacing-2">Actualizar</span>
+                                        :
+                                        <span className="font-Raleway letter-spacing-2">Añadir</span>
+                                    }
+                                </button>
+
+                                {actualCliente.id > 0 ?
+                                    <button
+                                        className="btn btn-dark border-white mt-2 mb-3 rounded-0 min-w-bt-27"
+                                        type="submit"
+                                        onClick={eliminarCliente}>
+                                        <span className="font-Raleway letter-spacing-2">Eliminar</span>
+                                    </button>
+                                    :
+                                    <span></span>
+                                }
+
+                                <Link
+                                    to={"/clientes"}
+                                    className="btn btn-outline-light border-dark text-black mt-2 mb-3 rounded-0 min-w-bt-27">
+                                    <span className="font-Raleway-bold letter-spacing-2">Volver</span>
+                                </Link>
+
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input
-                                    className="form-control"
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    value={actualCliente.email}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-
-
-
-                            <Link
-                                to={"/clientes"} className="btn btn-muted font-500 border border-dark rounded-0 p-2 mt-4 mb-3 w-bt-47">
-                                <span className="text-decoration-underline">Volver</span>
-                            </Link>
                         </form>
-
-                        {actualCliente.id > 0 ?
-                            <button
-                                className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
-                                type="submit"
-                                onClick={eliminarCliente}>
-                                <span>Eliminar</span>
-                            </button>
-                            :
-                            <span></span>
-                        }
-
-                        <button
-                            className="btn btn-primary font-500 rounded-0 p-2 mt-3 mb-3 w-bt-47"
-                            type="submit"
-                            onClick={enviarCliente}>
-                            {actualCliente.id > 0 ?
-                                <span>Actualizar</span>
-                                :
-                                <span>Añadir</span>
-                            }
-                        </button>
-
-                        <p>{message}</p>
                     </div>
                 ) : (
                     <div>
-                        <br />
-                        <p>Haz click en un cliente...</p>
+                        <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un cliente...</p>
                     </div>
                 )}
             </div>

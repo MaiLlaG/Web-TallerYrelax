@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import ClienteDataService from "../services/ClienteDataService";
 import '../App.css';
 import '../index.css';
-import '../views/ClientesList.css';
 
 const ClientesList = () => {
     const [clientes, setClientes] = useState([]);
@@ -85,7 +84,6 @@ const ClientesList = () => {
                     </div>
                 ) : (
                     <div>
-                        <br />
                         <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un cliente...</p>
                     </div>
                 )}

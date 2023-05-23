@@ -15,7 +15,6 @@ const MensajesList = () => {
         email: "",
         texto: "",
         fecha: null
-        //submitted: false
     };
 
     const [mensajes, setMensajes] = useState([]);
@@ -91,8 +90,8 @@ const MensajesList = () => {
                             <label>
                                 <p className="text-secondary font-Raleway letter-spacing-2">Fecha: </p>
                             </label>
-                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualMensaje.fecha}</p>
-                        </div>
+                            <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualMensaje.fecha == null ? null : actualMensaje.fecha.substring(0, 10)}</p>
+                        </div>                                                                      
 
                         <div>
                             <label>
@@ -112,7 +111,8 @@ const MensajesList = () => {
 
                         <div className="d-flex justify-content-center gap-2">
                             <Link
-                                to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                                to={"/gestion"} 
+                                className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
                                 <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                             </Link>
                         </div>
@@ -120,7 +120,6 @@ const MensajesList = () => {
                     </div>
                 ) : (
                     <div>
-                        <br />
                         <p className="font-Raleway letter-spacing-2 fw-bold">Haz click en un mensaje...</p>
                     </div>
                 )}

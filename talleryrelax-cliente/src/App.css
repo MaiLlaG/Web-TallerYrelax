@@ -1,24 +1,103 @@
-/*
-body{
-  background-color: #ffffff;
-}  */
+/* App css gestión */
 
+.min-height-85 {
+  min-height: 85vh;
+}
+
+.font-Roboto {
+  font: 400 1em 'Roboto', sans-serif !important;
+}
+
+.font-Raleway {
+  font: 400 1em 'Raleway', sans-serif !important;
+}
+
+.font-Raleway-bold {
+  font: 500 1em 'Raleway', sans-serif !important;
+}
+
+.font-400 {
+  font: 400 0.9em 'Raleway', sans-serif;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2px;
+}
+
+.bg-arena {
+  background-color: #f6f4ef;
+}
+
+.text-valida {
+  font-size: small;
+}
+
+.navbar-nav {
+  display: flex;
+  column-gap: 12vh !important;
+  align-items: flex-end;
+  justify-content: center !important;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.hr-with {
+  min-width: 230px;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.iconoLogin {
+  width: 40px;
+  height: 40px;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.bg-violet {
+  background-color: #311B92;
+}
+
+.min-w-bt-27 {
+  min-width: 27vh;
+}
+
+.max-w-60 {
+  max-width: 60vw;
+}
+
+.form-group-width {
+  width: 100vw;
+  max-width: 65vw;
+  min-width: 280px;
+}
+
+.input-padding {
+  padding: 12px 0 12px !important;
+}
+
+.winter-neva-gradient {
+  background-image: linear-gradient(180deg, #ffffff 0, #a1c6fd 100%);
+}
+
+
+/*........*/
 
 /* Navegador */
-.navegador {
-  position: relative;
-  z-index: 3;
-  background-color: #ffffff;
-  color: #ffffff;
-  letter-spacing: 4px;
-  padding-top: 2px;
-  padding-left: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 2%;
-  align-items: center;
-}
+
 
 nav a:focus {
   color: #ab06f7;
@@ -31,18 +110,7 @@ nav p:hover {
 
 }
 
-.navFondo {
-  width: 100%;
-}
-
-.sizeP {
-  font-size: 1.2em;
-  margin-top: 15px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-}
-
-a:-webkit-any-link {
+.a:-webkit-any-link {
   font: 400 1.1em 'Raleway', sans-serif;
   cursor: pointer;
   text-decoration: none;
@@ -63,34 +131,29 @@ a {
 }
 
 .iconoCliente {
-  width: 47px;
-  height: 45px;
-  margin-top: 5px;
+  width: 35px;
+  height: 39px;
 }
 
 .iconoLogo {
   width: 43px;
   height: 43px;
-  margin-bottom: 3px;
 }
 
-.iconoSearch {
-  width: 30px;
-  height: 40px;
-  margin-top: 7px;
-}
-
-.textoLogo {
-  font: 500 0.8em 'Raleway', sans-serif;
-  color: #f7b306;
-  letter-spacing: 1px;
-  text-shadow: none;
-}
-
-.botonGoogle{
-  margin-bottom: 10px;
-  background-color: #ffffff00;;
+.botonGoogle {
+  background-color: #ffffff00;
+  ;
   border: none;
+}
+
+.lista {
+  display: none;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
 }
 
 .franjaNav {
@@ -107,30 +170,134 @@ a {
   opacity: 70%;
 }
 
-.buscador {
-  border: none;
-  background-color: #ffffff00;
+
+/* Input de formulario solo linea de abajo vista */
+
+textarea.form-control {
+  min-height: calc(1.5em + (0.75rem + 2px));
+  border: 1px solid #adaeaf;
 }
 
-.inputBuscador {
-  width: 170px;
-  height: 30px;
+textarea.form-control:focus {
+  border: 1.5px solid #0d6efd !important;
+}
+
+.form-control {
+  border-radius: 0px !important;
+  font-weight: 300 !important;
+}
+
+.form label {
+  font-size: 1em !important;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+}
+
+.form form .text-input {
+  overflow: hidden;
+  margin-bottom: 0.875em;
+}
+
+.form form input[type=text],
+.form form input[type=password] {
+  font-weight: 300 !important;
+  background: none;
+  padding-left: 0;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-width: 0.15em em;
-  font: 400 0.9em 'Raleway', sans-serif;
-  border-bottom-color: #f7b306;
+  box-shadow: none;
+  /* para quitar el borde azul por defecto de bootstap al clicar en un input */
 }
 
-.buscadorAlineado {
-  margin-bottom: 25px;
-  margin-left: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
+/* para quitar el borde azul por defecto de bootstap al clicar en un textarea */
+
+input:focus,
+select:focus,
+select,
+input.form-control,
+textarea.form-control:focus {
+
+  outline: none !important;
+
+  outline-width: 0 !important;
+
+  box-shadow: none;
+
+  -moz-box-shadow: none;
+
+  -webkit-box-shadow: none;
+
 }
+
+#seleccionar {
+  border: 1px solid #adaeaf;
+  box-shadow: none !important;
+}
+
+#seleccionar:active {
+  border: 1.5px solid #0d6efd;
+  box-shadow: none !important;
+}
+
+input.form-select:focus {
+
+  border: 1.5px solid #0d6efd;
+
+  outline: none !important;
+
+  outline-width: 0 !important;
+
+  box-shadow: none;
+
+  -moz-box-shadow: none;
+
+  -webkit-box-shadow: none;
+
+}
+
+input:focus,
+select:focus,
+select,
+input.form-control:focus {
+
+  border: 1.5px solid #0d6efd;
+
+  outline: none !important;
+
+  outline-width: 0 !important;
+
+  box-shadow: none;
+
+  -moz-box-shadow: none;
+
+  -webkit-box-shadow: none;
+
+}
+
+input:focus,
+select:focus,
+select,
+input.form-control {
+
+  border: 1px solid #adaeaf;
+
+  outline: none !important;
+
+  outline-width: 0 !important;
+
+  box-shadow: none;
+
+  -moz-box-shadow: none;
+
+  -webkit-box-shadow: none;
+
+}
+
+/*........*/
+
+
 
 /*
 input::-moz-focus-inner {
@@ -138,31 +305,6 @@ input::-moz-focus-inner {
 }    */
 
 /*..............*/
-
-
-.lista {
-  display: none;
-}
-
-
-
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
-}
-
-.submit-form {
-  max-width: 300px;
-  margin: auto;
-}
-
-.edit-form {
-  max-width: 300px;
-  margin: auto;
-}
-
-
 
 
 /* Footer  */
@@ -184,10 +326,6 @@ input::-moz-focus-inner {
   padding-bottom: 10px;
 }
 
-.textoGris {
-  color: rgba(255, 255, 255, .6);
-}
-
 .lineaF {
   border: 1px solid rgba(255, 255, 255, .6);
   border-radius: 600px/3px;
@@ -197,8 +335,41 @@ input::-moz-focus-inner {
   text-align: center;
 }
 
-.staff {
-  opacity: 6%;
+/*..............*/
+/*
+.circulo-oro {
+  z-index: 3;
+  position: absolute;
+  width: 17vw !important;
+  min-width: 230px;
 }
 
-/*..............*/
+.imgMandala {
+  width: 30vw;
+  min-width: 250px;
+
+}  */
+
+.arena-wind-gradient {
+  background-image: linear-gradient(120deg, #f6f4ef 0, #fed6e3 100%);
+}
+
+.arena-wind-gradient2 {
+  background-image: linear-gradient(120deg, #f6f4ef 0, #fed6e3 100%);
+}
+
+.rare-wind-gradient {
+  background-image: linear-gradient(120deg, #a8edea 0, #fed6e3 100%);
+}
+
+.deep-blue-gradient {
+  background-image: linear-gradient(120deg, #e0c3fc 0, #8ec5fc 100%);
+}
+
+.winter-neva-gradient {
+  background-image: linear-gradient(120deg, #a1c4fd 0, #c2e9fb 100%);
+}
+
+.cloudy-knoxville-gradient {
+  background-image: linear-gradient(120deg, #fdfbfb 0, #ebedee 100%);
+}

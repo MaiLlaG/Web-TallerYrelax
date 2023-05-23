@@ -15,13 +15,17 @@ const PasarelaPago = () => {
                 <h4>Pasarela de Pago</h4>
                 <div className="fondoTPV">
                 </div>
+
                 <Link
-                    to={"/pagoRealizado"} className="botonPagar btn btn-4 btn-holder hover-border-7">
-                    Pagar
+                    to={"/pagoRealizado"}
+                    className="btn btn-primary border-dark mt-2 mb-3 rounded-0 min-w-bt-27">
+                    <span className="font-Raleway letter-spacing-2">Pagar</span>
                 </Link>
+
                 <Link
-                    to={"/pagoCompra"} className="btn btn-4 btn-holder hover-border-7">
-                    Volver
+                    to={"/pagoCompra"}
+                    className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                    <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                 </Link>
             </div>
         </>

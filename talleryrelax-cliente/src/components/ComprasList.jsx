@@ -25,14 +25,6 @@ const ComprasList = () => {
             });
     };
 
-    /*
-    const refrescarList = () => {
-        recuperarTalleres();
-        setActualTaller(null);
-        setActualIndex(-1);
-    };
-    */
-
     const setActiveCompra = (compra, index) => {
         setActualCompra(compra);
         setActualIndex(index);

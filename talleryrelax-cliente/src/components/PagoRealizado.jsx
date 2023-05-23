@@ -10,15 +10,19 @@ const PagoRealizado = () => {
     return (
         <>
             <h1>Pago realizado correctamente</h1>
-            <h4>Puedes ver tu compra en tu lista de Talleres</h4>
+            <h4>Puedes ver tu compra en tu lista de Talleres comprados</h4>
             <Link
-                to={"/"} className="btn btn-4 btn-holder hover-border-7">
-                Mi lista de talleres
+                to={"/compras"}
+                className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                <span className="font-Raleway-bold letter-spacing-2">Mi lista de talleres</span>
             </Link>
+
             <Link
-                to={"/"} className="btn btn-4 btn-holder hover-border-7">
-                Home
+                to={"/"}
+                className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                <span className="font-Raleway-bold letter-spacing-2">Página de inicio</span>
             </Link>
+
         </>
     )
 
