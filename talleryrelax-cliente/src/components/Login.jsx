@@ -37,7 +37,6 @@ const Login = () => {
                         </div>
                         :
                         <button className="button botonGoogle mt-1" onClick={signInWithGoogle}><img className="iconoLogo" src={require("../img/icono-login.png")} alt="iconoLogin" />
-                            {/*<i className="fab fa-google"></i>Sign in with google*/}
                             <div className="mb-1">
                                 <span className="text-shadow text-primary fs-6">Sign in with </span>
                                 <span className="letraBlue fs-6"> G</span>

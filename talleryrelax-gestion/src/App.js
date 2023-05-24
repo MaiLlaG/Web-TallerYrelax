@@ -4,7 +4,6 @@ import './App.css';
 import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Panel from "./components/Panel";
 import Gestion from "./components/Gestion";
 import TalleresList from "./components/TalleresList";
 import Taller from "./components/Taller";
@@ -21,7 +20,7 @@ function App() {
       <nav className="navbar navbar-expand-xl navbar-dark gap-1 justify-content-center bg-white shadow d-flex mb-5 pt-0">
         <ul className="nav">
           <li className="nav-item mx-5">
-            <Link to={"/"}>
+            <Link to={"/gestion"}>
               <h3 className="mt-4 mb-4 text-dark font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYrelax</h3>
             </Link>
           </li>
@@ -30,7 +29,6 @@ function App() {
 
       <div className="">
         <Routes>
-          <Route path="/" element={<Panel />} />
           <Route path="/gestion" element={<Gestion />} />
           <Route path="/mensajes" element={<MensajesList />} />
           <Route path="/talleres" element={<TalleresList />} />

@@ -26,14 +26,6 @@ const TalleresList = () => {
             });
     };
 
-    /*
-    const refrescarList = () => {
-        recuperarTalleres();
-        setActualTaller(null);
-        setActualIndex(-1);
-    };
-    */
-
     const setActiveTaller = (taller, index) => {
         setActualTaller(taller);
         setActualIndex(index);
@@ -47,7 +39,8 @@ const TalleresList = () => {
             <main className="bg-arena container-fluid row m-0">
                 {actualTaller ? (
                     <div className="mt-5">
-                        <div>
+                        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
+                            
                             <div className="col-md-5 d-flex justify-content-center ms-2 pb-5 gap-5">
                                 <div className="">
                                     <div>
@@ -102,7 +95,7 @@ const TalleresList = () => {
                                     <hr className="linea" />
                                 </div>
                             </div>
-                            <div className="col-md-5 d-flex justify-content-center ms-2 px-5 pb-5">
+                            <div className="col-md-5 justify-content-center ms-2 px-5 pb-5 d-flex align-items-start">
                                 {actualTaller.imagen ?
                                     <img className="rounded-circle mt-2 mb-5 w-75" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
                                     :

@@ -1,4 +1,27 @@
 /* App css gestión */
+.alert{
+  position: fixed !important;
+  z-index:999;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+  background-color: white;
+}
+.fondoGris{
+  position:fixed !important;
+  z-index: 998;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0, 0.5);
+}
 
 .min-height-85 {
   min-height: 85vh;

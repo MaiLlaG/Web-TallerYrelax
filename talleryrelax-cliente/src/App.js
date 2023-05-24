@@ -7,7 +7,6 @@ import './index.css';
 
 import TallerYrelax from "./components/TallerYrelax";
 import TalleresList from "./components/TalleresList";
-
 import Contacto from "./components/Contacto";
 import Login from "./components/Login";
 import ComprasList from "./components/ComprasList";
@@ -90,16 +89,7 @@ function App() {
                 </Link>
               </li>
               :
-              <li>
-                <li className="nav-item ms-5" >
-                  <Link to={"/compras"}>
-                    <img className="iconoCliente mt-1 mb-1 ms-4" src={require("./img/icono-cuenta.png")} alt="iconoCuenta" />
-                    <div>
-                      <span className="text-shadow">Mis compras</span>
-                    </div>
-                  </Link>
-                </li>
-              </li>
+              <li className="nav-item ms-5" ></li>
             }
           </div>
         </nav>
@@ -123,11 +113,6 @@ function App() {
               </ul>
               <p className="text-center text-light mt-4 mb-4">Política de protección de datos</p>
               <p className="text-center text-light mt-3 mb-0">Política de cookies</p>
-              <p className="text-center text-muted mt-2 mb-0">
-                <a href="http://localhost:3001/gestion" target="_blank">
-                  <span className="m-1 text-dark fw-bold">*</span>
-                </a>
-              </p>
             </footer>
           </div>
           <div className="bg-arena py-2">

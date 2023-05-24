@@ -31,13 +31,13 @@ const ClientesList = () => {
 
     return (
         <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
-            <div className="col-md-4 px-3">
-                <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de clientes</h4>
-                <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
+            <div className="col-md-4 px-3 ms-4">
+                <h4 className="font-Raleway letter-spacing-2 ms-2 fs-4 fw-bold mb-4">Lista de clientes</h4>
+                <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {clientes && clientes.map((cliente, index) => (
                         <li
                             className={
-                                "py-3 px-4 list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
+                                "py-3 px-4 mb-3 shadow list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
                             }
                             onClick={() => setActiveCliente(cliente, index)} key={index}>
                             {cliente.nombre}
@@ -46,18 +46,18 @@ const ClientesList = () => {
                 </ul>
 
                 <div className="d-flex flex-wrap justify-content-center col-gap-2 mb-4">
-                    <Link to={"/nuevoCliente"} className="btn btn-primary border-dark mt-3 mb-3 rounded-0 min-w-bt-27">
+                    <Link to={"/nuevoCliente"} className="btn btn-primary border-dark mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
                         <span className="font-Raleway letter-spacing-2">Añadir</span>
                     </Link>
 
                     <Link
-                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
                         <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                     </Link>
                 </div>
             </div>
 
-            <div className="col-md-5 d-flex justify-content-center ms-2 px-3 pb-1">
+            <div className="col-md-5 d-flex justify-content-center px-5 pb-5">
                 {actualCliente ? (
                     <div className="w-75">
                         <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Cliente</h4>

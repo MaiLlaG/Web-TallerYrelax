@@ -8,6 +8,7 @@ import TallerDataService from "../services/TallerDataService";
 import CompraDataService from "../services/CompraDataService";
 import MetodoDePagoDataService from "../services/MetodoDePagoDataService";
 import UsuarioContext from "./Usuario";
+import Alert from "./Alert";
 
 const PagoCompra = () => {
     const compraState = {
@@ -24,6 +25,7 @@ const PagoCompra = () => {
     const [taller, setTaller] = useState([]);
     const [metodosDePago, setMetodosDePago] = useState([]);
     const [errores, setErrores] = useState({});// Validaciones: Errores
+    const [alertText, setAlertText] = useState("");
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setCompraConValidacion = laCompra => {
@@ -113,7 +115,8 @@ const PagoCompra = () => {
         // Validaciones: Si hay errores no dejo enviar
         if (validarFormulario(compra)) {
             console.log('Formulario no válido');
-            alert('Corrige los errores antes de enviar');
+            setAlertText('Corrige los errores antes de enviar');
+            //alert('Corrige los errores antes de enviar');
             return;
         }
 
@@ -160,7 +163,8 @@ const PagoCompra = () => {
 
     return (
         <div className="d-flex">
-            <main className="w-100 p-0">
+            <main className="w-100 p-0">                
+                <Alert alertText={alertText} setAlertText={setAlertText} />
                 <div className="container-fluid row min-height-85 p-0 m-0 d-flex justify-content-evenly">
                     <div className="col-md-6 ps-0 bg-arena text-light d-flex justify-content-center">
                         <h4 className="letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Esta comprando el taller..</h4>

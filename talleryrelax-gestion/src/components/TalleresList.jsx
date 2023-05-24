@@ -33,13 +33,13 @@ const TalleresList = () => {
     return (
 
         <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
-            <div className="col-md-4 px-3">
-                <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de talleres</h4>
-                <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
+            <div className="col-md-4 px-3 ms-3">
+                <h4 className="font-Raleway letter-spacing-2 ms-2 fs-4 fw-bold mb-4">Lista de talleres</h4>
+                <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {talleres && talleres.map((taller, index) => (
                         <li
                             className={
-                                "py-3 px-4 list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
+                                "py-3 px-4 mb-3 shadow list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
                             }
                             onClick={() => setActiveTaller(taller, index)} key={index}>
                             {taller.nombre}
@@ -48,12 +48,12 @@ const TalleresList = () => {
                 </ul>
 
                 <div className="d-flex flex-wrap justify-content-center col-gap-2 mb-4">
-                    <Link to={"/nuevoTaller"} className="btn btn-primary border-dark mt-3 mb-3 rounded-0 min-w-bt-27">
+                    <Link to={"/nuevoTaller"} className="btn btn-primary border-dark mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
                         <span className="font-Raleway letter-spacing-2">Añadir</span>
                     </Link>
 
                     <Link
-                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
                         <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                     </Link>
                 </div>
@@ -61,9 +61,9 @@ const TalleresList = () => {
 
             <div className="col-md-5 d-flex justify-content-center ms-2 px-5 pb-5">
                 {actualTaller ? (
-                    <div>
+                    <div className="">
                         <h4 className="text-center font-Raleway letter-spacing-2 fs-4 fw-bold">Taller</h4>
-                        <div className="d-flex flex-wrap flex-column align-items-center ">
+                        <div className="d-flex flex-wrap flex-column align-items-center">
                             <div className="">
                                 <p className="mt-3 text-primary font-Raleway-bold letter-spacing-2 fs-5">{actualTaller.nombre}</p>
                             </div>
@@ -76,47 +76,46 @@ const TalleresList = () => {
                             </div>
                         </div>
 
-                        <div className="d-flex flex-wrap flex-column align-items-flex-start align-content-center">
+                        <div className="d-flex flex-wrap flex-column justify-content-center align-content-start align-content-center">
                             <div>
-                                <label>
-                                    <p className="text-secondary font-Raleway letter-spacing-2 fs-6">Descripción </p>
-                                    <hr className="hr-with" />
-                                    <p className="text-secondary font-Raleway pe-2">
-                                        Llena el alma de luz y energía con la bruma para el cuerpo y el cabello de The Ritual of Mehr.
-                                        Perfuma tu cabello, tu piel y el ambiente que te rodea con la elegante fragancia de la naranja dulce y la madera de cedro,
-                                        impregnándolos con una dosis de positividad que te aportará energía durante todo el día.
-                                        Su fórmula acuosa es segura sobre la piel y no mancha los tejidos.
-                                    </p>
-                                </label>
+                                <ul className="nav border-bottom border-secondary border-opacity-50 pb-1 mb-3">
+                                    <li className="nav-item">
+                                        <p className="text-secondary font-Raleway letter-spacing-2 fs-6">Descripción </p>
+                                    </li>
+                                </ul>
                                 {<div className="text-secondary font-Raleway fs-6 pe-2" dangerouslySetInnerHTML={{ __html: actualTaller.descripcion }} />}
-                                <hr className="hr-with" />
                             </div>
                             <div>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Fecha de inicio: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.fechainicio == null ? null : actualTaller.fechainicio.substring(0, 10)}</span></p>
-                            </div>
-                            <div>                           
-                                <p className="text-secondary font-Raleway letter-spacing-2">Semanas de duración: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.durasemanas}</span></p>
+                                <u className="nav justify-content-center border-bottom border-secondary border-opacity-50 pb-2 mb-3"></u>
                             </div>
                             <div>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Días a la semana: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.diasxsemana}</span></p>
+                                <p className="text-secondary font-Raleway letter-spacing-2 pt-2">Fecha de inicio: {actualTaller.fechainicio == null ? null : actualTaller.fechainicio.substring(0, 10)}</p>
                             </div>
                             <div>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Número de plazas: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.nplazas}</span></p>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Semanas de duración: {actualTaller.durasemanas}</p>
                             </div>
                             <div>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Plazas compradas: <span className="ms-2 opacity-75 text-primary font-Roboto">{actualTaller.plazasCompradas !== actualTaller.nplazas ? actualTaller.plazasCompradas : actualTaller.plazasCompradas + " Agotado"}</span></p>
-                            </div>
-                            <div>                                                                                                                                 
-                                <p className="text-secondary font-Raleway letter-spacing-2">Dificultad: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.dificultad}</span></p>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Días a la semana: {actualTaller.diasxsemana}</p>
                             </div>
                             <div>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Precio: <span className="ms-2 opacity-75 font-Roboto">{actualTaller.precio}</span>€</p>
-                                <hr className="hr-with" />
+                                <p className="text-secondary font-Raleway letter-spacing-2">Número de plazas: {actualTaller.nplazas}</p>
+                            </div>
+                            <div>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Plazas compradas: <span className="text-primary">{actualTaller.plazasCompradas !== actualTaller.nplazas ? actualTaller.plazasCompradas : actualTaller.plazasCompradas + " Agotado"}</span></p>
+                            </div>
+                            <div>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Dificultad: {actualTaller.dificultad}</p>
+                            </div>
+                            <div>
+                                <p className="text-secondary font-Raleway letter-spacing-2">Precio: {actualTaller.precio}€</p>
+                            </div>
+                            <div>
+                                <u className="nav justify-content-center border-bottom border-secondary border-opacity-50 pb-3 mb-3"></u>
                             </div>
 
                             <div className="d-flex justify-content-center gap-2">
                                 <Link
-                                    to={"/talleres/" + actualTaller.id} className="btn btn-primary border-dark mt-3 mb-5 w-75 min-w-bt-27 rounded-0">
+                                    to={"/talleres/" + actualTaller.id} className="btn btn-primary border-dark mt-4 mb-5 w-75 min-w-bt-27 rounded-0">
                                     <span className="font-Raleway letter-spacing-2">Editar</span>
                                 </Link>
                             </div>
@@ -129,9 +128,9 @@ const TalleresList = () => {
                                     <div className="">
                                         <ul className="list-group list-group-numbered list-group-flush shadow rounded-5 mb-3"> {/* list-unstyled lo mismo list-style: none; */}
                                             {actualTaller.compras && actualTaller.compras.map((compra, index) => (
-                                                <li  key={index} className="pt-3 pb-2 px-4 list-group-item list-group-item-primary list-group-item-action text-dark font-Roboto letter-spacing-2">
+                                                <li key={index} className="pt-3 pb-2 px-4 list-group-item list-group-item-primary list-group-item-action text-dark font-Roboto letter-spacing-2">
                                                     {compra.nombre} / {compra.email} / {compra.telefono} / {compra.importeCompra}€ / {compra.fechaCompra == null ? null : compra.fechaCompra} / {compra.metodoDePago.nombre}
-                                                    
+
                                                     <div className="d-flex justify-content-center">
                                                         <Link
                                                             to={"/clientes/" + compra.cliente.id} className="btn border-light bg-secondary bg-opacity-25 font-500 rounded-0 p-2 mt-2 mb-2 mx-3 w-50 min-w-bt-27">

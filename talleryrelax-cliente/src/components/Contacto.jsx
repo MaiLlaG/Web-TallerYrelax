@@ -3,18 +3,19 @@ import { Link } from "react-router-dom";
 import MensajeDataService from '../services/MensajeDataService'
 import '../App.css';
 import '../index.css';
+import Alert from "./Alert";
 
 const Contacto = () => {
     const contactoState = {
         id: null,
         nombre: "",
         email: "",
-        telefono: "",
         texto: "",
     };
 
     const [contacto, setContacto] = useState(contactoState);
     const [errores, setErrores] = useState({});// Validaciones: Errores
+    const [alertText, setAlertText] = useState("");
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setContactoConValidacion = elContacto => {
@@ -40,11 +41,6 @@ const Contacto = () => {
             hayErrores = true;
         }
 
-        if (noEsTelefono(elContacto.telefono)) {
-            errores.telefono = 'Es obligatorio especificar un teléfono y debe ser un número de teléfono válido (9 dígitos)';
-            hayErrores = true;
-        } 
-
         if (estaVacio(elContacto.texto)) {
             errores.texto = 'Es obligatorio ingresar un mensaje';
             hayErrores = true;
@@ -57,9 +53,7 @@ const Contacto = () => {
     const noEsEmail = valor => {
         return (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(valor));
     }
-    const noEsTelefono = valor => {
-        return (!/^[0-9]{9}$/.test(valor));
-    }    
+  
     const estaVacio = valor => {
         return (valor == null || valor.trim() === '');
     }
@@ -73,17 +67,18 @@ const Contacto = () => {
         // Validaciones: Si hay errores no dejo enviar
         if (validarFormulario(contacto)) {
             console.log('Formulario no válido');
-            alert('Corrige los errores antes de enviar');
+            setAlertText('Corrige los errores antes de enviar');
+            //alert('Corrige los errores antes de enviar');
             return;
         }
 
         MensajeDataService.create(contacto)
             .then(response => {
                 console.log(response.data);
-                alert("Mensaje enviado ok!");
+                setAlertText("Mensaje enviado ok!");
             })
             .catch(e => {
-                alert('Error al enviar el mensaje');
+                setAlertText('Error al enviar el mensaje');
                 console.log(e);
             });
     };
@@ -91,6 +86,7 @@ const Contacto = () => {
     return (
         <div className="d-flex">
             <main className="w-100 p-0">
+            <Alert alertText={alertText} setAlertText={setAlertText} />
                 <div className="container-fluid row min-height-85 p-0 m-0 d-flex justify-content-evenly">
 
                     <div className="col-md-6 ps-0 bg-arena text-light d-flex justify-content-center">
@@ -141,20 +137,6 @@ const Contacto = () => {
                                         onChange={handleInputChange}
                                     />
                                     {errores.email && <span className="text-primary text-valida fw-light">{errores.email}</span>}
-                                </div>
-
-                                <div className="form-group my-3">
-                                    <label className="text-white font-Raleway-bold letter-spacing-2 mb-1" htmlFor="telefono">Teléfono <span className="fw-bold"> *</span></label>
-                                    <input
-                                        className="text-light form-control input-padding font-Raleway"
-                                        type="text"
-                                        id="telefono"
-                                        name="telefono"
-                                        required
-                                        value={contacto.telefono}
-                                        onChange={handleInputChange}
-                                    />
-                                    {errores.telefono && <span className="text-primary text-valida fw-light">{errores.telefono}</span>}
                                 </div>
 
                                 <div className="form-group my-3">

@@ -18,8 +18,8 @@ public class Mensaje {
     private Long id;
     private String nombre;
     private String email;
-    private String texto;
     private LocalDateTime fecha = LocalDateTime.now();
+    private String texto;
   
     // getter, setters, contructors
 
@@ -38,17 +38,17 @@ public class Mensaje {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getTexto() {
-        return texto;
-    }
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
     public LocalDateTime getFecha() {
         return fecha;
     }
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+    public String getTexto() {
+        return texto;
+    }
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
     
 }

@@ -62,11 +62,11 @@ const MensajesList = () => {
         <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
             <div className="col-md-4 px-3">
                 <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de mensajes de <span className="text-primary fw-normal">Contacto</span></h4>
-                <ul className="list-group shadow rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
+                <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {mensajes && mensajes.map((mensaje, index) => (
                         <li
                             className={
-                                "py-3 px-4 list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
+                                "py-3 px-4 mb-3 shadow list-group-item list-group-item-action list-group-flush " + (index === actualIndex ? "active" : "")
                             }
                             onClick={() => setActiveMensaje(mensaje, index)} key={index}>
                             {mensaje.nombre}

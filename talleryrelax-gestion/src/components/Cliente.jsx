@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ClienteDataService from "../services/ClienteDataService";
 import '../App.css';
 import '../index.css';
+import Alert from "./Alert";
 
 const Cliente = () => {
     const { id } = useParams();
@@ -18,6 +19,7 @@ const Cliente = () => {
     const [actualCliente, setActualCliente] = useState(clienteState);
     const [message, setMessage] = useState("");
     const [errores, setErrores] = useState({});// Validaciones: Errores
+    const [alertText, setAlertText] = useState("");
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setActualClienteConValidacion = elCliente => {
@@ -81,7 +83,8 @@ const Cliente = () => {
         // Validaciones: Si hay errores no dejo enviar
         if (validarFormulario(actualCliente)) {
             console.log('Formulario no válido');
-            alert('Corrige los errores antes de enviar');
+            setAlertText('Corrige los errores antes de enviar');
+            //alert('Corrige los errores antes de enviar');
             return;
         }
 
@@ -133,6 +136,7 @@ const Cliente = () => {
 
     return (
         <main className="bg-white winter-neva-gradient color-block p-0">
+            <Alert alertText={alertText} setAlertText={setAlertText} />
             <div className="min-height-85">
                 {actualCliente ? (
                     <div className="form p-3">
