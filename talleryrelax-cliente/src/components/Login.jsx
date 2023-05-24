@@ -8,19 +8,19 @@ import UsuarioContext from "./Usuario";
 import { signInWithGoogle, auth } from '../firebase';
 
 const Login = () => {
-    const usuario = useContext(UsuarioContext);    
+    const usuario = useContext(UsuarioContext);
     const navigate = useNavigate();
 
     const logout = () => {
-        auth.signOut().then(function() {
+        auth.signOut().then(function () {
             console.log("logout ok");
             localStorage.setItem('token', null);
             navigate("/");
             window.location.reload();
-          }).catch(function(error) {
+        }).catch(function (error) {
             console.log("error de logout!");
             console.log(error);
-          });
+        });
     }
 
     return (
@@ -28,22 +28,24 @@ const Login = () => {
             <div>
                 {
                     usuario.user ?
-                        <div>
-                            <h1>Hola, <span></span>{usuario.user.displayName}</h1>
-                            <img src={usuario.user.photoURL} alt="" />
-                            <button className="button signout" onClick={logout}>Sign out</button>
+                        <div className="">
+                            <div className="d-flex justify-content-evenly">
+                                <p className="text-shadow text-primary mt-1 mb-1">Hola, <span>{usuario.user.displayName}</span></p>
+                            </div>
+                            <img className="rounded-circle w-25" src={usuario.user.photoURL} alt="" />
+                            <button className="button signout border-0 bg-transparent" onClick={logout}><span className="text-shadow text-primary">Sign out</span></button>
                         </div>
                         :
-                        <button className="button botonGoogle" onClick={signInWithGoogle}><img className="iconoLogo" src={require("../img/icono-login.png")} alt="iconoLogin" />
+                        <button className="button botonGoogle mt-1" onClick={signInWithGoogle}><img className="iconoLogo" src={require("../img/icono-login.png")} alt="iconoLogin" />
                             {/*<i className="fab fa-google"></i>Sign in with google*/}
-                            <div>
-                                <span className="textoSign">Sign in with </span>
-                                <span className="letraBlue"> G</span>
-                                <span className="letraRed">o</span>
-                                <span className="letraYellow">o</span>
-                                <span className="letraBlue">g</span>
-                                <span className="letraGreen">l</span>
-                                <span className="letraRed">e</span>
+                            <div className="mb-1">
+                                <span className="text-shadow text-primary fs-6">Sign in with </span>
+                                <span className="letraBlue fs-6"> G</span>
+                                <span className="letraRed fs-6">o</span>
+                                <span className="letraYellow fs-6">o</span>
+                                <span className="letraBlue fs-6">g</span>
+                                <span className="letraGreen fs-6">l</span>
+                                <span className="letraRed fs-6">e</span>
                             </div>
                         </button>
                 }

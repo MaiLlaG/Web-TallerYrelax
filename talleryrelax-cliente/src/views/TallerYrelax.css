@@ -1,0 +1,20 @@
+.info-center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 130px;
+    left: 0;
+    display: flex;
+    padding: 0 10px;
+    text-align: center;
+    color: dodgerblue;
+    font-size: 24px;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
+}
+
+.border-top-card {
+    border-top: 2px solid #ffc107;
+}
+

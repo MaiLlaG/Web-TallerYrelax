@@ -67,27 +67,26 @@ header {
 
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
-.division3partes {
-    display: flex;
-}
 
 .talleres {
+    column-gap: 2em;
+    row-gap: 2em;
     display: flex;
     flex-flow: wrap;
     margin: 0%;
     padding: 35px 1% 18% 1%;
-    background-color: #e4ad26;
+    background-color: #f6f4ef;
     justify-content: center;
 }
 
 .seccionIzquierda {
-    background-color: #e4ad26;
+    background-color: #f6f4ef;
     width: 31%;
     margin-left: -1px;
 }
 
 .seccionDerecha {
-    background-color: #e4ad26;
+    background-color: #f6f4ef;
     width: 31%;
     margin-left: -1px;
 }
@@ -283,6 +282,7 @@ header {
     text-align: center;
 }
 
+/*
 .CirculosAbajo {
     margin-top: 1%;
     padding-right: 15px;
@@ -292,6 +292,7 @@ header {
     margin-bottom: 1%;
     padding-right: 15px;
 }
+*/
 
 .align_text_Izq {
     text-align: left;
@@ -314,10 +315,6 @@ header {
 
 .textoInfoColor {
     color: #88898a;
-}
-
-.textoInfoRojo {
-    color: #e50325;
 }
 
 .textoInfo {
