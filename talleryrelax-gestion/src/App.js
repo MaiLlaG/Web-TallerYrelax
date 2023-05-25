@@ -20,7 +20,7 @@ function App() {
       <nav className="navbar navbar-expand-xl navbar-dark gap-1 justify-content-center bg-white shadow d-flex mb-5 pt-0">
         <ul className="nav">
           <li className="nav-item mx-5">
-            <Link to={"/gestion"}>
+            <Link to={"/"}>
               <h3 className="mt-4 mb-4 text-dark font-Raleway letter-spacing-2 fs-3 fw-bold">Gestión TallerYrelax</h3>
             </Link>
           </li>
@@ -44,8 +44,8 @@ function App() {
       </div>
 
       <footer className="bg-black text-center font-Raleway letter-spacing-2 p-1">
-        <div className="footerFondo">
-          <p className="pt-3 text-primary opacity-75 fs-6 footerFuente">Gestión TallerYrelax </p>
+        <div className="footerFondo mt-3">
+          <a href="http://localhost:3000/" target="_blank"><p className="text-primary text-opacity">TallerYrelax </p></a>
           <p className="text-light opacity-25 footerFuente">© Maite Llamas García</p>
         </div>
       </footer>

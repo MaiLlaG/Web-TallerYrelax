@@ -34,7 +34,7 @@ const TalleresList = () => {
 
         <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
             <div className="col-md-4 px-3 ms-3">
-                <h4 className="font-Raleway letter-spacing-2 ms-2 fs-4 fw-bold mb-4">Lista de talleres</h4>
+                <h4 className="font-Raleway letter-spacing-2 ms-3 fs-4 fw-bold mb-4">Lista de talleres</h4>
                 <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {talleres && talleres.map((taller, index) => (
                         <li
@@ -53,7 +53,7 @@ const TalleresList = () => {
                     </Link>
 
                     <Link
-                        to={"/gestion"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
+                        to={"/"} className="btn btn-outline-light border-dark text-black mt-3 mb-3 mx-2 rounded-0 min-w-bt-27">
                         <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                     </Link>
                 </div>

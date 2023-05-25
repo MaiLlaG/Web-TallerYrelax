@@ -60,8 +60,8 @@ const MensajesList = () => {
 
     return (
         <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-1">
-            <div className="col-md-4 px-3">
-                <h4 className="font-Raleway letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Lista de mensajes de <span className="text-primary fw-normal">Contacto</span></h4>
+            <div className="col-md-5 px-3 ms-4">
+                <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold ms-3 mb-4">Lista de mensajes de <span className="text-primary fw-normal">Contacto</span></h4>
                 <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {mensajes && mensajes.map((mensaje, index) => (
                         <li
@@ -77,7 +77,7 @@ const MensajesList = () => {
 
             <div className="col-md-5 d-flex justify-content-center ms-2 px-3 pb-1">
                 {actualMensaje ? (
-                    <div className="w-75">
+                    <div className="ms-4">
                         <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Mensaje</h4>
                         <div>
                             <label>
@@ -91,7 +91,7 @@ const MensajesList = () => {
                                 <p className="text-secondary font-Raleway letter-spacing-2">Fecha: </p>
                             </label>
                             <p className="mb-4 text-black font-Raleway letter-spacing-2 fs-6">{actualMensaje.fecha == null ? null : actualMensaje.fecha.substring(0, 10)}</p>
-                        </div>                                                                      
+                        </div>
 
                         <div>
                             <label>
@@ -101,18 +101,21 @@ const MensajesList = () => {
                         </div>
 
                         <div>
-                            <label>
-                                <p className="text-secondary font-Raleway letter-spacing-2">Mensaje: </p>
-                                <hr className="hr-with" />
-                            </label>
+                            <ul className="nav border-bottom border-secondary border-opacity-50 pb-1 mb-3">
+                                <li className="nav-item">
+                                    <p className="text-secondary font-Raleway letter-spacing-2">Mensaje: </p>
+                                </li>
+                            </ul>
                             <p className="mb-3 text-black font-Raleway fs-6">{actualMensaje.texto}</p>
-                            <hr className="hr-with" />
+                        </div>
+                        <div>
+                            <u className="nav justify-content-center border-bottom border-secondary border-opacity-50 pb-2 mb-3"></u>
                         </div>
 
                         <div className="d-flex justify-content-center gap-2">
                             <Link
-                                to={"/gestion"} 
-                                className="btn btn-outline-light border-dark text-black mt-3 mb-3 rounded-0 min-w-bt-27">
+                                to={"/"}
+                                className="btn btn-outline-light border-dark text-black mt-4 mb-5 rounded-0 min-w-bt-27">
                                 <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                             </Link>
                         </div>
