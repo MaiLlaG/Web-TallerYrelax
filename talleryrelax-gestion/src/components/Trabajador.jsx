@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import TrabajadorDataService from "../services/TrabajadorDataService";
 import '../App.css';
 import '../index.css';
+import Alert from "./Alert";
 
 const Trabajador = () => {
     const { id } = useParams();
@@ -19,11 +20,11 @@ const Trabajador = () => {
     const [actualTrabajador, setActualTrabajador] = useState(trabajadorState);
     const [message, setMessage] = useState("");
     const [errores, setErrores] = useState({});// Validaciones: Errores
+    const [alertText, setAlertText] = useState("");
 
     // Validaciones: Comprobar errores al cambiar el estado
     const setActualTrabajadorConValidacion = elTrabajador => {
         setActualTrabajador(elTrabajador);
-
         validarFormulario(elTrabajador);
     };
 
@@ -84,7 +85,7 @@ const Trabajador = () => {
         // Validaciones: Si hay errores no dejo enviar
         if (validarFormulario(actualTrabajador)) {
             console.log('Formulario no válido');
-            alert('Corrige los errores antes de enviar');
+            setAlertText('Corrige los errores antes de enviar');
             return;
         }
 
@@ -136,6 +137,7 @@ const Trabajador = () => {
 
     return (
         <main className="bg-white winter-neva-gradient color-block p-0">
+            <Alert alertText={alertText} setAlertText={setAlertText} />
             <div className="min-height-85">
                 {actualTrabajador ? (
                     <div className="form p-3">

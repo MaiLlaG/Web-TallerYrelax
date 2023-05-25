@@ -24,7 +24,6 @@ const Cliente = () => {
     // Validaciones: Comprobar errores al cambiar el estado
     const setActualClienteConValidacion = elCliente => {
         setActualCliente(elCliente);
-
         validarFormulario(elCliente);
     };
 

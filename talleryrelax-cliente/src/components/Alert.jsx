@@ -7,11 +7,11 @@ function Alert({ alertText, setAlertText }) {
     return (
         <div className="fondoGris" style={{ display: alertText ? "block" : "none" }}>
             <div className="alert bg-white shadow">
-                <h5>Aviso</h5>
-                <div style={{ "textAlign": "center" }}>
+                <h5 className="text-danger">Aviso</h5>
+                <div className="text-center">
                     <p>{alertText}</p>
                 </div>
-                <div>
+                <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-primary" onClick={ok}>Ok</button>
                 </div>
             </div>

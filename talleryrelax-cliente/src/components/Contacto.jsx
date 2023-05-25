@@ -108,7 +108,7 @@ const Contacto = () => {
 
                     <div className="col-md-6 bg-dark pe-0 form">
                         <form>
-                            <div className="form-group d-flex flex-wrap flex-column align-content-center mt-4 p-3">
+                            <div className="form-group d-flex flex-wrap flex-column align-content-center mt-5 p-3">
                                 <h4 className="text-white text-white letter-spacing-2 fs-4 fw-bold mb-4">Contacto</h4>
 
                                 <div className="form-group my-3">
@@ -139,10 +139,10 @@ const Contacto = () => {
                                     {errores.email && <span className="text-primary text-valida fw-light">{errores.email}</span>}
                                 </div>
 
-                                <div className="form-group my-3">
+                                <div className="form-group mt-4 my-3">
                                     <label className="text-white font-Raleway-bold letter-spacing-2 fs-6" htmlFor="texto">Mensaje He leído y acepto las Condiciones de Compra <span className="fw-bold"> *</span></label>
                                     <textarea
-                                        className="text-light form-control bg-transparent font-Raleway mt-2 mb-1" rows="7"
+                                        className="text-light form-control bg-transparent font-Raleway mt-4 mb-1" rows="7"
                                         type="text"
                                         id="texto"
                                         name="texto"
@@ -154,7 +154,7 @@ const Contacto = () => {
                                 </div>
 
                                 <button
-                                    className="btn btn-primary border-white mt-2 mb-3 rounded-0 min-w-bt-27"
+                                    className="btn btn-primary border-white mt-3 mb-3 rounded-0 min-w-bt-27"
                                     type="button"
                                     onClick={enviar}>
                                     <span className="font-Raleway letter-spacing-2">Enviar</span>

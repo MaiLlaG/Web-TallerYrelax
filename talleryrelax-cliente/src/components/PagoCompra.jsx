@@ -200,8 +200,8 @@ const PagoCompra = () => {
                             (taller.nplazas - taller.plazasCompradas > 0) ?
                                 (
                                     <form>
-                                        <div className="form-group d-flex flex-wrap flex-column align-content-center mt-4 p-3">
-                                            <h4 className="font-Raleway-bold letter-spacing-2">Proceder al pago</h4>
+                                        <div className="form-group d-flex flex-wrap flex-column align-content-center mt-5 p-3">
+                                            <h4 className="text-white text-white letter-spacing-2 fs-4 fw-bold mb-4">Proceder al pago</h4>
 
                                             <div className="form-group my-3">
                                                 <label className="text-white font-Raleway-bold letter-spacing-2 mb-1" htmlFor="nombre">Nombre <span className="fw-bold"> *</span></label>
@@ -277,7 +277,7 @@ const PagoCompra = () => {
 
 
                                             <button
-                                                className="btn btn-primary border-white mt-2 mb-3 rounded-0 min-w-bt-27"
+                                                className="btn btn-primary border-white mt-3 mb-3 rounded-0 min-w-bt-27"
                                                 type="button"
                                                 onClick={pagar}>
                                                 <span className="font-Raleway-bold letter-spacing-2">Pagar</span>

@@ -38,7 +38,6 @@ const Taller = () => {
     // Validaciones: Comprobar errores al cambiar el estado
     const setActualTallerConValidacion = elTaller => {
         setActualTaller(elTaller);
-
         validarFormulario(elTaller);
     };
 
