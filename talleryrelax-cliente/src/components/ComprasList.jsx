@@ -53,7 +53,7 @@ const ComprasList = () => {
                                 {compras && compras.map((compra, index) => (
                                     <li
                                         className={
-                                            "py-3 px-4 mb-3 shadow list-group-item list-group-item-action list-group-flush" + (index === actualIndex ? "active" : "")
+                                            "py-3 px-4 mb-3 winter-neva-gradient3 shadow rounded-1 list-group-item list-group-item-action list-group-flush" + (index === actualIndex ? "active" : "")
                                         }
                                         onClick={() => setActiveCompra(compra, index)} key={index}>
                                         <span className="fw-bold">{compra.taller.nombre}</span> comprado el {compra.fechaCompra == null ? null : compra.fechaCompra.substring(0, 10)}

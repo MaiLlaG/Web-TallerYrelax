@@ -52,6 +52,13 @@ header {
     /*opacity: 70%;  */
 }
 
+.h-50 {
+    height: 50vh !important;
+}
+
+.min-width-230 {
+    min-width: 230px;
+}
 
 .textoAbajo {
     margin-top: 320px;
@@ -234,7 +241,6 @@ header {
 }
 
 .imgLettering1 {
-    background-image: url("../img/fondoTransparente.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

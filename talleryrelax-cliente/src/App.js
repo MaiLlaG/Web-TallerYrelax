@@ -113,6 +113,7 @@ function App() {
               </ul>
               <p className="text-center text-light mt-4 mb-4">Política de protección de datos</p>
               <p className="text-center text-light mt-3 mb-0">Política de cookies</p>
+              <a href="http://localhost:3001/" target="_blank"><p className="text-secondary text-center text-opacity-25 fw-bold mt-2 mb-1">*</p></a>
             </footer>
           </div>
           <div className="bg-arena py-2">

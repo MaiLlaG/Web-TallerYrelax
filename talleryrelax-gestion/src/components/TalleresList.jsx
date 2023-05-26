@@ -68,11 +68,11 @@ const TalleresList = () => {
                                 <p className="mt-3 text-primary font-Raleway-bold letter-spacing-2 fs-5">{actualTaller.nombre}</p>
                             </div>
                             <div className="d-flex justify-content-center">
-                                {actualTaller.imagen ?
-                                    <img className="rounded-circle mt-2 mb-5 w-75" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
-                                    :
-                                    <img className="rounded-circle mt-2 mb-5 w-75" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
-                                }
+                                    {actualTaller.imagen ?
+                                        <img className="rounded-circle mt-2 mb-5 w-75" src={`data:image/jpeg;base64,${actualTaller.imagen}`} alt={actualTaller.nombre} />
+                                        :
+                                        <img className="rounded-circle mt-2 mb-5 w-75" src={require("../img/sin-imagen.png")} alt={actualTaller.nombre} />
+                                    }
                             </div>
                         </div>
 
@@ -146,7 +146,6 @@ const TalleresList = () => {
                                     <p className="font-Raleway letter-spacing-2 fw-bold">No hay compras realizadas</p>
 
                             }
-
 
                         </div>
 

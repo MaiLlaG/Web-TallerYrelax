@@ -163,39 +163,36 @@ const PagoCompra = () => {
 
     return (
         <div className="d-flex">
-            <main className="w-100 p-0">                
+            <main className="w-100 p-0">
                 <Alert alertText={alertText} setAlertText={setAlertText} />
                 <div className="container-fluid row min-height-85 p-0 m-0 d-flex justify-content-evenly">
-                    <div className="col-md-6 ps-0 bg-arena text-light d-flex justify-content-center">
-                        <h4 className="letter-spacing-2 ms-1 fs-4 fw-bold mb-4">Esta comprando el taller..</h4>
-
-                        <div className="d-flex flex-wrap flex-column align-items-center ">
+                    <div className="col-md-6 ps-0 bg-arena d-flex flex-wrap flex-column align-content-center mt-5">
+                        <h4 className="text-dark text-center letter-spacing-2 fs-4 fw-bold mt-3 mb-3">Su compra </h4>
+                        <div className="d-flex flex-wrap flex-column align-items-center">
                             <div>
-                                <p className="text-y font-Raleway letter-spacing-2">Está comprando el taller: {taller.nombre}</p>
+                                <p className="text-primary text-center letter-spacing-2 fs-5 mt-5 mb-3">Está comprando el taller: </p>
+                                <p className="text-dark text-center letter-spacing-2 fs-5 fw-bold mt-4 mb-3">{taller.nombre}</p>
                             </div>
                             <div>
-
-                                <p className="text-secondary font-Raleway letter-spacing-2">El importe a pagar es: {taller.precio}€</p>
+                                <p className="text-primary text-center letter-spacing-2 fs-5 mt-5 mb-3">El importe a pagar es: </p>
+                                <p className="text-dark text-center letter-spacing-2 fs-5 fw-bold mt-4 mb-3">{taller.precio}€</p>
                             </div>
                             <div className="d-flex justify-content-center">
-                                <div className="">
-                                    {/*<img className="imgMandala" src={require("../img/flowerMandalaOpacityV.png")} />*/}
-                                </div>
                                 {taller.imagen ?
-                                    <img className="rounded-circle mt-2 mb-5 w-75" src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
+                                    <img className="rounded-circle mt-4 mb-5 w-50" src={`data:image/jpeg;base64,${taller.imagen}`} alt={taller.nombre} />
                                     :
-                                    <img className="rounded-circle mt-2 mb-5 w-75" src={require("../img/sin-imagen.png")} alt={taller.nombre} />
+                                    <img className="rounded-circle mt-4 mb-5 w-50" src={require("../img/sin-imagen.png")} alt={taller.nombre} />
                                 }
                             </div>
                             <Link
                                 to={"/talleres"}
-                                className="btn btn-outline-light border-dark text-black mt-2 mb-3 rounded-0 min-w-bt-27">
+                                className="btn btn-outline-light border-dark text-black mt-2 mb-5 rounded-0 min-w-bt-27">
                                 <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                             </Link>
                         </div>
                     </div>
 
-                    <div className="col-md-6 bg-dark pe-0 form">
+                    <div className="col-md-6 bg-dark form px-4">
                         {usuario.user ?
                             (taller.nplazas - taller.plazasCompradas > 0) ?
                                 (
@@ -285,7 +282,7 @@ const PagoCompra = () => {
 
                                             <Link
                                                 to={"/talleres"}
-                                                className="btn btn-outline-light border-white mt-2 mb-3 rounded-0 min-w-bt-27">
+                                                className="btn btn-outline-light border-white mt-2 mb-4 rounded-0 min-w-bt-27">
                                                 <span className="font-Raleway-bold letter-spacing-2">Volver</span>
                                             </Link>
 
