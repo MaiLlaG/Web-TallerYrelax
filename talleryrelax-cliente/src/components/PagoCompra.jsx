@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
-import '../views/PagoCompra.css';
 import TallerDataService from "../services/TallerDataService";
 import CompraDataService from "../services/CompraDataService";
 import MetodoDePagoDataService from "../services/MetodoDePagoDataService";

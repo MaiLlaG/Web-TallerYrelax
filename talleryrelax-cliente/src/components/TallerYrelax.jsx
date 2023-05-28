@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
-import '../views/TallerYrelax.css';
 
 const TallerYrelax = () => {
 
@@ -17,7 +16,7 @@ const TallerYrelax = () => {
                 <section className="py-3 text-center bg-white">
                     <div className="py-lg-3">
                         <div className="col-lg-6 col-md-8 mx-auto">
-                            <h5 className="text-dark letter-spacing-2">Te esperan un montón de actividades creativas y relajantes, no te las pierdas.</h5>
+                            <h5 className="text-dark letter-spacing-2 mb-3">Te esperan un montón de actividades creativas y relajantes, no te las pierdas.</h5>
                             <h5 className="text-dark letter-spacing-2">En <span className="fw-bold">Talleres</span> podrás encontrar información detallada de cada taller.</h5>
                         </div>
                     </div>

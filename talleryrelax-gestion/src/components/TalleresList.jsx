@@ -32,8 +32,8 @@ const TalleresList = () => {
 
     return (
 
-        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly gap-5">
-            <div className="col-md-4 px-3 ms-3">
+        <div className="container-fluid row min-height-85 pt-3 d-flex justify-content-evenly">
+            <div className="col-md-4 px-3 ms-4">
                 <h4 className="font-Raleway letter-spacing-2 ms-3 fs-4 fw-bold mb-4">Lista de talleres</h4>
                 <ul className="list-group rounded-5 mb-3 font-Raleway-bold letter-spacing-2">
                     {talleres && talleres.map((taller, index) => (
@@ -59,7 +59,7 @@ const TalleresList = () => {
                 </div>
             </div>
 
-            <div className="col-md-5 d-flex justify-content-center ms-2 px-5 pb-5">
+            <div className="col-md-5 d-flex flex-column justify-content-center ms-2 px-5 pb-5">
                 {actualTaller ? (
                     <div className="">
                         <h4 className="text-center font-Raleway letter-spacing-2 fs-4 fw-bold">Taller</h4>
@@ -76,8 +76,8 @@ const TalleresList = () => {
                             </div>
                         </div>
 
-                        <div className="d-flex flex-wrap flex-column justify-content-center align-content-start align-content-center">
-                            <div>
+                        <div className="d-flex flex-wrap flex-column justify-content-center ">
+                            <div className="col">
                                 <ul className="nav border-bottom border-secondary border-opacity-50 pb-1 mb-3">
                                     <li className="nav-item">
                                         <p className="text-secondary font-Raleway letter-spacing-2 fs-6">Descripción </p>
@@ -121,24 +121,23 @@ const TalleresList = () => {
                             </div>
                         </div>
 
-                        <div>
-                            <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mt-5 mb-4">Talleres comprados</h4>
+                        <div className="col text-center ps-2">
+                            <h4 className="text-center font-Raleway letter-spacing-2 fs-4 fw-bold mt-5 mb-4">Talleres comprados</h4>
                             {
                                 (actualTaller.compras && actualTaller.compras.length > 0) ?
-                                    <div className="">
+                                    <div className="d-flex justify-content-center ms-2 px-2 pb-5">
                                         <ul className="list-group list-group-numbered list-group-flush shadow rounded-5 mb-3"> {/* list-unstyled lo mismo list-style: none; */}
                                             {actualTaller.compras && actualTaller.compras.map((compra, index) => (
                                                 <li key={index} className="pt-3 pb-2 px-4 list-group-item list-group-item-primary list-group-item-action text-dark font-Roboto letter-spacing-2">
-                                                    {compra.nombre} / {compra.email} / {compra.telefono} / {compra.importeCompra}€ / {compra.fechaCompra == null ? null : compra.fechaCompra} / {compra.metodoDePago.nombre}
+                                                    {compra.nombre} / {compra.email} / {compra.telefono} / {compra.importeCompra}€ / {compra.fechaCompra == null ? null : compra.fechaCompra.substring(0, 10)} / {compra.metodoDePago.nombre}
 
-                                                    <div className="d-flex justify-content-center">
+                                                    <div className="">
                                                         <Link
                                                             to={"/clientes/" + compra.cliente.id} className="btn border-light bg-secondary bg-opacity-25 font-500 rounded-0 p-2 mt-2 mb-2 mx-3 w-50 min-w-bt-27">
                                                             <span className="text-light font-Raleway-bold letter-spacing-2">Ir al cliente</span>
                                                         </Link>
                                                     </div>
                                                 </li>
-
                                             ))}
                                         </ul>
                                     </div>

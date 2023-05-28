@@ -3,7 +3,7 @@ import TallerDataService from "../services/TallerDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
-import '../views/TalleresList.css';
+import '../TalleresList.css';
 import UsuarioContext from "./Usuario";
 
 const TalleresList = () => {

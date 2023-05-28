@@ -3,7 +3,6 @@ import CompraDataService from "../services/CompraDataService";
 import { Link } from "react-router-dom";
 import '../App.css';
 import '../index.css';
-import '../views/ComprasList.css';
 import UsuarioContext from "./Usuario";
 
 const ComprasList = () => {

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import '../index.css';
-import '../views/Login.css';
+import '../Login.css';
 
 import UsuarioContext from "./Usuario";
 import { signInWithGoogle, auth } from '../firebase';

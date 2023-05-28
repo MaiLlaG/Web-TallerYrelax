@@ -75,7 +75,7 @@ const MensajesList = () => {
                 </ul>
             </div>
 
-            <div className="col-md-5 d-flex justify-content-center ms-2 px-3 pb-1">
+            <div className="col-md-5 d-flex justify-content-center ms-2 px-5 pb-1">
                 {actualMensaje ? (
                     <div className="ms-4">
                         <h4 className="font-Raleway letter-spacing-2 fs-4 fw-bold mb-4">Mensaje</h4>
